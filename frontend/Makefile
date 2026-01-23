@@ -38,6 +38,16 @@ create:
 			git checkout main; \
 		fi; \
 	fi; \
+	echo "Syncing main with latest remote changes..."; \
+	git checkout main >/dev/null 2>&1 || true; \
+	if ! git fetch origin; then \
+		echo "Warning: could not fetch origin. Proceeding with local main."; \
+	else \
+		if ! git rebase origin/main; then \
+			echo "Rebase failed. Please resolve conflicts on main, then rerun 'make create'."; \
+			exit 1; \
+		fi; \
+	fi; \
 	status_main=$$(git status --porcelain); \
 	if [ -n "$$status_main" ]; then \
 		echo "Main has uncommitted changes."; \
