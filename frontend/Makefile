@@ -28,7 +28,7 @@ create:
 				l|L) \
 					read -r -p "Type 'yes' to discard ALL uncommitted changes: " confirm; \
 					[ "$$confirm" = "yes" ] || { echo "Cancelled."; exit 1; }; \
-					git reset --hard HEAD -- frontend; \
+					git restore --staged --worktree --source=HEAD -- frontend; \
 					git clean -fd frontend; \
 					git checkout main; \
 					dirty=0 ;; \
@@ -53,7 +53,7 @@ create:
 			l|L) \
 				read -r -p "Type 'yes' to discard ALL uncommitted changes: " confirm; \
 				[ "$$confirm" = "yes" ] || { echo "Cancelled."; exit 1; }; \
-				git reset --hard HEAD -- frontend; \
+				git restore --staged --worktree --source=HEAD -- frontend; \
 				git clean -fd frontend; \
 				echo "Cleaned working tree on main."; \
 				status_main=""; \
@@ -91,7 +91,12 @@ discard:
 	@set -e; \
 	echo "WARNING: This will delete ALL uncommitted changes in frontend/ (staged and unstaged)."; \
 	read -r -p "Type 'yes' to proceed: " ans; \
-	[ "$$ans" = "yes" ] || { echo "Cancelled."; exit 1; }; \
-	git reset --hard HEAD -- frontend; \
+	[ "$$ans" = "yes" ] || { echo "Cancelled."; exit 0; }; \
+	status_front=$$(git status --porcelain -- frontend); \
+	if [ -z "$$status_front" ]; then \
+		echo "Nothing to discard: frontend/ is already clean."; \
+		exit 0; \
+	fi; \
+	git restore --staged --worktree --source=HEAD -- frontend; \
 	git clean -fd frontend; \
 	echo "Uncommitted changes in frontend/ discarded."
