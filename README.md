@@ -7,6 +7,10 @@ This repository hosts the source for the Devdom marketing/landing site, built wi
 - `npm install`
 - `npm run dev` to start the local server
 - `npm run build` to produce the static site in `frontend/dist/`
+- Helper commands (run inside `frontend/`):
+  - `make create` to start a new feature branch safely
+  - `make save` to run checks, commit, and push
+  - `make discard` to drop all uncommitted frontend changes (with confirmation)
 
 ## Tech notes
 - Uses `@astrojs/react` for React islands and `@tailwindcss/vite` (Tailwind 4).
