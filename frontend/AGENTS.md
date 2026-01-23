@@ -9,6 +9,7 @@ Instructions for coding agents (and other collaborators) working on this repo. A
 ## Tech Stack
 - Use the latest Astro; when unsure, read current docs: https://docs.astro.build/en/getting-started/.
 - React with TypeScript inside Astro is preferred.
+- Brand tokens: always consult `frontend/brand/colors_typography.json` (exposed via `frontend/brand/tokens.js` and `frontend/tailwind.config.cjs`) before making any UI change. Use those colors, shadows, and typography tokens; do not invent new ones without human approval.
 
 ## Frontend Architecture Guidelines (CRITICAL)
 - Core principle: Astro renders HTML; React only adds necessary interactivity. JavaScript is a tax—pay it only when there is a clear return.
@@ -39,6 +40,7 @@ Instructions for coding agents (and other collaborators) working on this repo. A
 - Always ask what each provided image represents so you can write accurate alt text, captions, and SEO/GEO metadata (e.g., location, product name, people shown).
 - Confirm expectations before major visual/content changes (brand tone, palettes, logos).
 - Before shipping any change, double-check with the human that GEO goals are covered: target topics/entities, priority regions, brand terms/synonyms, and needed metadata or assets.
+- When creating a new page or making significant changes to an existing page, pause and request design guidance from the human. They can provide either (a) an image mockup/screenshot or (b) a comprehensive text description of the intended layout, content order, imagery, and interactions. Confirm what each part of the design represents so you can align layout, accessibility text, SEO/GEO metadata, and component choices. Always cross-check that UI choices match the brand tokens.
 
 ## Accessibility, SEO, and GEO Workflow
 - Before coding, gather or confirm: alt text, aria labels, captions, meta title/description, open graph tags, canonical URL, language/region targets, hreflang pairs, structured data type, expected images, and their subjects.
