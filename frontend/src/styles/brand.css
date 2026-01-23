@@ -1,0 +1,158 @@
+:root {
+  /* Brand & palette */
+  --color-brand: #540d8d;
+  --color-brand-gradient: linear-gradient(90deg, #a729f5 0%, #e52f6d 50%, #ff8b4c 100%);
+  --color-primary-1000: #2D1C33;
+  --color-primary-900: #540d8d;
+  --color-primary-700: #7e1fc2;
+  --color-primary-500: #a729f5;
+  --color-primary-300: #c879f8;
+  --color-primary-100: #f4e9ff;
+  --color-primary-50: #faf5ff;
+  --color-headings: #301934;
+  --color-text: #6e6e6e;
+  --color-gray-1000: #0f0f0f;
+  --color-gray-900: #301934;
+  --color-gray-800: #2e2e2e;
+  --color-gray-700: #494949;
+  --color-gray-600: #6e6e6e;
+  --color-gray-500: #8a8a8a;
+  --color-gray-400: #b1b1b1;
+  --color-gray-300: #d1d1d1;
+  --color-gray-200: #eaeaea;
+  --color-gray-100: #f5f5f5;
+  --color-white-soft: #fdfbff;
+  --color-white: #ffffff;
+  --color-secondary-pink-900: #801b40;
+  --color-secondary-pink-700: #b72756;
+  --color-secondary-pink-500: #e52f6d;
+  --color-secondary-pink-300: #f398b0;
+  --color-secondary-pink-100: #ffe3ed;
+  --color-secondary-orange-900: #a1450f;
+  --color-secondary-orange-700: #d8681f;
+  --color-secondary-orange-500: #ff8b4c;
+  --color-secondary-orange-300: #ffb78d;
+  --color-secondary-orange-100: #fff3ec;
+  --color-secondary-blue-900: #175cd3;
+  --color-secondary-blue-700: #1570ef;
+  --color-secondary-blue-500: #2e90fa;
+  --color-secondary-blue-300: #84caff;
+  --color-secondary-blue-100: #d1e9ff;
+  --color-secondary-yellow-900: #b54708;
+  --color-secondary-yellow-700: #dc6803;
+  --color-secondary-yellow-500: #f79009;
+  --color-secondary-yellow-300: #fec84b;
+  --color-secondary-yellow-100: #fef0c7;
+  --color-secondary-green-900: #027a48;
+  --color-secondary-green-700: #039855;
+  --color-secondary-green-500: #12b76a;
+  --color-secondary-green-300: #6ce9a6;
+  --color-secondary-green-100: #d1fadf;
+  --color-secondary-red-900: #7a271a;
+  --color-secondary-red-700: #b42318;
+  --color-secondary-red-500: #d92d20;
+  --color-secondary-red-300: #fca5a5;
+  --color-secondary-red-100: #fee4e2;
+
+  /* Typography families */
+  --font-family-heading: "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+  --font-family-body: "DM Sans", "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Effects */
+  --shadow-01: 0px 2px 8px 0px rgba(42, 42, 43, 0.06);
+  --shadow-02: 0px 2px 12px 0px rgba(30, 30, 30, 0.08);
+  --shadow-03: 0px 8px 28px 0px rgba(20, 20, 43, 0.1);
+  --shadow-04: 0px 14px 42px 0px rgba(20, 20, 43, 0.14);
+  --shadow-05: 0px 24px 65px 0px rgba(20, 20, 43, 0.16);
+  --shadow-06: 0px 32px 72px 0px rgba(20, 20, 43, 0.24);
+
+  /* Typography (one token per size/weight/line-height) */
+  --font-h1-size: 70px;
+  --font-h1-line-height: 1.343;
+  --font-h1-weight: 700;
+
+  --font-h2-size: 56px;
+  --font-h2-line-height: 1.5;
+  --font-h2-weight: 700;
+
+  --font-h3-size: 44px;
+  --font-h3-line-height: 1.182;
+  --font-h3-weight: 700;
+
+  --font-h4-size: 28px;
+  --font-h4-line-height: 1.429;
+  --font-h4-weight: 500;
+  
+  --font-h5-size: 18px;
+  --font-h5-line-height: 1.333;
+  --font-h5-weight: 700;
+
+  --font-h6-size: 16px;
+  --font-h6-line-height: 1.375;
+  --font-h6-weight: 700;
+
+  --font-body-lg-size: 24px;
+  --font-body-lg-line-height: 1.583;
+  --font-body-lg-weight: 400;
+
+  --font-body-md-size: 18px;
+  --font-body-md-line-height: 1.667;
+  --font-body-md-weight: 400;
+
+  --font-body-sm-size: 16px;
+  --font-body-sm-line-height: 1.625;
+  --font-body-sm-weight: 400;
+
+  --font-body-xs-size: 14px;
+  --font-body-xs-line-height: 1.714;
+  --font-body-xs-weight: 400;
+
+  --font-link-size: 18px;
+  --font-link-line-height: 1.667;
+  --font-link-weight: 400;
+}
+
+[data-theme="dark"] {
+  /* Base surfaces */
+  --color-white: #0f0a1a;          /* deepest background */
+  --color-white-soft: #171127;     /* cards / elevated surfaces */
+
+  /* Neutral scale – slowed luminance ramp, purple-biased */
+  --color-gray-100: #1c162c;
+  --color-gray-200: #26203a;
+  --color-gray-300: #332b4a;
+  --color-gray-400: #4f4768;
+  --color-gray-500: #6d6686;
+  --color-gray-600: #8f88a8;
+  --color-gray-700: #b2acc7;
+  --color-gray-800: #d6d1e6;
+  --color-gray-900: #eee9fb;
+
+  /* Text */
+  --color-text: #e3ddf3;           /* softer than near-white */
+  --color-headings: #f6f2ff;       /* reserved for hierarchy */
+
+  /* Primary scale (counterparts, not inversions) */
+  --color-primary-1000: #2D1C33;   /* stays dark anchor */
+  --color-primary-900: #3a155f;
+  --color-primary-700: #5c1f8f;
+  --color-primary-500: #8f3fd8;
+  --color-primary-300: #b98af0;
+  --color-primary-100: #e6d8ff;
+
+  /* Secondary accents (lifted chroma, controlled luminance) */
+  --color-secondary-pink-500: #e45f97;
+  --color-secondary-orange-500: #ff9f6b;
+  --color-secondary-blue-500: #8ab8ff;
+  --color-secondary-yellow-500: #f9bf5c;
+  --color-secondary-green-500: #5bd69a;
+  --color-secondary-red-500: #f27777;
+
+  /* Shadows – depth without soot */
+  --shadow-01: 0px 2px 8px 0px rgba(0, 0, 0, 0.28);
+  --shadow-02: 0px 4px 14px 0px rgba(0, 0, 0, 0.32);
+  --shadow-03: 0px 10px 30px 0px rgba(0, 0, 0, 0.38);
+  --shadow-04: 0px 18px 44px 0px rgba(0, 0, 0, 0.44);
+  --shadow-05: 0px 28px 68px 0px rgba(0, 0, 0, 0.5);
+  --shadow-06: 0px 36px 80px 0px rgba(0, 0, 0, 0.58);
+}

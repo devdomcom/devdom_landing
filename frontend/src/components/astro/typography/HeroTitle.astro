@@ -1,0 +1,8 @@
+---
+const { tag = "h1", class: className = "" } = Astro.props;
+const Tag = tag;
+---
+
+<Tag class={`font-heading text-h1 ${className}`}>
+  <slot />
+</Tag>

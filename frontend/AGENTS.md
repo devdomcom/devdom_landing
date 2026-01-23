@@ -9,7 +9,7 @@ Instructions for coding agents (and other collaborators) working on this repo. A
 ## Tech Stack
 - Use the latest Astro; when unsure, read current docs: https://docs.astro.build/en/getting-started/.
 - React with TypeScript inside Astro is preferred.
-- Brand tokens: always consult `frontend/brand/colors_typography.json` (exposed via `frontend/brand/tokens.js` and `frontend/tailwind.config.cjs`) before making any UI change. Use those colors, shadows, and typography tokens; do not invent new ones without human approval.
+- Brand tokens: always consult the canonical `frontend/src/styles/brand.css` before making any UI change. Use the defined CSS variables for colors, gradients, shadows, and typography; do not invent new ones without human approval. Keep `brand.css` in sync with human-provided brand updates.
 
 ## Frontend Architecture Guidelines (CRITICAL)
 - Core principle: Astro renders HTML; React only adds necessary interactivity. JavaScript is a tax—pay it only when there is a clear return.

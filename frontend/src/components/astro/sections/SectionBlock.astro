@@ -1,0 +1,83 @@
+---
+const {
+  variant = "light", // "light" | "muted" | "dark"
+  class: className = "",
+} = Astro.props;
+
+const variants = {
+  light: "bg-white text-gray-900 border border-gray-200 shadow-brand-01",
+  muted: "bg-primary-100 text-gray-900 border border-primary-100 shadow-brand-01",
+  dark: "bg-primary-900 text-white border border-primary-700 shadow-brand-03",
+};
+
+// Typography components can inherit color from the container; use "inherit" tone
+const tone = "inherit";
+---
+
+<section
+  data-variant={variant}
+  class={`section-block rounded-3xl px-6 py-8 ${variants[variant] ?? variants.light} ${className}`}
+>
+  <slot name="header" tone={tone} />
+  <slot tone={tone} />
+</section>
+
+<style>
+  .section-block[data-variant="light"] {
+    color: var(--color-gray-900);
+    background: var(--color-white);
+    border-color: var(--color-gray-200);
+  }
+
+  .section-block[data-variant="muted"] {
+    color: var(--color-gray-900);
+    background: var(--color-primary-100);
+    border-color: var(--color-primary-100);
+  }
+
+  .section-block[data-variant="dark"] {
+    color: var(--color-white);
+    background: var(--color-primary-1000);
+    border-color: var(--color-primary-1000);
+  }
+
+  /* -------------------- */
+  /* Dark theme overrides */
+  /* -------------------- */
+
+  /* LIGHT
+    Elevated surface in dark mode (card-like, not "light") */
+  :root[data-theme="dark"] .section-block[data-variant="light"] {
+    background: var(--color-white-soft);
+    border-color: var(--color-gray-200);
+    color: var(--color-text);
+  }
+
+  :root[data-theme="dark"] .section-block[data-variant="light"] * {
+    color: inherit;
+  }
+
+  /* MUTED
+    Soft tinted panel, low contrast, calm */
+  :root[data-theme="dark"] .section-block[data-variant="muted"] {
+    background: var(--color-gray-200);
+    border-color: var(--color-gray-300);
+    color: var(--color-text);
+  }
+
+  :root[data-theme="dark"] .section-block[data-variant="muted"] * {
+    color: inherit;
+  }
+
+  /* DARK
+    Anchor section — deep, but readable */
+  :root[data-theme="dark"] .section-block[data-variant="dark"] {
+    background: var(--color-primary-1000);
+    border-color: var(--color-primary-900);
+    color: var(--color-primary-100);
+  }
+
+  :root[data-theme="dark"] .section-block[data-variant="dark"] * {
+    color: inherit;
+  }
+</style>

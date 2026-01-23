@@ -1,0 +1,8 @@
+---
+const { class: className = "" } = Astro.props;
+const size = "text-body-md";
+---
+
+<p class={`font-body ${size} ${className}`}>
+  <slot />
+</p>
