@@ -1,10 +1,11 @@
-.PHONY: help create save discard
+.PHONY: help create save discard preview
 
 help:
 	@echo "Frontend helpers:"
 	@echo "  make create   - create/switch to a feature branch from main (with safety prompts)"
 	@echo "  make save     - run checks, commit, and push current branch"
 	@echo "  make discard  - drop all uncommitted frontend changes (with confirmation)"
+	@echo "  make preview  - start the Astro dev server unless already running"
 
 create:
 	@set -e; \
@@ -110,3 +111,13 @@ discard:
 	git restore --staged --worktree --source=HEAD -- frontend; \
 	git clean -fd frontend; \
 	echo "Uncommitted changes in frontend/ discarded."
+
+preview:
+	@set -e; \
+	PORT=$${PORT:-4321}; \
+	if lsof -i :$$PORT >/dev/null 2>&1; then \
+		echo "Astro dev server appears to be running already: http://localhost:$$PORT"; \
+		exit 0; \
+	fi; \
+	echo "Starting Astro dev server on http://localhost:$$PORT ..."; \
+	npm run dev -- --host --port $$PORT
