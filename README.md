@@ -1,9 +1,16 @@
 # Devdom Landing
 
-This repository hosts the source for the Devdom marketing/landing site. Documentation will expand as the project structure and tooling are added.
+This repository hosts the source for the Devdom marketing/landing site, built with Astro 5+, React, TypeScript, and Tailwind CSS 4. Frontend code lives in `frontend/`.
 
-## Status
-- Initial repository layout; build instructions and stack details to be documented as they are established.
+## Quick start
+- `cd frontend`
+- `npm install`
+- `npm run dev` to start the local server
+- `npm run build` to produce the static site in `frontend/dist/`
+
+## Tech notes
+- Uses `@astrojs/react` for React islands and `@tailwindcss/vite` (Tailwind 4).
+- Global styles live in `frontend/src/styles/global.css`; images go under `frontend/src/assets/images/<category>/`.
 
 ## License
 - Code is MIT. Brand, name, logo, and content are not licensed for reuse.

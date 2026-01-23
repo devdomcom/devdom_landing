@@ -1,0 +1,55 @@
+---
+import "../styles/global.css";
+import Cta from "../components/Cta";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Devdom Landing Starter</title>
+	</head>
+	<body class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100">
+		<main class="mx-auto flex min-h-screen max-w-6xl flex-col gap-12 px-6 py-16">
+			<header class="space-y-4">
+				<p class="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-300">Astro + React + Tailwind</p>
+				<h1 class="text-4xl font-bold sm:text-5xl">Launch a blazing-fast marketing site.</h1>
+				<p class="max-w-2xl text-lg text-slate-200">
+					This starter couples Astro’s static-first approach with React islands and Tailwind styles so you can build accessible, SEO- and GEO-friendly pages quickly.
+				</p>
+			</header>
+
+			<section class="grid gap-6 md:grid-cols-3">
+				<div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
+					<h2 class="text-xl font-semibold text-white">Performance-first</h2>
+					<p class="mt-2 text-sm text-slate-200">Static by default; hydrate React only where it matters.</p>
+				</div>
+				<div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
+					<h2 class="text-xl font-semibold text-white">DX ready</h2>
+					<p class="mt-2 text-sm text-slate-200">TypeScript, Tailwind 4, and React already wired up.</p>
+				</div>
+				<div class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-sm">
+					<h2 class="text-xl font-semibold text-white">SEO/GEO aware</h2>
+					<p class="mt-2 text-sm text-slate-200">Semantic markup and metadata hooks to keep GEO top of mind.</p>
+				</div>
+			</section>
+
+			<section class="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+				<article class="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-md">
+					<h2 class="text-2xl font-semibold text-white">How to use this starter</h2>
+					<ol class="mt-4 list-decimal space-y-3 pl-5 text-slate-200">
+						<li>Place images under <code class="rounded bg-white/10 px-1 py-0.5 text-emerald-200">src/assets/images/&lt;category&gt;/</code> and describe what each shows for alt text and GEO metadata.</li>
+						<li>Update <code class="rounded bg-white/10 px-1 py-0.5 text-emerald-200">src/pages</code> with your sections; reuse shared components to stay DRY.</li>
+						<li>Set <code class="rounded bg-white/10 px-1 py-0.5 text-emerald-200">site</code> and canonical settings in <code class="rounded bg-white/10 px-1 py-0.5 text-emerald-200">astro.config.mjs</code>.</li>
+						<li>Run <code class="rounded bg-white/10 px-1 py-0.5 text-emerald-200">npm run dev</code> and iterate with Lighthouse to keep performance in check.</li>
+					</ol>
+				</article>
+
+				<Cta client:visible />
+			</section>
+		</main>
+	</body>
+</html>
