@@ -14,6 +14,7 @@ Instructions for coding agents (and other collaborators) working on this repo. A
 - Follow DRY: before adding code, look for existing utilities/components to reuse or adapt.
 - Default to static-first, cache-friendly, minimal-JS approaches.
 - Keep dependencies lean and protect Core Web Vitals.
+- For React components, write integration tests using React Testing Library (RTL) to verify expected user behaviors. Tests should be placed alongside components (e.g., Component.test.tsx) and follow RTL best practices such as querying by role, using userEvent for interactions, and focusing on behavior over implementation details.
 
 ## Working With Humans
 - Assume non-technical users. When human input is required (copy, images, metadata, running tests, starting scripts), ask clarifying questions and give step-by-step, plain-language instructions.
