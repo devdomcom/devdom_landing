@@ -79,4 +79,12 @@ describe('Nav', () => {
     const wrapperDiv = servicesButton.parentElement;
     fireEvent.mouseLeave(wrapperDiv!);
   });
+
+  it('applies correct styling classes', () => {
+    render(<Nav items={mockItems} />);
+    const nav = screen.getByRole('navigation');
+    expect(nav).toHaveClass('bg-white', 'border-b', 'border-gray-200', 'shadow-brand-01');
+    const ul = nav.querySelector('ul');
+    expect(ul).toHaveClass('flex', 'items-center', 'px-4', 'py-3', 'list-none');
+  });
 });

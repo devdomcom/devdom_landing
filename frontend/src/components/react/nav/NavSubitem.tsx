@@ -19,14 +19,14 @@ const NavSubitem: React.FC<NavSubitemProps> = ({ href, label, submenu }) => {
         <div onMouseLeave={handleMouseLeave}>
           <button
             onMouseEnter={handleMouseEnter}
-            className="block px-4 py-2 hover:bg-gray-100 w-full text-left"
+            className="block px-4 py-2 text-text hover:bg-gray-100 w-full text-left transition-colors duration-200 rounded-md whitespace-nowrap cursor-pointer"
             aria-expanded={isOpen}
             aria-haspopup="true"
           >
             {label}
           </button>
           {isOpen && (
-            <NavSubmenu mode="standard">
+            <NavSubmenu mode="nested">
               {submenu.map((sub, idx) => (
                 <NavSubitem key={idx} href={sub.href} label={sub.label} submenu={sub.submenu} />
               ))}
@@ -39,7 +39,7 @@ const NavSubitem: React.FC<NavSubitemProps> = ({ href, label, submenu }) => {
 
   return (
     <li>
-      <a href={href} className="block px-4 py-2 hover:bg-gray-100">{label}</a>
+      <a href={href} className="block px-4 py-2 text-text hover:bg-gray-100 transition-colors duration-200 rounded-md whitespace-nowrap">{label}</a>
     </li>
   );
 };

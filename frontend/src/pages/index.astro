@@ -26,10 +26,10 @@ import SectionHeader from "../components/astro/sections/SectionHeader.astro";
 			<!-- Hero -->
 			<SectionBlock class="px-8 py-12 shadow-brand-02" variant="light">
 				<div slot="header" class="space-y-4 max-w-3xl">
-					<SectionPreTitle>Component Library Preview</SectionPreTitle>
+					<SectionPreTitle>Devdom Landing Starter</SectionPreTitle>
 					<HeroTitle>Launch a blazing-fast marketing site.</HeroTitle>
 					<HeroSubtitle class="max-w-2xl">
-						These are the core typographic building blocks. Compose them to match the mockup while keeping branding consistent.
+						Built with Astro, React, and Tailwind. Explore the component library in the gallery.
 					</HeroSubtitle>
 				</div>
 				<div class="mt-8">
@@ -37,71 +37,6 @@ import SectionHeader from "../components/astro/sections/SectionHeader.astro";
 				</div>
 				<div class="mt-6">
 					<ThemeToggle client:load />
-				</div>
-			</SectionBlock>
-
-			<!-- Light section -->
-			<SectionBlock>
-				<SectionHeader preTitle="Headings on light background" tone="inherit" />
-				<div class="space-y-3">
-					<HeroTitle>HeroTitle (H1) / gray-900</HeroTitle>
-					<HeroSubtitle>
-						HeroSubtitle uses body font and default gray text. Ideal for hero supporting copy.
-					</HeroSubtitle>
-					<SectionTitle>SectionTitle (H2) / gray-900</SectionTitle>
-					<SectionSubtitle>SectionSubtitle (H3) / gray-900</SectionSubtitle>
-					<SectionParagraph>
-						SectionParagraph defaults to body-md and gray-600 on light backgrounds. Use it for standard paragraph copy.
-					</SectionParagraph>
-				</div>
-			</SectionBlock>
-
-			<!-- Dark section -->
-			<SectionBlock variant="dark">
-				<SectionHeader preTitle="Headings on dark background" />
-				<div class="space-y-3">
-					<HeroTitle>HeroTitle (H1) / white</HeroTitle>
-					<HeroSubtitle>
-						HeroSubtitle with tone="light" for dark backgrounds.
-					</HeroSubtitle>
-					<SectionTitle>SectionTitle (H2) / white</SectionTitle>
-					<SectionSubtitle>SectionSubtitle (H3) / white</SectionSubtitle>
-					<SectionParagraph>
-						SectionParagraph tone="dark" switches to white text for dark backgrounds.
-					</SectionParagraph>
-				</div>
-			</SectionBlock>
-
-			<!-- Muted section -->
-			<SectionBlock variant="muted">
-				<SectionHeader preTitle="Tokens preview" tone="inherit" />
-				<div class="grid gap-4 sm:grid-cols-3">
-					<div class="rounded-xl border border-gray-200 p-4 bg-white">
-						<p class="text-sm text-gray-700 mb-2">Primary palette</p>
-						<div class="flex gap-2">
-							<span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-900)"></span>
-							<span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-700)"></span>
-							<span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-500)"></span>
-							<span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-300)"></span>
-						</div>
-					</div>
-					<div class="rounded-xl border border-gray-200 p-4 bg-white">
-						<p class="text-sm text-gray-700 mb-2">Secondary palette</p>
-						<div class="flex gap-2">
-							<span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-pink-500)"></span>
-							<span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-orange-500)"></span>
-							<span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-blue-500)"></span>
-							<span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-yellow-500)"></span>
-						</div>
-					</div>
-					<div class="rounded-xl border border-gray-200 p-4 bg-white">
-						<p class="text-sm text-gray-700 mb-2">Shadows</p>
-						<div class="flex gap-3">
-							<span class="h-10 w-10 rounded-lg bg-white shadow-brand-02"></span>
-							<span class="h-10 w-10 rounded-lg bg-white shadow-brand-04"></span>
-							<span class="h-10 w-10 rounded-lg bg-white shadow-brand-06"></span>
-						</div>
-					</div>
 				</div>
 			</SectionBlock>
 		</main>

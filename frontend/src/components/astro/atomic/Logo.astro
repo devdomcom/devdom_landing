@@ -1,18 +1,1 @@
----
-const { alt, mode = 'light', width = 200, height = 50 } = Astro.props;
-
-import Image from './Image.astro';
-import logoSrcLight from '../../../assets/images/devdom-logo.svg';
-import logoSrcDark from '../../../assets/images/devdom-logo-dark.svg';
-
-const logoSrc = mode === 'dark' ? logoSrcDark : logoSrcLight;
----
-
-<Image
-  src={logoSrc}
-  alt={alt}
-  width={width}
-  height={height}
-  layout="responsive"
-  class="max-w-32"
-/>
+// This file is replaced by React component

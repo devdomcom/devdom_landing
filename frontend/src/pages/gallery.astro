@@ -1,9 +1,19 @@
 ---
+import "../styles/global.css";
 import Image from '../components/astro/atomic/Image.astro';
-import Logo from '../components/astro/atomic/Logo.astro';
+import Logo from '../components/react/Logo.tsx';
 import Link from '../components/astro/atomic/Link.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
+import ThemeToggle from '../components/react/ThemeToggle';
+import HeroTitle from "../components/astro/typography/HeroTitle.astro";
+import HeroSubtitle from "../components/astro/typography/HeroSubtitle.astro";
+import SectionPreTitle from "../components/astro/typography/SectionPreTitle.astro";
+import SectionTitle from "../components/astro/typography/SectionTitle.astro";
+import SectionSubtitle from "../components/astro/typography/SectionSubtitle.astro";
+import SectionParagraph from "../components/astro/typography/SectionParagraph.astro";
+import SectionBlock from "../components/astro/sections/SectionBlock.astro";
+import SectionHeader from "../components/astro/sections/SectionHeader.astro";
 import placeholder from '../assets/images/placeholder.svg';
 import landscape from '../assets/images/landscape.svg';
 import portrait from '../assets/images/portrait.svg';
@@ -40,110 +50,214 @@ const navItems = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image Component Gallery</title>
+    <title>Component Gallery</title>
   </head>
-  <body class="bg-gray-100 p-4">
-    <h1 class="text-2xl font-bold mb-4">Image Component Gallery</h1>
+  <body class="bg-gray-100 min-h-screen">
+    <div class="fixed top-4 right-4 z-50">
+      <ThemeToggle client:load />
+    </div>
+    <div class="max-w-6xl mx-auto px-6 py-16">
+      <h1 class="text-3xl font-bold mb-8">Component Gallery</h1>
+      <nav class="mb-8">
+        <ul class="flex space-x-4">
+          <li><a href="#typography" class="px-4 py-2 rounded bg-white text-text">Typography</a></li>
+          <li><a href="#components" class="px-4 py-2 rounded bg-white text-text">Components</a></li>
+          <li><a href="#images" class="px-4 py-2 rounded bg-white text-text">Images</a></li>
+        </ul>
+      </nav>
 
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">Responsive Layout (Default)</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white p-4 rounded shadow">
-          <Image src={placeholder} alt="Placeholder image" width={400} height={300} />
+      <div data-section="typography" class="section-content" style="display: none;">
+        <SectionBlock>
+          <SectionHeader preTitle="Typography" />
+          <div class="space-y-8">
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Headings on Light Background</h3>
+                <div class="space-y-3 bg-white p-6 rounded shadow">
+                  <HeroTitle>HeroTitle (H1) / gray-900</HeroTitle>
+                  <HeroSubtitle>HeroSubtitle uses body font and default gray text. Ideal for hero supporting copy.</HeroSubtitle>
+                  <SectionTitle>SectionTitle (H2) / gray-900</SectionTitle>
+                  <SectionSubtitle>SectionSubtitle (H3) / gray-900</SectionSubtitle>
+                  <SectionParagraph>SectionParagraph defaults to body-md and gray-600 on light backgrounds. Use it for standard paragraph copy.</SectionParagraph>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Headings on Dark Background</h3>
+                <div class="space-y-3 bg-gray-900 p-6 rounded shadow text-white">
+                  <HeroTitle>HeroTitle (H1) / white</HeroTitle>
+                  <HeroSubtitle>HeroSubtitle with tone="light" for dark backgrounds.</HeroSubtitle>
+                  <SectionTitle>SectionTitle (H2) / white</SectionTitle>
+                  <SectionSubtitle>SectionSubtitle (H3) / white</SectionSubtitle>
+                  <SectionParagraph>SectionParagraph tone="dark" switches to white text for dark backgrounds.</SectionParagraph>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Tokens Preview</h3>
+                <div class="grid gap-4 sm:grid-cols-3 bg-gray-50 p-6 rounded shadow">
+                  <div class="rounded-xl border border-gray-200 p-4 bg-white">
+                    <p class="text-sm text-gray-700 mb-2">Primary palette</p>
+                    <div class="flex gap-2">
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-900)"></span>
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-700)"></span>
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-500)"></span>
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-300)"></span>
+                    </div>
+                  </div>
+                  <div class="rounded-xl border border-gray-200 p-4 bg-white">
+                    <p class="text-sm text-gray-700 mb-2">Secondary palette</p>
+                    <div class="flex gap-2">
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-pink-500)"></span>
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-orange-500)"></span>
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-blue-500)"></span>
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-yellow-500)"></span>
+                    </div>
+                  </div>
+                  <div class="rounded-xl border border-gray-200 p-4 bg-white">
+                    <p class="text-sm text-gray-700 mb-2">Shadows</p>
+                    <div class="flex gap-3">
+                      <span class="h-10 w-10 rounded-lg bg-white shadow-brand-02"></span>
+                      <span class="h-10 w-10 rounded-lg bg-white shadow-brand-04"></span>
+                      <span class="h-10 w-10 rounded-lg bg-white shadow-brand-06"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SectionBlock>
         </div>
-        <div class="bg-white p-4 rounded shadow">
-          <Image src={landscape} alt="Landscape image" width={800} height={400} />
-        </div>
-        <div class="bg-white p-4 rounded shadow">
-          <Image src={portrait} alt="Portrait image" width={400} height={600} />
+
+      <div data-section="components" class="section-content" style="display: none;">
+        <SectionBlock>
+          <SectionHeader preTitle="Components" />
+          <div class="space-y-8">
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Logo Component</h3>
+                <div class="bg-white p-4 rounded shadow inline-block">
+                  <Logo alt="Devdom - Digital Wisdom" client:load />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Link Component</h3>
+                <div class="bg-white p-4 rounded shadow space-y-2">
+                  <p>Standard mode:</p>
+                  <div class="space-x-4">
+                    <Link href="/home">Home</Link>
+                    <Link href="/about" prefixIcon={homeIcon}>About</Link>
+                    <Link href="/contact" suffixIcon={arrowIcon}>Contact</Link>
+                    <Link href="/services" prefixIcon={homeIcon} suffixIcon={arrowIcon}>Services</Link>
+                  </div>
+                  <p>Underline mode:</p>
+                  <div class="space-x-4">
+                    <Link href="/home" mode="underline">Home</Link>
+                    <Link href="/about" prefixIcon={homeIcon} mode="underline">About</Link>
+                    <Link href="/contact" suffixIcon={arrowIcon} mode="underline">Contact</Link>
+                    <Link href="/services" prefixIcon={homeIcon} suffixIcon={arrowIcon} mode="underline">Services</Link>
+                  </div>
+                  <p>External link (opens in new tab):</p>
+                  <div>
+                    <Link href="https://example.com" suffixIcon={arrowIcon}>External Link</Link>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Nav Component</h3>
+                <Nav items={navItems} client:load />
+              </div>
+            </div>
+          </SectionBlock>
         </div>
       </div>
-    </section>
 
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">Fixed Layout</h2>
-      <div class="flex flex-wrap gap-4">
-        <Image src={placeholder} alt="Fixed placeholder" width={200} height={150} layout="fixed" />
-        <Image src={landscape} alt="Fixed landscape" width={300} height={150} layout="fixed" />
-        <Image src={portrait} alt="Fixed portrait" width={150} height={200} layout="fixed" />
-      </div>
-    </section>
+      <div data-section="images" class="section-content" style="display: none;">
+        <SectionBlock>
+          <SectionHeader preTitle="Images" />
+          <div class="space-y-8">
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Responsive Layout (Default)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="bg-white p-4 rounded shadow">
+                    <Image src={placeholder} alt="Placeholder image" width={400} height={300} />
+                  </div>
+                  <div class="bg-white p-4 rounded shadow">
+                    <Image src={landscape} alt="Landscape image" width={800} height={400} />
+                  </div>
+                  <div class="bg-white p-4 rounded shadow">
+                    <Image src={portrait} alt="Portrait image" width={400} height={600} />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Fixed Layout</h3>
+                <div class="flex flex-wrap gap-4">
+                  <Image src={placeholder} alt="Fixed placeholder" width={200} height={150} layout="fixed" />
+                  <Image src={landscape} alt="Fixed landscape" width={300} height={150} layout="fixed" />
+                  <Image src={portrait} alt="Fixed portrait" width={150} height={200} layout="fixed" />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Full-Width Layout</h3>
+                <div class="w-full bg-white p-4 rounded shadow">
+                  <Image src={landscape} alt="Full-width landscape" width={800} height={400} layout="full-width" />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">With Custom Classes</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="bg-white p-4 rounded shadow">
+                    <Image src={placeholder} alt="Rounded image" width={400} height={300} class="rounded-lg" />
+                  </div>
+                  <div class="bg-white p-4 rounded shadow">
+                    <Image src={portrait} alt="Bordered image" width={400} height={600} class="border-2 border-gray-300" />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">In Different Container Sizes</h3>
+                <div class="space-y-4">
+                  <div class="w-1/2 bg-white p-2 rounded shadow">
+                    <Image src={landscape} alt="Half width" width={800} height={400} />
+                  </div>
+                  <div class="w-1/4 bg-white p-2 rounded shadow">
+                    <Image src={portrait} alt="Quarter width" width={400} height={600} />
+                  </div>
+                  <div class="w-full bg-white p-2 rounded shadow">
+                    <Image src={placeholder} alt="Full width" width={400} height={300} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SectionBlock>
+        </div>
+    </div>
+    <script>
+      function showSection(section) {
+        const sections = document.querySelectorAll('.section-content');
+        sections.forEach(s => {
+          s.style.display = s.dataset.section === section ? 'block' : 'none';
+        });
+        const links = document.querySelectorAll('nav a');
+        links.forEach(link => {
+          if (link.getAttribute('href') === '#' + section) {
+            link.classList.add('bg-primary-500', 'text-white');
+            link.classList.remove('bg-white', 'text-text');
+          } else {
+            link.classList.remove('bg-primary-500', 'text-white');
+            link.classList.add('bg-white', 'text-text');
+          }
+        });
+      }
 
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">Full-Width Layout</h2>
-      <div class="w-full bg-white p-4 rounded shadow">
-        <Image src={landscape} alt="Full-width landscape" width={800} height={400} layout="full-width" />
-      </div>
-    </section>
+      document.addEventListener('click', e => {
+        if (e.target.matches('nav a[href^="#"]')) {
+          e.preventDefault();
+          const section = e.target.getAttribute('href').slice(1);
+          window.location.hash = section;
+          showSection(section);
+        }
+      });
 
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">With Custom Classes</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white p-4 rounded shadow">
-          <Image src={placeholder} alt="Rounded image" width={400} height={300} class="rounded-lg" />
-        </div>
-        <div class="bg-white p-4 rounded shadow">
-          <Image src={portrait} alt="Bordered image" width={400} height={600} class="border-2 border-gray-300" />
-        </div>
-      </div>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">In Different Container Sizes</h2>
-      <div class="space-y-4">
-        <div class="w-1/2 bg-white p-2 rounded shadow">
-          <Image src={landscape} alt="Half width" width={800} height={400} />
-        </div>
-        <div class="w-1/4 bg-white p-2 rounded shadow">
-          <Image src={portrait} alt="Quarter width" width={400} height={600} />
-        </div>
-        <div class="w-full bg-white p-2 rounded shadow">
-          <Image src={placeholder} alt="Full width" width={400} height={300} />
-        </div>
-      </div>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">Logo Component</h2>
-      <div class="space-y-4">
-        <div class="bg-white p-4 rounded shadow inline-block">
-          <Logo alt="Devdom - Digital Wisdom (Light Mode)" mode="light" />
-        </div>
-        <div class="bg-black p-4 rounded shadow inline-block">
-          <Logo alt="Devdom - Digital Wisdom (Dark Mode)" mode="dark" />
-        </div>
-      </div>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">Link Component</h2>
-      <div class="bg-gray-50 p-4 rounded shadow space-y-2">
-        <p>Standard mode:</p>
-        <div class="space-x-4">
-          <Link href="/home">Home</Link>
-          <Link href="/about" prefixIcon={homeIcon}>About</Link>
-          <Link href="/contact" suffixIcon={arrowIcon}>Contact</Link>
-          <Link href="/services" prefixIcon={homeIcon} suffixIcon={arrowIcon}>Services</Link>
-        </div>
-        <p>Underline mode:</p>
-        <div class="space-x-4">
-          <Link href="/home" mode="underline">Home</Link>
-          <Link href="/about" prefixIcon={homeIcon} mode="underline">About</Link>
-          <Link href="/contact" suffixIcon={arrowIcon} mode="underline">Contact</Link>
-          <Link href="/services" prefixIcon={homeIcon} suffixIcon={arrowIcon} mode="underline">Services</Link>
-        </div>
-        <p>External link (opens in new tab):</p>
-        <div>
-          <Link href="https://example.com" suffixIcon={arrowIcon}>External Link</Link>
-        </div>
-      </div>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">Nav Component</h2>
-      <div class="bg-gray-50 p-4 rounded shadow">
-        <Nav items={navItems} client:load />
-      </div>
-    </section>
+      // Initial load
+      const initialSection = window.location.hash.slice(1) || 'images';
+      showSection(initialSection);
+    </script>
   </body>
 </html>
