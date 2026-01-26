@@ -1,1 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap");
+@import "./brand.css";
 @import "tailwindcss";
+
+@layer base {
+  :root {
+    font-family: var(--font-family-body);
+  }
+  body {
+    font-family: var(--font-family-body);
+    color: var(--color-text);
+    background-color: var(--color-white);
+  }
+
+  .font-heading {
+    font-family: var(--font-family-heading);
+  }
+  .font-body {
+    font-family: var(--font-family-body);
+  }
+
+  .text-h1 {
+    font-size: var(--font-h1-size);
+    line-height: var(--font-h1-line-height);
+    font-weight: var(--font-h1-weight);
+  }
+  .text-h2 {
+    font-size: var(--font-h2-size);
+    line-height: var(--font-h2-line-height);
+    font-weight: var(--font-h2-weight);
+  }
+  .text-h3 {
+    font-size: var(--font-h3-size);
+    line-height: var(--font-h3-line-height);
+    font-weight: var(--font-h3-weight);
+  }
+  .text-body-lg {
+    font-size: var(--font-body-lg-size);
+    line-height: var(--font-body-lg-line-height);
+    font-weight: var(--font-body-lg-weight);
+  }
+  .text-body-md {
+    font-size: var(--font-body-md-size);
+    line-height: var(--font-body-md-line-height);
+    font-weight: var(--font-body-md-weight);
+  }
+  .text-body-sm {
+    font-size: var(--font-body-sm-size);
+    line-height: var(--font-body-sm-line-height);
+    font-weight: var(--font-body-sm-weight);
+  }
+  .text-body-xs {
+    font-size: var(--font-body-xs-size);
+    line-height: var(--font-body-xs-line-height);
+    font-weight: var(--font-body-xs-weight);
+  }
+}

@@ -1,0 +1,24 @@
+---
+import SectionPreTitle from "../typography/SectionPreTitle.astro";
+import SectionTitle from "../typography/SectionTitle.astro";
+import SectionSubtitle from "../typography/SectionSubtitle.astro";
+import SectionParagraph from "../typography/SectionParagraph.astro";
+
+const {
+  preTitle,
+  title,
+  subtitle,
+  paragraph,
+  align = "left", // "left" | "center"
+  class: className = "",
+} = Astro.props;
+
+const alignClass = align === "center" ? "text-center mx-auto" : "text-left";
+---
+
+<header class={`space-y-3 ${alignClass} ${className}`}>
+  {preTitle && <SectionPreTitle>{preTitle}</SectionPreTitle>}
+  {title && <SectionTitle>{title}</SectionTitle>}
+  {subtitle && <SectionSubtitle>{subtitle}</SectionSubtitle>}
+  {paragraph && <SectionParagraph>{paragraph}</SectionParagraph>}
+</header>
