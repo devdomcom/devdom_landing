@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect, useEffect, useId } from 'react';
 import ReactDOM from 'react-dom';
 import NavSubmenu from './NavSubmenu';
 import NavSubitem from './NavSubitem';
@@ -13,6 +13,7 @@ interface NavItemProps {
 
 const NavItem: React.FC<NavItemProps> = ({ href, label, submenu, complexContent }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const id = useId();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const submenuRef = useRef<HTMLDivElement | HTMLUListElement>(null);
   const [submenuStyle, setSubmenuStyle] = useState<React.CSSProperties>({});
@@ -80,23 +81,94 @@ const NavItem: React.FC<NavItemProps> = ({ href, label, submenu, complexContent 
     }
   }, [isOpen, isClient]);
 
+  // Close when focus leaves both button and submenu (portal-aware)
+  useEffect(() => {
+    if (!isOpen || !isClient) return;
+    const handleFocusIn = (event: FocusEvent) => {
+      const target = event.target as Node;
+      if (
+        buttonRef.current?.contains(target) ||
+        submenuRef.current?.contains(target)
+      ) {
+        return;
+      }
+      setIsOpen(false);
+    };
+    document.addEventListener('focusin', handleFocusIn);
+    return () => document.removeEventListener('focusin', handleFocusIn);
+  }, [isOpen, isClient]);
+
+  const moveHorizontal = (direction: 'next' | 'prev') => {
+    const li = buttonRef.current?.closest('li');
+    if (!li) return;
+    const sibling = direction === 'next' ? li.nextElementSibling : li.previousElementSibling;
+    const target = sibling?.querySelector<HTMLElement>('button[role="menuitem"], a[role="menuitem"]');
+    target?.focus();
+  };
+
+  const focusFirstSubmenuItem = () => {
+    requestAnimationFrame(() => {
+      const first = submenuRef.current?.querySelector<HTMLElement>('a,button');
+      first?.focus();
+    });
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (submenu || complexContent) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        setIsOpen(true);
+        focusFirstSubmenuItem();
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        setIsOpen(false);
+        buttonRef.current?.focus();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        moveHorizontal('next');
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        moveHorizontal('prev');
+      }
+    } else {
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        moveHorizontal('next');
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        moveHorizontal('prev');
+      }
+    }
+  };
+
+  const submenuId = submenu || complexContent ? `submenu-${id}` : undefined;
+
   if (submenu || complexContent) {
     return (
-      <li className="relative">
+      <li className="relative" role="none">
         <button
           ref={buttonRef}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="block px-2 sm:px-4 py-2 text-ink-secondary bg-surface-muted hover:bg-surface-card transition-colors duration-200 rounded-md whitespace-nowrap cursor-pointer border border-subtle"
-          style={{ background: "var(--surface-muted)", borderColor: "var(--border-subtle)" }}
+          onKeyDown={handleKeyDown}
+          className="block px-2 sm:px-4 py-2 text-ink-secondary bg-surface-muted hover:bg-surface-card transition-colors duration-200 rounded-md whitespace-nowrap cursor-pointer border border-border-subtle"
           aria-expanded={isOpen}
           aria-haspopup="true"
+          aria-controls={submenuId}
+          role="menuitem"
         >
           {label}
         </button>
         {isOpen && isClient && ReactDOM.createPortal(
           complexContent ? (
-            <NavSubmenu ref={submenuRef} mode="complex" style={submenuStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <NavSubmenu
+              ref={submenuRef}
+              mode="complex"
+              style={submenuStyle}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              id={submenuId}
+            >
               {complexContent === 'complex' ? (
                 <ComplexContent />
               ) : typeof complexContent === 'string' ? (
@@ -108,7 +180,14 @@ const NavItem: React.FC<NavItemProps> = ({ href, label, submenu, complexContent 
               )}
             </NavSubmenu>
           ) : (
-            <NavSubmenu ref={submenuRef} mode="standard" style={submenuStyle} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+            <NavSubmenu
+              ref={submenuRef}
+              mode="standard"
+              style={submenuStyle}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              id={submenuId}
+            >
               {submenu!.map((sub, idx) => (
                 <NavSubitem key={idx} href={sub.href || '#'} label={sub.label} submenu={sub.submenu} />
               ))}
@@ -121,11 +200,12 @@ const NavItem: React.FC<NavItemProps> = ({ href, label, submenu, complexContent 
   }
 
   return (
-    <li>
+    <li role="none">
       <a
         href={href}
-        className="block px-2 sm:px-4 py-2 text-ink-secondary bg-surface-muted hover:bg-surface-card transition-colors duration-200 rounded-md whitespace-nowrap border border-subtle"
-        style={{ background: "var(--surface-muted)", borderColor: "var(--border-subtle)" }}
+        className="block px-2 sm:px-4 py-2 text-ink-secondary bg-surface-muted hover:bg-surface-card transition-colors duration-200 rounded-md whitespace-nowrap border border-border-subtle"
+        role="menuitem"
+        onKeyDown={handleKeyDown}
       >
         {label}
       </a>

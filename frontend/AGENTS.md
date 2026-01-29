@@ -73,3 +73,11 @@ Instructions for coding agents (and other collaborators) working on this repo. A
 ## Workflow Expectations
 - When introducing new patterns, document them briefly in `README.md` or relevant docs.
 - Prefer small, incremental changes with clear commit messages. Run available lint/tests if present; if commands are missing, suggest or add minimal scripts as needed.
+
+## Current Frontend Priorities (Jan 2026)
+- Respect the brand system: do not edit `frontend/src/styles/brand.css` unless the human explicitly requests a token change in this session.
+- Navigation a11y: add full keyboard support (focus/blur open/close, Escape to close, arrow-key navigation, proper `aria-*`, focus management) before shipping nav/UI changes.
+- Semantic theming: rely on semantic tokens/classes (surface/ink/action/status). Remove ad-hoc inline color fallbacks once Tailwind/token plumbing is confirmed; keep theming single-sourced.
+- Primitives first: introduce or reuse Button, Link, Input/Textarea, Alert/Badge primitives wired to semantic tokens; prefer composing sections from these over ad-hoc styles.
+- SEO/GEO hygiene: ensure pages carry meta description, OG/Twitter tags, and structured data; set `site` in `astro.config.*` and include sitemap generation.
+- Testing: cover ThemeToggle (persists/uses system) and nav keyboard flows with RTL; add regression checks for SectionBlock/CTA variants in light/dark.

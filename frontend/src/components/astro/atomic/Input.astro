@@ -1,0 +1,50 @@
+---
+const {
+  id = crypto.randomUUID(),
+  label,
+  name,
+  type = "text",
+  placeholder,
+  value,
+  required = false,
+  description,
+  error,
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const describedByIds = [];
+if (description) describedByIds.push(`${id}-desc`);
+if (error) describedByIds.push(`${id}-err`);
+const describedby = describedByIds.join(" ") || undefined;
+---
+
+<div class={`space-y-2 ${className}`}>
+  {label && (
+    <label for={id} class="block text-sm font-semibold text-ink-primary">
+      {label} {required && <span class="text-status-danger" aria-hidden="true">*</span>}
+    </label>
+  )}
+  <input
+    id={id}
+    name={name ?? id}
+    type={type}
+    placeholder={placeholder}
+    value={value}
+    required={required}
+    aria-invalid={!!error}
+    aria-describedby={describedby}
+    class="w-full rounded-lg border border-field-border bg-field-bg px-3 py-2 text-ink-primary placeholder:text-field-placeholder focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--focus-ring-color)]"
+    {...rest}
+  />
+  {description && (
+    <p id={`${id}-desc`} class="text-xs text-ink-secondary">
+      {description}
+    </p>
+  )}
+  {error && (
+    <p id={`${id}-err`} class="text-xs text-status-danger">
+      {error}
+    </p>
+  )}
+</div>

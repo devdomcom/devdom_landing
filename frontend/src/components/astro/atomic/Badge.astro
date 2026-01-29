@@ -1,0 +1,21 @@
+---
+const {
+  tone = "neutral", // "neutral" | "info" | "success" | "warning" | "danger"
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const tones = {
+  neutral: "bg-surface-muted text-ink-secondary border border-border-subtle",
+  info: "bg-status-info-surface text-status-info-on border border-status-info",
+  success: "bg-status-success-surface text-status-success-on border border-status-success",
+  warning: "bg-status-warning-surface text-status-warning-on border border-status-warning",
+  danger: "bg-status-danger-surface text-status-danger-on border border-status-danger",
+};
+
+const classes = `inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold ${tones[tone] ?? tones.neutral} ${className}`.trim();
+---
+
+<span class={classes} {...rest}>
+  <slot />
+</span>

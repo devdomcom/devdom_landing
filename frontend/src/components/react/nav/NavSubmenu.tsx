@@ -6,18 +6,20 @@ interface NavSubmenuProps {
   style?: React.CSSProperties;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
+  id?: string;
   ref?: React.Ref<HTMLDivElement | HTMLUListElement>;
 }
 
-const NavSubmenu = React.forwardRef<HTMLDivElement | HTMLUListElement, NavSubmenuProps>(({ children, mode = 'standard', style, onMouseEnter, onMouseLeave }, ref) => {
+const NavSubmenu = React.forwardRef<HTMLDivElement | HTMLUListElement, NavSubmenuProps>(({ children, mode = 'standard', style, onMouseEnter, onMouseLeave, id }, ref) => {
   if (mode === 'complex') {
     return (
       <div
         ref={ref as React.Ref<HTMLDivElement>}
         className="bg-surface-raised shadow-brand-03 p-4 border border-border-subtle rounded-md w-max text-ink-primary"
-        style={{ ...style, background: "var(--surface-raised)", borderColor: "var(--border-subtle)" }}
+        style={style}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        id={id}
       >
         {children}
       </div>
@@ -28,9 +30,11 @@ const NavSubmenu = React.forwardRef<HTMLDivElement | HTMLUListElement, NavSubmen
       <ul
         ref={ref as React.Ref<HTMLUListElement>}
         className="absolute top-0 left-full bg-surface-raised shadow-brand-03 border border-border-subtle rounded-md w-max text-ink-primary"
-        style={{ ...style, background: "var(--surface-raised)", borderColor: "var(--border-subtle)" }}
+        style={style}
+        role="menu"
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        id={id}
       >
         {children}
       </ul>
@@ -41,9 +45,11 @@ const NavSubmenu = React.forwardRef<HTMLDivElement | HTMLUListElement, NavSubmen
     <ul
       ref={ref as React.Ref<HTMLUListElement>}
       className="bg-surface-raised shadow-brand-03 border border-border-subtle rounded-md w-max text-ink-primary"
-      style={{ ...style, background: "var(--surface-raised)", borderColor: "var(--border-subtle)" }}
+      style={style}
+      role="menu"
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      id={id}
     >
       {children}
     </ul>

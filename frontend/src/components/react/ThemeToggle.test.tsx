@@ -1,40 +1,45 @@
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { vi } from 'vitest';
 import '@testing-library/jest-dom';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { expect, test, vi } from 'vitest';
-import ThemeToggle from './ThemeToggle.tsx';
+import ThemeToggle from './ThemeToggle';
 
-// Mock localStorage
-const localStorageMock = {
-  getItem: vi.fn(),
-  setItem: vi.fn(),
-  removeItem: vi.fn(),
+const mockMatchMedia = (matches: boolean) => {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: vi.fn().mockImplementation((query) => ({
+      matches,
+      media: query,
+      onchange: null,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    })),
+  });
 };
-Object.defineProperty(window, 'localStorage', { value: localStorageMock });
 
-// Mock matchMedia
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: vi.fn().mockImplementation(query => ({
-    matches: false,
-    media: query,
-    onchange: null,
-    addEventListener: vi.fn(),
-    removeEventListener: vi.fn(),
-  })),
-});
+describe('ThemeToggle', () => {
+  beforeEach(() => {
+    localStorage.clear();
+    document.documentElement.removeAttribute('data-theme');
+  });
 
-test('renders theme toggle button', () => {
-  render(<ThemeToggle />);
+  it('applies system preference when no stored theme', async () => {
+    mockMatchMedia(true); // prefers dark
+    render(<ThemeToggle />);
+    await waitFor(() => expect(document.documentElement.getAttribute('data-theme')).toBe('dark'));
+  });
 
-  const button = screen.getByRole('button');
-  expect(button).toBeInTheDocument();
-  expect(button).toHaveTextContent(/switch to dark mode/i);
-});
-
-test('toggles theme on click', () => {
-  render(<ThemeToggle />);
-
-  const button = screen.getByRole('button');
-  fireEvent.click(button);
-  expect(button).toHaveTextContent(/switch to light mode/i);
+  it('toggles and persists theme', async () => {
+    mockMatchMedia(false);
+    render(<ThemeToggle />);
+    const button = screen.getByRole('button', { name: /switch to dark mode/i });
+    fireEvent.click(button);
+    await waitFor(() => expect(document.documentElement.getAttribute('data-theme')).toBe('dark'));
+    expect(localStorage.getItem('theme')).toBe('dark');
+    fireEvent.click(button);
+    await waitFor(() => expect(document.documentElement.getAttribute('data-theme')).toBeNull());
+    expect(localStorage.getItem('theme')).toBe('light');
+  });
 });
