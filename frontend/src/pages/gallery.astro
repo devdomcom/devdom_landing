@@ -137,24 +137,35 @@ const navItems = [
               </div>
               <div>
                 <h3 class="text-lg font-semibold mb-4">Link Component</h3>
-                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02 space-y-2">
-                  <p>Standard mode:</p>
-                  <div class="space-x-4">
-                    <Link href="/home">Home</Link>
-                    <Link href="/about" prefixIcon={homeIcon}>About</Link>
-                    <Link href="/contact" suffixIcon={arrowIcon}>Contact</Link>
-                    <Link href="/services" prefixIcon={homeIcon} suffixIcon={arrowIcon}>Services</Link>
-                  </div>
-                  <p>Underline mode:</p>
-                  <div class="space-x-4">
-                    <Link href="/home" mode="underline">Home</Link>
-                    <Link href="/about" prefixIcon={homeIcon} mode="underline">About</Link>
-                    <Link href="/contact" suffixIcon={arrowIcon} mode="underline">Contact</Link>
-                    <Link href="/services" prefixIcon={homeIcon} suffixIcon={arrowIcon} mode="underline">Services</Link>
-                  </div>
-                  <p>External link (opens in new tab):</p>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02 space-y-4">
                   <div>
-                    <Link href="https://example.com" suffixIcon={arrowIcon}>External Link</Link>
+                    <p class="mb-2">Sizes:</p>
+                    <div class="space-y-2">
+                      <div><Link href="#" size="xsmall">XSmall Link (14px)</Link></div>
+                      <div><Link href="#" size="small">Small Link (16px)</Link></div>
+                      <div><Link href="#" size="medium">Medium Link (18px)</Link></div>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="mb-2">States:</p>
+                    <div class="space-y-2">
+                      <div><Link href="#">Default Link (hover for underline)</Link></div>
+                      <div><Link href="#" disabled>Disabled Link</Link></div>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="mb-2">With icons:</p>
+                    <div class="space-x-4">
+                      <Link href="/home" prefixIcon={homeIcon}>Home</Link>
+                      <Link href="/contact" suffixIcon={arrowIcon}>Contact</Link>
+                      <Link href="/services" prefixIcon={homeIcon} suffixIcon={arrowIcon}>Services</Link>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="mb-2">External link (opens in new tab):</p>
+                    <div>
+                      <Link href="https://example.com" suffixIcon={arrowIcon}>External Link</Link>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,15 +1,28 @@
 ---
-const { href, prefixIcon, suffixIcon, mode = 'standard', class: className = '', ...rest } = Astro.props;
+const { href, prefixIcon, suffixIcon, size = 'medium', disabled = false, class: className = '', ...rest } = Astro.props;
 
 const isExternal = href && href.startsWith('http');
-const linkClass = `inline-flex items-center gap-2 text-action-link hover:text-action-link-hover ${mode === 'underline' ? 'underline' : 'no-underline'} ${className}`.trim();
+
+const sizeStyles = {
+  xsmall: '--font-body-xs-size',
+  small: '--font-body-sm-size',
+  medium: '--font-body-md-size'
+};
+
+const fontSizeVar = sizeStyles[size];
+
+const baseClass = 'inline-flex items-center gap-2 font-normal no-underline transition-colors';
+const defaultClass = disabled ? 'text-action-link-disabled cursor-not-allowed pointer-events-none' : 'text-action-link-default hover:text-action-link-hover hover:underline hover:font-semibold';
+const linkClass = `${baseClass} ${defaultClass} ${className}`.trim();
 ---
 
 <a
   href={href}
   class={linkClass}
+  style={`font-family: var(--font-family-body); font-size: var(${fontSizeVar});`}
   rel={isExternal ? 'noopener noreferrer' : undefined}
   target={isExternal ? '_blank' : undefined}
+  aria-disabled={disabled ? 'true' : undefined}
   {...rest}
 >
   {prefixIcon && <span set:html={prefixIcon}></span>}

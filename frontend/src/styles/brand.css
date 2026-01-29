@@ -157,6 +157,10 @@
   --action-ghost-hover: var(--color-gray-100);
   --action-ghost-on: var(--color-gray-900);
 
+  --action-link-default: var(--color-primary-900);
+  --action-link-hover: var(--color-primary-900);
+  --action-link-disabled: var(--color-gray-500);
+
   --action-link: var(--color-secondary-blue-700);
   --action-link-hover: var(--color-primary-700);
   --action-link-visited: var(--color-primary-900);
@@ -272,6 +276,10 @@
   --action-ghost: transparent;
   --action-ghost-hover: rgba(255, 255, 255, 0.06);
   --action-ghost-on: var(--color-headings);
+
+  --action-link-default: var(--color-primary-900);
+  --action-link-hover: var(--color-primary-900);
+  --action-link-disabled: var(--color-gray-500);
 
   --action-link: var(--color-secondary-blue-500);
   --action-link-hover: var(--color-primary-100);
