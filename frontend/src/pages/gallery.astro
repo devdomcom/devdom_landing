@@ -52,7 +52,7 @@ const navItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Component Gallery</title>
   </head>
-  <body class="bg-gray-100 min-h-screen">
+  <body class="bg-surface-page min-h-screen text-ink-primary">
     <div class="fixed top-4 right-4 z-50">
       <ThemeToggle client:load />
     </div>
@@ -60,9 +60,9 @@ const navItems = [
       <h1 class="text-3xl font-bold mb-8">Component Gallery</h1>
       <nav class="mb-8">
         <ul class="flex space-x-4">
-          <li><a href="#typography" class="px-4 py-2 rounded bg-white text-text">Typography</a></li>
-          <li><a href="#components" class="px-4 py-2 rounded bg-white text-text">Components</a></li>
-          <li><a href="#images" class="px-4 py-2 rounded bg-white text-text">Images</a></li>
+          <li><a href="#typography" class="px-4 py-2 rounded border border-border-subtle bg-surface-card text-ink-secondary shadow-brand-01 transition-colors">Typography</a></li>
+          <li><a href="#components" class="px-4 py-2 rounded border border-border-subtle bg-surface-card text-ink-secondary shadow-brand-01 transition-colors">Components</a></li>
+          <li><a href="#images" class="px-4 py-2 rounded border border-border-subtle bg-surface-card text-ink-secondary shadow-brand-01 transition-colors">Images</a></li>
         </ul>
       </nav>
 
@@ -72,7 +72,7 @@ const navItems = [
           <div class="space-y-8">
               <div>
                 <h3 class="text-lg font-semibold mb-4">Headings on Light Background</h3>
-                <div class="space-y-3 bg-white p-6 rounded shadow">
+                <div class="space-y-3 bg-surface-card p-6 rounded shadow">
                   <HeroTitle>HeroTitle (H1) / gray-900</HeroTitle>
                   <HeroSubtitle>HeroSubtitle uses body font and default gray text. Ideal for hero supporting copy.</HeroSubtitle>
                   <SectionTitle>SectionTitle (H2) / gray-900</SectionTitle>
@@ -82,7 +82,7 @@ const navItems = [
               </div>
               <div>
                 <h3 class="text-lg font-semibold mb-4">Headings on Dark Background</h3>
-                <div class="space-y-3 bg-gray-900 p-6 rounded shadow text-white">
+                <div class="space-y-3 bg-surface-strong p-6 rounded shadow-brand-03 text-ink-on-strong">
                   <HeroTitle>HeroTitle (H1) / white</HeroTitle>
                   <HeroSubtitle>HeroSubtitle with tone="light" for dark backgrounds.</HeroSubtitle>
                   <SectionTitle>SectionTitle (H2) / white</SectionTitle>
@@ -92,9 +92,9 @@ const navItems = [
               </div>
               <div>
                 <h3 class="text-lg font-semibold mb-4">Tokens Preview</h3>
-                <div class="grid gap-4 sm:grid-cols-3 bg-gray-50 p-6 rounded shadow">
-                  <div class="rounded-xl border border-gray-200 p-4 bg-white">
-                    <p class="text-sm text-gray-700 mb-2">Primary palette</p>
+                <div class="grid gap-4 sm:grid-cols-3 bg-surface-muted p-6 rounded shadow">
+                  <div class="rounded-xl border border-border-subtle p-4 bg-surface-card">
+                    <p class="text-sm text-ink-secondary mb-2">Primary palette</p>
                     <div class="flex gap-2">
                       <span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-900)"></span>
                       <span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-700)"></span>
@@ -102,8 +102,8 @@ const navItems = [
                       <span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-300)"></span>
                     </div>
                   </div>
-                  <div class="rounded-xl border border-gray-200 p-4 bg-white">
-                    <p class="text-sm text-gray-700 mb-2">Secondary palette</p>
+                  <div class="rounded-xl border border-border-subtle p-4 bg-surface-card">
+                    <p class="text-sm text-ink-secondary mb-2">Secondary palette</p>
                     <div class="flex gap-2">
                       <span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-pink-500)"></span>
                       <span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-orange-500)"></span>
@@ -111,12 +111,12 @@ const navItems = [
                       <span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-yellow-500)"></span>
                     </div>
                   </div>
-                  <div class="rounded-xl border border-gray-200 p-4 bg-white">
-                    <p class="text-sm text-gray-700 mb-2">Shadows</p>
+                  <div class="rounded-xl border border-border-subtle p-4 bg-surface-card">
+                    <p class="text-sm text-ink-secondary mb-2">Shadows</p>
                     <div class="flex gap-3">
-                      <span class="h-10 w-10 rounded-lg bg-white shadow-brand-02"></span>
-                      <span class="h-10 w-10 rounded-lg bg-white shadow-brand-04"></span>
-                      <span class="h-10 w-10 rounded-lg bg-white shadow-brand-06"></span>
+                      <span class="h-10 w-10 rounded-lg bg-surface-card shadow-brand-02"></span>
+                      <span class="h-10 w-10 rounded-lg bg-surface-card shadow-brand-04"></span>
+                      <span class="h-10 w-10 rounded-lg bg-surface-card shadow-brand-06"></span>
                     </div>
                   </div>
                 </div>
@@ -131,13 +131,13 @@ const navItems = [
           <div class="space-y-8">
               <div>
                 <h3 class="text-lg font-semibold mb-4">Logo Component</h3>
-                <div class="bg-white p-4 rounded shadow inline-block">
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02 inline-block">
                   <Logo alt="Devdom - Digital Wisdom" client:load />
                 </div>
               </div>
               <div>
                 <h3 class="text-lg font-semibold mb-4">Link Component</h3>
-                <div class="bg-white p-4 rounded shadow space-y-2">
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02 space-y-2">
                   <p>Standard mode:</p>
                   <div class="space-x-4">
                     <Link href="/home">Home</Link>
@@ -174,13 +174,13 @@ const navItems = [
               <div>
                 <h3 class="text-lg font-semibold mb-4">Responsive Layout (Default)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div class="bg-white p-4 rounded shadow">
+                  <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-01">
                     <Image src={placeholder} alt="Placeholder image" width={400} height={300} />
                   </div>
-                  <div class="bg-white p-4 rounded shadow">
+                  <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-01">
                     <Image src={landscape} alt="Landscape image" width={800} height={400} />
                   </div>
-                  <div class="bg-white p-4 rounded shadow">
+                  <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-01">
                     <Image src={portrait} alt="Portrait image" width={400} height={600} />
                   </div>
                 </div>
@@ -195,31 +195,31 @@ const navItems = [
               </div>
               <div>
                 <h3 class="text-lg font-semibold mb-4">Full-Width Layout</h3>
-                <div class="w-full bg-white p-4 rounded shadow">
+                <div class="w-full bg-surface-card p-4 rounded border border-border-subtle shadow-brand-01">
                   <Image src={landscape} alt="Full-width landscape" width={800} height={400} layout="full-width" />
                 </div>
               </div>
               <div>
                 <h3 class="text-lg font-semibold mb-4">With Custom Classes</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div class="bg-white p-4 rounded shadow">
+                  <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-01">
                     <Image src={placeholder} alt="Rounded image" width={400} height={300} class="rounded-lg" />
                   </div>
-                  <div class="bg-white p-4 rounded shadow">
-                    <Image src={portrait} alt="Bordered image" width={400} height={600} class="border-2 border-gray-300" />
+                  <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-01">
+                    <Image src={portrait} alt="Bordered image" width={400} height={600} class="border-2 border-border-subtle" />
                   </div>
                 </div>
               </div>
               <div>
                 <h3 class="text-lg font-semibold mb-4">In Different Container Sizes</h3>
                 <div class="space-y-4">
-                  <div class="w-1/2 bg-white p-2 rounded shadow">
+                  <div class="w-1/2 bg-surface-card p-2 rounded border border-border-subtle shadow-brand-01">
                     <Image src={landscape} alt="Half width" width={800} height={400} />
                   </div>
-                  <div class="w-1/4 bg-white p-2 rounded shadow">
+                  <div class="w-1/4 bg-surface-card p-2 rounded border border-border-subtle shadow-brand-01">
                     <Image src={portrait} alt="Quarter width" width={400} height={600} />
                   </div>
-                  <div class="w-full bg-white p-2 rounded shadow">
+                  <div class="w-full bg-surface-card p-2 rounded border border-border-subtle shadow-brand-01">
                     <Image src={placeholder} alt="Full width" width={400} height={300} />
                   </div>
                 </div>
@@ -237,11 +237,11 @@ const navItems = [
         const links = document.querySelectorAll('nav a');
         links.forEach(link => {
           if (link.getAttribute('href') === '#' + section) {
-            link.classList.add('bg-primary-500', 'text-white');
-            link.classList.remove('bg-white', 'text-text');
+            link.classList.add('bg-action-primary', 'text-action-primary-on');
+            link.classList.remove('bg-surface-card', 'text-ink-secondary');
           } else {
-            link.classList.remove('bg-primary-500', 'text-white');
-            link.classList.add('bg-white', 'text-text');
+            link.classList.remove('bg-action-primary', 'text-action-primary-on');
+            link.classList.add('bg-surface-card', 'text-ink-secondary');
           }
         });
       }

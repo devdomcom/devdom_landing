@@ -14,7 +14,7 @@ interface NavProps {
 
 const Nav: React.FC<NavProps> = ({ items }) => {
   return (
-    <nav className="bg-white border-b border-gray-200 shadow-brand-01 overflow-visible">
+    <nav className="bg-surface-card border-b border-border-subtle shadow-brand-01 overflow-visible text-ink-primary">
       <ul className="flex items-center px-4 sm:px-6 py-3 list-none overflow-x-auto">
         {items.map((item, index) => (
           <NavItem key={index} href={item.href} label={item.label} submenu={item.submenu} complexContent={item.complexContent} />

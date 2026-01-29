@@ -30,11 +30,11 @@ function ThemeToggle() {
     <button
       type="button"
       onClick={() => apply(theme === "dark" ? "light" : "dark")}
-      className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold shadow-brand-01 transition hover:-translate-y-0.5 hover:shadow-brand-02 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-300"
+      className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold shadow-brand-01 transition hover:-translate-y-0.5 hover:shadow-brand-02 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--focus-ring-color)]"
       style={{
-        background: "var(--color-white)",
-        color: "var(--color-gray-900)",
-        border: "1px solid var(--color-gray-300)",
+        background: "var(--surface-card)",
+        color: "var(--text-primary)",
+        border: "1px solid var(--border-default)",
       }}
       aria-live="polite"
     >

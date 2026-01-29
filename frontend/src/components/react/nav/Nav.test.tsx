@@ -83,8 +83,11 @@ describe('Nav', () => {
   it('applies correct styling classes', () => {
     render(<Nav items={mockItems} />);
     const nav = screen.getByRole('navigation');
-    expect(nav).toHaveClass('bg-white', 'border-b', 'border-gray-200', 'shadow-brand-01');
+    expect(nav).toHaveClass('bg-surface-card', 'border-b', 'border-border-subtle', 'shadow-brand-01');
     const ul = nav.querySelector('ul');
     expect(ul).toHaveClass('flex', 'items-center', 'px-4', 'py-3', 'list-none');
+    const servicesButton = screen.getByRole('button', { name: /services/i });
+    expect(servicesButton).toHaveClass('bg-surface-muted');
+    expect(servicesButton).toHaveStyle({ background: 'var(--surface-muted)' });
   });
 });

@@ -87,7 +87,8 @@ const NavItem: React.FC<NavItemProps> = ({ href, label, submenu, complexContent 
           ref={buttonRef}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          className="block px-2 sm:px-4 py-2 text-text hover:bg-gray-100 transition-colors duration-200 rounded-md whitespace-nowrap cursor-pointer"
+          className="block px-2 sm:px-4 py-2 text-ink-secondary bg-surface-muted hover:bg-surface-card transition-colors duration-200 rounded-md whitespace-nowrap cursor-pointer border border-subtle"
+          style={{ background: "var(--surface-muted)", borderColor: "var(--border-subtle)" }}
           aria-expanded={isOpen}
           aria-haspopup="true"
         >
@@ -121,7 +122,13 @@ const NavItem: React.FC<NavItemProps> = ({ href, label, submenu, complexContent 
 
   return (
     <li>
-      <a href={href} className="block px-2 sm:px-4 py-2 text-text hover:bg-gray-100 transition-colors duration-200 rounded-md whitespace-nowrap">{label}</a>
+      <a
+        href={href}
+        className="block px-2 sm:px-4 py-2 text-ink-secondary bg-surface-muted hover:bg-surface-card transition-colors duration-200 rounded-md whitespace-nowrap border border-subtle"
+        style={{ background: "var(--surface-muted)", borderColor: "var(--border-subtle)" }}
+      >
+        {label}
+      </a>
     </li>
   );
 };
