@@ -1,6 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}"],
+  safelist: [
+    'text-action-link-default',
+    'text-action-link-hover',
+    'text-action-link-disabled',
+    'bg-button-primary-bg',
+    'bg-button-primary-bg-hover',
+    'bg-button-primary-bg-disabled',
+    'text-button-primary-text',
+    'text-button-primary-text-disabled',
+    'bg-button-secondary-bg',
+    'bg-button-secondary-bg-hover',
+    'bg-button-secondary-bg-disabled',
+    'border-button-secondary-border',
+    'border-button-secondary-border-disabled',
+    'text-button-secondary-text',
+    'text-button-secondary-text-hover',
+    'text-button-secondary-text-disabled',
+  ],
   theme: {
     extend: {
       colors: {
