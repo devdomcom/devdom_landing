@@ -167,6 +167,22 @@
 
   --focus-ring-color: var(--color-primary-300);
 
+  /* Buttons */
+  --button-primary-bg: var(--color-primary-900);
+  --button-primary-bg-hover: var(--color-primary-700);
+  --button-primary-bg-disabled: var(--color-gray-200);
+  --button-primary-text: var(--color-white);
+  --button-primary-text-disabled: var(--color-gray-500);
+
+  --button-secondary-bg: var(--color-white);
+  --button-secondary-bg-hover: var(--color-primary-900);
+  --button-secondary-bg-disabled: var(--color-white);
+  --button-secondary-border: var(--color-primary-900);
+  --button-secondary-border-disabled: var(--color-gray-500);
+  --button-secondary-text: var(--color-primary-900);
+  --button-secondary-text-hover: var(--color-white);
+  --button-secondary-text-disabled: var(--color-gray-500);
+
   /* Fields */
   --field-bg: var(--color-white);
   --field-border: var(--color-gray-300);
@@ -286,6 +302,22 @@
   --action-link-visited: var(--color-primary-300);
 
   --focus-ring-color: rgba(185, 138, 240, 0.72);
+
+  /* Buttons */
+  --button-primary-bg: var(--color-primary-900);
+  --button-primary-bg-hover: var(--color-primary-700);
+  --button-primary-bg-disabled: var(--color-gray-200);
+  --button-primary-text: var(--color-headings);
+  --button-primary-text-disabled: var(--color-gray-500);
+
+  --button-secondary-bg: var(--color-gray-200);
+  --button-secondary-bg-hover: var(--color-primary-900);
+  --button-secondary-bg-disabled: var(--color-gray-200);
+  --button-secondary-border: var(--color-primary-900);
+  --button-secondary-border-disabled: var(--color-gray-500);
+  --button-secondary-text: var(--color-primary-900);
+  --button-secondary-text-hover: var(--color-headings);
+  --button-secondary-text-disabled: var(--color-gray-500);
 
   --field-bg: var(--color-gray-200);
   --field-border: var(--color-gray-400);

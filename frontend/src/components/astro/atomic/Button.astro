@@ -1,0 +1,26 @@
+---
+const { variant = 'primary', size = 'medium', disabled = false, class: className = '', ...rest } = Astro.props;
+
+const sizeClasses = {
+  small: 'h-12 px-5 py-4',
+  medium: 'h-14 px-7 py-5',
+  large: 'h-14 px-7 py-5'
+};
+
+const baseClass = 'inline-flex items-center justify-center rounded-xl font-body text-body-xs font-normal transition-colors';
+
+const variantClasses = {
+  primary: disabled ? 'bg-button-primary-bg-disabled text-button-primary-text-disabled cursor-not-allowed' : 'bg-button-primary-bg text-button-primary-text hover:bg-button-primary-bg-hover',
+  secondary: disabled ? 'bg-button-secondary-bg-disabled border border-button-secondary-border-disabled text-button-secondary-text-disabled cursor-not-allowed' : 'bg-button-secondary-bg border border-button-secondary-border text-button-secondary-text hover:bg-button-secondary-bg-hover hover:text-button-secondary-text-hover'
+};
+
+const buttonClass = `${baseClass} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`.trim();
+---
+
+<button
+  class={buttonClass}
+  disabled={disabled}
+  {...rest}
+>
+  <slot />
+</button>

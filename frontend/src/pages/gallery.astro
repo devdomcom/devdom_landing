@@ -3,6 +3,8 @@ import "../styles/global.css";
 import Image from '../components/astro/atomic/Image.astro';
 import Logo from '../components/react/Logo.tsx';
 import Link from '../components/astro/atomic/Link.astro';
+import Button from '../components/astro/atomic/Button.astro';
+import Card from '../components/astro/atomic/Card.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
 import ThemeToggle from '../components/react/ThemeToggle';
@@ -166,6 +168,59 @@ const navItems = [
                     <div>
                       <Link href="https://example.com" suffixIcon={arrowIcon}>External Link</Link>
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Button Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02 space-y-4">
+                  <div>
+                    <p class="mb-2">Primary Buttons:</p>
+                    <div class="space-x-4">
+                      <Button variant="primary" size="small">Small</Button>
+                      <Button variant="primary" size="medium">Medium</Button>
+                      <Button variant="primary" size="large">Large</Button>
+                      <Button variant="primary" disabled>Disabled</Button>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="mb-2">Secondary Buttons:</p>
+                    <div class="space-x-4">
+                      <Button variant="secondary" size="small">Small</Button>
+                      <Button variant="secondary" size="medium">Medium</Button>
+                      <Button variant="secondary" size="large">Large</Button>
+                      <Button variant="secondary" disabled>Disabled</Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Card Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02 space-y-4">
+                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <Card
+                      type="type1"
+                      icon={homeIcon}
+                      title="Content Card Type 1"
+                      description="This is a description for type 1 card with icon on top."
+                    />
+                    <Card
+                      type="type2"
+                      title="Content Card Type 2"
+                      description="This is a description for type 2 card without icon."
+                    />
+                    <Card
+                      type="type3"
+                      title="Hero Card Type 3"
+                      subtitle="Subtitle for the hero card"
+                      featureItems={[
+                        { icon: homeIcon, label: "Feature 1" },
+                        { icon: arrowIcon, label: "Feature 2" },
+                        { icon: homeIcon, label: "Feature 3" },
+                        { icon: arrowIcon, label: "Feature 4" }
+                      ]}
+                      footerLink={{ href: "#", text: "Learn More" }}
+                    />
                   </div>
                 </div>
               </div>

@@ -97,9 +97,28 @@ module.exports = {
           ghost: "var(--action-ghost)",
           "ghost-hover": "var(--action-ghost-hover)",
           "ghost-on": "var(--action-ghost-on)",
+          "link-default": "var(--action-link-default)",
+          "link-hover": "var(--action-link-hover)",
+          "link-disabled": "var(--action-link-disabled)",
           link: "var(--action-link)",
           "link-hover": "var(--action-link-hover)",
           "link-visited": "var(--action-link-visited)",
+        },
+        /* Buttons */
+        button: {
+          "primary-bg": "var(--button-primary-bg)",
+          "primary-bg-hover": "var(--button-primary-bg-hover)",
+          "primary-bg-disabled": "var(--button-primary-bg-disabled)",
+          "primary-text": "var(--button-primary-text)",
+          "primary-text-disabled": "var(--button-primary-text-disabled)",
+          "secondary-bg": "var(--button-secondary-bg)",
+          "secondary-bg-hover": "var(--button-secondary-bg-hover)",
+          "secondary-bg-disabled": "var(--button-secondary-bg-disabled)",
+          "secondary-border": "var(--button-secondary-border)",
+          "secondary-border-disabled": "var(--button-secondary-border-disabled)",
+          "secondary-text": "var(--button-secondary-text)",
+          "secondary-text-hover": "var(--button-secondary-text-hover)",
+          "secondary-text-disabled": "var(--button-secondary-text-disabled)",
         },
         /* Fields */
         field: {
