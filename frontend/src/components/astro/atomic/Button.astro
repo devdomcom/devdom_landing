@@ -1,5 +1,5 @@
 ---
-const { variant = 'primary', size = 'medium', disabled = false, class: className = '', ...rest } = Astro.props;
+const { variant = 'primary', size = 'medium', disabled = false, href, class: className = '', ...rest } = Astro.props;
 
 const sizeClasses = {
   small: 'h-12 px-5 py-4',
@@ -15,12 +15,15 @@ const variantClasses = {
 };
 
 const buttonClass = `${baseClass} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`.trim();
+
+const Tag = href ? 'a' : 'button';
 ---
 
-<button
+<Tag
   class={buttonClass}
-  disabled={disabled}
+  href={href}
+  disabled={disabled && !href}
   {...rest}
 >
   <slot />
-</button>
+</Tag>

@@ -1,0 +1,29 @@
+---
+import Link from '../atomic/Link.astro';
+
+const { title, subtitle, featureItems, footerLink, class: className = '' } = Astro.props;
+---
+
+<section class={`bg-gray-900 px-10 py-15 text-center ${className}`}>
+  <div class="flex flex-col items-center space-y-8">
+    <div class="space-y-4 max-w-2xl">
+      {title && <h2 class="text-h2 font-heading text-white-soft">{title}</h2>}
+      {subtitle && <h4 class="text-h4 font-heading text-white-soft">{subtitle}</h4>}
+    </div>
+    {featureItems && (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+        {featureItems.map((item, index) => (
+          <div class={`flex flex-col items-center space-y-2 text-primary-700 ${index < featureItems.length - 1 ? 'sm:border-r sm:border-white-soft' : ''}`}>
+            {item.icon && <span set:html={item.icon} class="text-primary-700"></span>}
+            {item.label && <p class="text-body-lg font-body text-white-soft">{item.label}</p>}
+          </div>
+        ))}
+      </div>
+    )}
+    {footerLink && (
+      <div class="flex justify-center">
+        <Link href={footerLink.href} class="text-white-soft">{footerLink.text}</Link>
+      </div>
+    )}
+  </div>
+</section>

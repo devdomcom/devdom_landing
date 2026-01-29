@@ -1,58 +1,29 @@
 ---
-import Link from './Link.astro';
+const { variant = 'icon', ...props } = Astro.props;
 
-const { type = 'type1', ...props } = Astro.props;
+let cardClass = 'rounded-2xl bg-surface-card px-8 py-10';
+let contentClass = 'flex flex-col space-y-4';
 
-let cardClass = 'rounded-2xl ';
-let contentClass = '';
-
-if (type === 'type1') {
-  cardClass += 'bg-surface-card px-8 py-10 text-center';
-  contentClass = 'flex flex-col items-center space-y-4';
-} else if (type === 'type2') {
-  cardClass += 'bg-surface-card border-2 border-primary-100 px-8 py-10';
-  contentClass = 'flex flex-col space-y-4';
-} else if (type === 'type3') {
-  cardClass += 'bg-gray-900 px-10 py-15 text-center';
-  contentClass = 'flex flex-col items-center space-y-8';
+if (variant === 'icon') {
+  cardClass += ' text-center';
+  contentClass += ' items-center';
+} else if (variant === 'text') {
+  cardClass += ' border-2 border-primary-100';
 }
 ---
 
 <div class={cardClass}>
-  {type === 'type1' && (
+  {variant === 'icon' && (
     <div class={contentClass}>
       {props.icon && <div class="flex justify-center"><span set:html={props.icon}></span></div>}
       {props.title && <h3 class="text-h4 font-heading text-headings">{props.title}</h3>}
       {props.description && <p class="text-body-sm font-body text-gray-600">{props.description}</p>}
     </div>
   )}
-  {type === 'type2' && (
+  {variant === 'text' && (
     <div class={contentClass}>
       {props.title && <h3 class="text-h4 font-heading text-headings">{props.title}</h3>}
       {props.description && <p class="text-body-sm font-body text-gray-600">{props.description}</p>}
-    </div>
-  )}
-  {type === 'type3' && (
-    <div class={contentClass}>
-      <div class="space-y-4 max-w-2xl">
-        {props.title && <h2 class="text-h2 font-heading text-white-soft">{props.title}</h2>}
-        {props.subtitle && <h4 class="text-h4 font-heading text-white-soft">{props.subtitle}</h4>}
-      </div>
-      {props.featureItems && (
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-          {props.featureItems.map((item, index) => (
-            <div class={`flex flex-col items-center space-y-2 text-primary-700 ${index < props.featureItems.length - 1 ? 'sm:border-r sm:border-white-soft' : ''}`}>
-              {item.icon && <span set:html={item.icon} class="text-primary-700"></span>}
-              {item.label && <p class="text-body-lg font-body text-white-soft">{item.label}</p>}
-            </div>
-          ))}
-        </div>
-      )}
-      {props.footerLink && (
-        <div class="flex justify-center">
-          <Link href={props.footerLink.href} class="text-white-soft">{props.footerLink.text}</Link>
-        </div>
-      )}
     </div>
   )}
 </div>

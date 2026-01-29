@@ -1,0 +1,13 @@
+---
+import Link from '../atomic/Link.astro';
+
+const { headline, description, linkHref, linkText, class: className = '' } = Astro.props;
+---
+
+<section class={`bg-primary-100 rounded-2xl px-10 py-15 text-center ${className}`}>
+  <div class="flex flex-col items-center space-y-6">
+    {headline && <h2 class="text-h2 font-heading text-headings">{headline}</h2>}
+    {description && <h4 class="text-h4 font-heading text-headings">{description}</h4>}
+    {(linkHref && linkText) && <Link href={linkHref}>{linkText}</Link>}
+  </div>
+</section>

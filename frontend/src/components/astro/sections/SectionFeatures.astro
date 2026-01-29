@@ -1,0 +1,32 @@
+---
+import Button from '../atomic/Button.astro';
+
+const { headline, description, ctaHref, ctaText, features, class: className = '' } = Astro.props;
+---
+
+<section class={`py-16 ${className}`}>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Left Column: Text Block + CTA -->
+      <div class="space-y-6">
+        {headline && <h2 class="text-h2 font-heading text-headings">{headline}</h2>}
+        {description && <p class="text-h4 font-heading text-text leading-relaxed max-w-lg">{description}</p>}
+        {(ctaHref && ctaText) && <Button variant="primary" size="medium" href={ctaHref}>{ctaText}</Button>}
+      </div>
+      <!-- Right Column: Feature Grid -->
+      <div>
+        {features && (
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {features.map((feature) => (
+              <div class="space-y-4">
+                {feature.icon && <div class="flex justify-center"><span set:html={feature.icon}></span></div>}
+                {feature.title && <h3 class="text-h2 font-heading text-headings text-center">{feature.title}</h3>}
+                {feature.description && <p class="text-h4 font-heading text-text text-center">{feature.description}</p>}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>

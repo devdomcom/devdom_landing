@@ -5,6 +5,10 @@ import Logo from '../components/react/Logo.tsx';
 import Link from '../components/astro/atomic/Link.astro';
 import Button from '../components/astro/atomic/Button.astro';
 import Card from '../components/astro/atomic/Card.astro';
+import SectionTwoColumn from '../components/astro/sections/SectionTwoColumn.astro';
+import SectionHighlight from '../components/astro/sections/SectionHighlight.astro';
+import SectionCentered from '../components/astro/sections/SectionCentered.astro';
+import SectionFeatures from '../components/astro/sections/SectionFeatures.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
 import ThemeToggle from '../components/react/ThemeToggle';
@@ -64,6 +68,7 @@ const navItems = [
         <ul class="flex space-x-4">
           <li><a href="#typography" class="px-4 py-2 rounded border border-border-subtle bg-surface-card text-ink-secondary shadow-brand-01 transition-colors">Typography</a></li>
           <li><a href="#components" class="px-4 py-2 rounded border border-border-subtle bg-surface-card text-ink-secondary shadow-brand-01 transition-colors">Components</a></li>
+          <li><a href="#sections" class="px-4 py-2 rounded border border-border-subtle bg-surface-card text-ink-secondary shadow-brand-01 transition-colors">Sections</a></li>
           <li><a href="#images" class="px-4 py-2 rounded border border-border-subtle bg-surface-card text-ink-secondary shadow-brand-01 transition-colors">Images</a></li>
         </ul>
       </nav>
@@ -199,31 +204,20 @@ const navItems = [
                 <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02 space-y-4">
                   <div class="flex flex-col gap-4">
                     <Card
-                      type="type1"
+                      variant="icon"
                       icon={homeIcon}
-                      title="Content Card Type 1"
-                      description="This is a description for type 1 card with icon on top."
+                      title="Icon Card"
+                      description="This is a description for icon card with icon on top."
                     />
                     <Card
-                      type="type2"
-                      title="Content Card Type 2"
-                      description="This is a description for type 2 card without icon."
-                    />
-                    <Card
-                      type="type3"
-                      title="Hero Card Type 3"
-                      subtitle="Subtitle for the hero card"
-                      featureItems={[
-                        { icon: homeIcon, label: "Feature 1" },
-                        { icon: arrowIcon, label: "Feature 2" },
-                        { icon: homeIcon, label: "Feature 3" },
-                        { icon: arrowIcon, label: "Feature 4" }
-                      ]}
-                      footerLink={{ href: "#", text: "Learn More" }}
+                      variant="text"
+                      title="Text Card"
+                      description="This is a description for text card without icon."
                     />
                   </div>
                 </div>
               </div>
+
               <div>
                 <h3 class="text-lg font-semibold mb-4">Nav Component</h3>
                 <Nav items={navItems} client:load />
@@ -232,6 +226,77 @@ const navItems = [
           </SectionBlock>
         </div>
       </div>
+
+      <div data-section="sections" class="section-content" style="display: none;">
+        <SectionBlock>
+          <SectionHeader preTitle="Sections" />
+          <div class="space-y-8">
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Two Column Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
+                  <SectionTwoColumn
+                    variant="text-left"
+                    heading="Section with Text Left"
+                    bodyText="This is the body text for the section with text on the left side."
+                    imageSrc={landscape}
+                    imageAlt="Landscape image"
+                  />
+                  <SectionTwoColumn
+                    variant="text-right"
+                    heading="Section with Text Right"
+                    bodyText="This is the body text for the section with text on the right side."
+                    imageSrc={portrait}
+                    imageAlt="Portrait image"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Highlight Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
+                  <SectionHighlight
+                    title="Highlight Section Title"
+                    subtitle="Subtitle for the highlight section"
+                    featureItems={[
+                      { icon: homeIcon, label: "Feature 1" },
+                      { icon: arrowIcon, label: "Feature 2" },
+                      { icon: homeIcon, label: "Feature 3" },
+                      { icon: arrowIcon, label: "Feature 4" }
+                    ]}
+                    footerLink={{ href: "#", text: "Learn More" }}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Centered Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
+                  <SectionCentered
+                    headline="Centered Section Headline"
+                    description="Description for the centered section"
+                    linkHref="#"
+                    linkText="Click Here"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Features Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
+                  <SectionFeatures
+                    headline="Features Section Headline"
+                    description="Description for the features section with a call to action."
+                    ctaHref="#"
+                    ctaText="Get Started"
+                    features={[
+                      { icon: homeIcon, title: "Feature 1", description: "Description of feature 1" },
+                      { icon: arrowIcon, title: "Feature 2", description: "Description of feature 2" },
+                      { icon: homeIcon, title: "Feature 3", description: "Description of feature 3" },
+                      { icon: arrowIcon, title: "Feature 4", description: "Description of feature 4" }
+                    ]}
+                  />
+                </div>
+              </div>
+            </div>
+          </SectionBlock>
+        </div>
 
       <div data-section="images" class="section-content" style="display: none;">
         <SectionBlock>
