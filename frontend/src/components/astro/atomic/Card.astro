@@ -6,8 +6,11 @@ const { type = 'type1', ...props } = Astro.props;
 let cardClass = 'rounded-2xl ';
 let contentClass = '';
 
-if (type === 'type1' || type === 'type2') {
-  cardClass += 'bg-surface-card px-8 py-10';
+if (type === 'type1') {
+  cardClass += 'bg-surface-card px-8 py-10 text-center';
+  contentClass = 'flex flex-col items-center space-y-4';
+} else if (type === 'type2') {
+  cardClass += 'bg-surface-card border-2 border-primary-100 px-8 py-10';
   contentClass = 'flex flex-col space-y-4';
 } else if (type === 'type3') {
   cardClass += 'bg-gray-900 px-10 py-15 text-center';
@@ -36,10 +39,10 @@ if (type === 'type1' || type === 'type2') {
         {props.subtitle && <h4 class="text-h4 font-heading text-white-soft">{props.subtitle}</h4>}
       </div>
       {props.featureItems && (
-        <div class="grid grid-cols-4 gap-4 w-full">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
           {props.featureItems.map((item, index) => (
-            <div class={`flex flex-col items-center space-y-2 ${index < 3 ? 'border-r border-white-soft' : ''}`}>
-              {item.icon && <span set:html={item.icon}></span>}
+            <div class={`flex flex-col items-center space-y-2 text-primary-700 ${index < props.featureItems.length - 1 ? 'sm:border-r sm:border-white-soft' : ''}`}>
+              {item.icon && <span set:html={item.icon} class="text-primary-700"></span>}
               {item.label && <p class="text-body-lg font-body text-white-soft">{item.label}</p>}
             </div>
           ))}

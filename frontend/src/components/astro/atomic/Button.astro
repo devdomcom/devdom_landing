@@ -10,8 +10,8 @@ const sizeClasses = {
 const baseClass = 'inline-flex items-center justify-center rounded-xl font-body text-body-xs font-normal transition-colors';
 
 const variantClasses = {
-  primary: disabled ? 'bg-button-primary-bg-disabled text-button-primary-text-disabled cursor-not-allowed' : 'bg-button-primary-bg text-button-primary-text hover:bg-button-primary-bg-hover',
-  secondary: disabled ? 'bg-button-secondary-bg-disabled border border-button-secondary-border-disabled text-button-secondary-text-disabled cursor-not-allowed' : 'bg-button-secondary-bg border border-button-secondary-border text-button-secondary-text hover:bg-button-secondary-bg-hover hover:text-button-secondary-text-hover'
+  primary: disabled ? 'bg-button-primary-bg-disabled text-button-primary-text-disabled cursor-not-allowed' : 'bg-button-primary-bg text-button-primary-text hover:bg-button-primary-bg-hover cursor-pointer',
+  secondary: disabled ? 'bg-button-secondary-bg-disabled border border-button-secondary-border-disabled text-button-secondary-text-disabled cursor-not-allowed' : 'bg-button-secondary-bg border border-button-secondary-border text-button-secondary-text hover:bg-button-secondary-bg-hover hover:text-button-secondary-text-hover cursor-pointer'
 };
 
 const buttonClass = `${baseClass} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`.trim();

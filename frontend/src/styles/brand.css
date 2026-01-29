@@ -317,7 +317,7 @@
   --button-secondary-border-disabled: var(--color-gray-500);
   --button-secondary-text: var(--color-primary-900);
   --button-secondary-text-hover: var(--color-headings);
-  --button-secondary-text-disabled: var(--color-gray-500);
+  --button-secondary-text-disabled: var(--color-text);
 
   --field-bg: var(--color-gray-200);
   --field-border: var(--color-gray-400);
