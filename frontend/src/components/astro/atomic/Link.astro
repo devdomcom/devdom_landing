@@ -25,7 +25,7 @@ const linkClass = `${baseClass} ${defaultClass} ${className}`.trim();
   aria-disabled={disabled ? 'true' : undefined}
   {...rest}
 >
-  {prefixIcon && <span set:html={prefixIcon}></span>}
+  {prefixIcon && <span set:html={prefixIcon} class="align-middle"></span>}
   <slot />
-  {suffixIcon && <span set:html={suffixIcon}></span>}
+  {suffixIcon && <span set:html={suffixIcon} class="align-middle"></span>}
 </a>

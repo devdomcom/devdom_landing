@@ -228,8 +228,9 @@ const navItems = [
       </div>
 
       <div data-section="sections" class="section-content" style="display: none;">
-        <SectionBlock>
-          <SectionHeader preTitle="Sections" />
+        <div class="max-w-7xl mx-auto">
+          <SectionBlock>
+            <SectionHeader preTitle="Sections" />
           <div class="space-y-8">
               <div>
                 <h3 class="text-lg font-semibold mb-4">Section Two Column Component</h3>
@@ -297,8 +298,12 @@ const navItems = [
             </div>
           </SectionBlock>
         </div>
+      </div>
 
       <div data-section="images" class="section-content" style="display: none;">
+        <div class="max-w-7xl mx-auto">
+          <SectionBlock>
+            <SectionHeader preTitle="Images" />
         <SectionBlock>
           <SectionHeader preTitle="Images" />
           <div class="space-y-8">
@@ -358,6 +363,7 @@ const navItems = [
             </div>
           </SectionBlock>
         </div>
+      </div>
     </div>
     <script>
       function showSection(section) {
