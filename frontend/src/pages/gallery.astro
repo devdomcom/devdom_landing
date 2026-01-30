@@ -5,10 +5,13 @@ import Logo from '../components/react/Logo.tsx';
 import Link from '../components/astro/atomic/Link.astro';
 import Button from '../components/astro/atomic/Button.astro';
 import Card from '../components/astro/atomic/Card.astro';
+import CardType4 from '../components/astro/atomic/CardType4.astro';
+import ContentCardStatusList from '../components/astro/atomic/ContentCardStatusList.astro';
 import SectionTwoColumn from '../components/astro/sections/SectionTwoColumn.astro';
 import SectionHighlight from '../components/astro/sections/SectionHighlight.astro';
 import SectionCentered from '../components/astro/sections/SectionCentered.astro';
 import SectionFeatures from '../components/astro/sections/SectionFeatures.astro';
+import HeroSplitImage from '../components/astro/sections/HeroSplitImage.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
 import ThemeToggle from '../components/react/ThemeToggle';
@@ -26,6 +29,10 @@ import portrait from '../assets/images/portrait.svg';
 
 const arrowIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>`;
 const homeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/><path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/></svg>`;
+const usersIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 11a4 4 0 1 0-8 0"/><path d="M2 20a6 6 0 0 1 12 0"/><path d="M17 20a5 5 0 0 1 5 0"/><path d="M18 9a3 3 0 1 0-6 0"/></svg>`;
+const chartIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15v-4"/><path d="M11 15V7"/><path d="M15 15v-8"/></svg>`;
+const stackIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="4" rx="1"/><rect x="3" y="10" width="12" height="4" rx="1"/><rect x="3" y="16" width="8" height="4" rx="1"/></svg>`;
+const statusIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-4.5"/></svg>`;
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -223,6 +230,44 @@ const navItems = [
                   </div>
                 </div>
               </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Card Type 4</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
+                  <CardType4
+                    heading="By combining:"
+                    items={[
+                      { icon: usersIcon, label: "Continuous 1:1 check-ins with your team" },
+                      { icon: chartIcon, label: "Insights from DevRep’s talent graph" },
+                      { icon: stackIcon, label: "Real context on your roadmap, stack, and org structure" }
+                    ]}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Content Card Status List</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02 space-y-4">
+                  <ContentCardStatusList
+                    variant="dark"
+                    title="Without DevCover:"
+                    headerIcon={statusIcon}
+                    items={[
+                      { icon: statusIcon, label: "Long hiring cycles, uncertain quality" },
+                      { icon: statusIcon, label: "Costly mis-hires with no recourse" },
+                      { icon: statusIcon, label: "Gaps in delivery and product momentum" }
+                    ]}
+                  />
+                  <ContentCardStatusList
+                    variant="color"
+                    title="With DevCover:"
+                    headerIcon={statusIcon}
+                    items={[
+                      { icon: statusIcon, label: "Hire quickly, without sacrificing rigor" },
+                      { icon: statusIcon, label: "Protection from early misalignment" },
+                      { icon: statusIcon, label: "Continuity and velocity, even when things go sideways" }
+                    ]}
+                  />
+                </div>
+              </div>
 
               <div>
                 <h3 class="text-lg font-semibold mb-4">Nav Component</h3>
@@ -298,6 +343,21 @@ const navItems = [
                       { icon: homeIcon, title: "Feature 3", description: "Description of feature 3" },
                       { icon: arrowIcon, title: "Feature 4", description: "Description of feature 4" }
                     ]}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Hero Split Image</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <HeroSplitImage
+                    title="A new class of builders for an AI-first world."
+                    subtitle="AI-native engineering teams, shaped around your requirements and ready to ship fast, guaranteed by DevCover."
+                    linkText="DevCover"
+                    linkHref="#"
+                    ctaLabel="Let's build"
+                    ctaHref="#"
+                    imageSrc={portrait}
+                    imageAlt="Developer with UI cards and charts floating nearby"
                   />
                 </div>
               </div>

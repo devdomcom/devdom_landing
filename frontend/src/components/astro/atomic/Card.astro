@@ -1,11 +1,11 @@
 ---
 const { variant = 'icon', ...props } = Astro.props;
 
-let cardClass = 'rounded-2xl bg-surface-card px-8 py-10';
+let cardClass = 'rounded-[15px] bg-surface-muted px-8 py-10';
 let contentClass = 'flex flex-col space-y-4';
 
 if (variant === 'icon') {
-  cardClass += ' text-center';
+  cardClass += ' border-2 border-[color:var(--color-primary-100)] text-center';
   contentClass += ' items-center';
 } else if (variant === 'text') {
   cardClass += ' border-2 border-primary-100';
@@ -17,7 +17,7 @@ if (variant === 'icon') {
     <div class={contentClass}>
       {props.icon && <div class="flex justify-center"><span set:html={props.icon}></span></div>}
       {props.title && <h3 class="text-h4 font-heading text-headings">{props.title}</h3>}
-      {props.description && <p class="text-body-sm font-body text-gray-600">{props.description}</p>}
+      {props.description && <p class="text-body-sm font-body text-ink-muted">{props.description}</p>}
     </div>
   )}
   {variant === 'text' && (

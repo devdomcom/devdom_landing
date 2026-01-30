@@ -1,0 +1,80 @@
+---
+const { variant = "dark", title, headerIcon, items = [] } = Astro.props;
+
+const isDark = variant === "dark";
+const textClass = isDark ? "text-white" : "text-headings";
+const innerBgClass = isDark
+  ? "bg-[color:var(--color-gray-800)]"
+  : "bg-[linear-gradient(135deg,var(--color-primary-300),var(--color-primary-100))]";
+---
+
+<div class="w-full rounded-[15px] bg-[linear-gradient(135deg,var(--color-primary-100),var(--color-primary-900))] p-[1.5px]">
+  <div class={`rounded-[14px] p-10 ${innerBgClass} ${textClass}`}>
+    <div class="flex items-stretch gap-6">
+      <div class="status-rail">
+        <span class="status-rail__icon text-primary-700" aria-hidden="true">
+          {headerIcon && <span class="block" set:html={headerIcon}></span>}
+        </span>
+        <span class={`status-rail__line ${isDark ? "status-rail__line--dark" : "status-rail__line--color"}`} aria-hidden="true"></span>
+      </div>
+      <div class="flex-1">
+        <div class="flex items-center gap-3">
+          {title && (
+            <h3 class={`text-h4 font-heading ${textClass}`}>{title}</h3>
+          )}
+        </div>
+        <ul class="mt-6 flex flex-col gap-4">
+          {items.map((item) => (
+            <li class="flex items-center gap-3">
+              <span class={`${textClass}`} aria-hidden="true">
+                {item.icon && <span class="block" set:html={item.icon}></span>}
+              </span>
+              <span class={`text-body-md font-body ${textClass}`}>{item.label}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .status-rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 0 0 64px;
+    position: relative;
+    align-self: stretch;
+  }
+
+  .status-rail__icon {
+    width: 56px;
+    height: 56px;
+    aspect-ratio: 1 / 1;
+    border-radius: 9999px;
+    background: var(--color-white);
+    display: grid;
+    place-items: center;
+  }
+
+  .status-rail__line {
+    width: 3px;
+    position: absolute;
+    top: 56px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 9999px;
+    box-shadow: 0 -2px 8px var(--color-white);
+  }
+
+  .status-rail__line--dark {
+    background: linear-gradient(180deg, var(--color-gray-800) 0%, rgba(69, 49, 77, 0) 100%);
+  }
+
+  .status-rail__line--color {
+    background: linear-gradient(180deg, var(--color-primary-900) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+</style>
