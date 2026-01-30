@@ -8,11 +8,11 @@ const {
 
 const container =
   tone === "dark"
-    ? "bg-primary-900 text-white border-white/10 shadow-brand-03"
-    : "bg-white text-gray-900 border-gray-200 shadow-brand-02";
+    ? "bg-surface-strong text-ink-on-strong border border-border-contrast shadow-brand-03"
+    : "bg-surface-card text-ink-primary border border-border-subtle shadow-brand-02";
 
-const bodyText = tone === "dark" ? "text-gray-100" : "text-gray-700";
-const linkText = tone === "dark" ? "text-secondary-blue-300 hover:text-white" : "text-secondary-blue-700 hover:text-primary-900";
+const bodyText = tone === "dark" ? "text-ink-on-strong" : "text-ink-secondary";
+const linkText = tone === "dark" ? "text-action-link hover:text-action-link-hover" : "text-action-link hover:text-action-link-hover";
 ---
 
 <section class={`rounded-2xl p-6 backdrop-blur ${container}`}>
@@ -22,10 +22,10 @@ const linkText = tone === "dark" ? "text-secondary-blue-300 hover:text-white" : 
   </p>
   <div class="mt-6 flex flex-wrap items-center gap-3">
     <a
-      class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white shadow-brand-03 transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+      class="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-action-primary-on shadow-brand-03 transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--focus-ring-color)]"
       style="
-        background: var(--color-primary-500);
-        border: 1px solid var(--color-primary-500);
+        background: var(--action-primary);
+        border: 1px solid var(--action-primary);
       "
       href="https://docs.astro.build/en/getting-started/"
     >

@@ -1,0 +1,15 @@
+---
+const { src, alt, width, height, layout = 'responsive', class: className = '', ...rest } = Astro.props;
+
+import { Image } from 'astro:assets';
+---
+
+<Image
+  src={src}
+  alt={alt}
+  width={width}
+  height={height}
+  layout={layout}
+  class={`w-full h-auto ${className}`}
+  {...rest}
+/>

@@ -1,0 +1,77 @@
+---
+const {
+  variant = "primary", // "primary" | "secondary" | "ghost" | "link"
+  size = "md", // accepts "large|medium|small|lg|md|sm|xs"
+  href,
+  type = "button",
+  disabled = false,
+  class: className = "",
+  ariaLabel,
+  ...rest
+} = Astro.props;
+
+const base =
+  "inline-flex items-center justify-center gap-2 font-semibold rounded-full transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--focus-ring-color)] disabled:cursor-not-allowed disabled:opacity-70";
+
+const sizeMap: Record<string, "lg" | "md" | "sm" | "xs"> = {
+  large: "lg",
+  medium: "md",
+  small: "sm",
+  lg: "lg",
+  md: "md",
+  sm: "sm",
+  xs: "xs",
+};
+
+const resolvedSize = sizeMap[size] ?? "md";
+
+const sizes = {
+  lg: "h-14 px-7 text-lg",
+  md: "h-12 px-6 text-base",
+  sm: "h-10 px-4 text-sm",
+  xs: "h-9 px-3 text-xs",
+};
+
+const variants = {
+  primary:
+    "bg-action-primary text-action-primary-on border border-action-primary hover:bg-action-primary-hover active:bg-action-primary-active",
+  secondary:
+    // Force visible fill on light backgrounds using surface-muted.
+    "bg-surface-muted text-ink-primary border border-border-subtle hover:bg-surface-card active:bg-surface-muted",
+  ghost:
+    "bg-action-ghost text-ink-primary border border-transparent hover:bg-action-ghost-hover active:bg-action-ghost-hover",
+  link:
+    "bg-transparent text-action-link underline decoration-2 underline-offset-4 border border-transparent hover:text-action-link-hover active:text-action-link-hover",
+};
+
+const disabledVariants = {
+  primary: "bg-action-primary text-action-primary-on border border-action-primary",
+  secondary: "bg-action-secondary text-action-secondary-on border border-action-secondary",
+  ghost: "bg-surface-muted text-ink-muted border border-border-subtle",
+  link: "bg-transparent text-ink-muted border border-transparent no-underline",
+};
+
+const toneClasses = disabled
+  ? disabledVariants[variant] ?? disabledVariants.primary
+  : variants[variant] ?? variants.primary;
+
+const classes = `${base} ${sizes[resolvedSize]} ${toneClasses} ${className}`.trim();
+---
+
+{href ? (
+  <a
+    href={disabled ? undefined : href}
+    role="button"
+    aria-disabled={disabled}
+    tabIndex={disabled ? -1 : 0}
+    class={classes}
+    aria-label={ariaLabel}
+    {...rest}
+  >
+    <slot />
+  </a>
+) : (
+  <button type={type} class={classes} aria-label={ariaLabel} disabled={disabled} {...rest}>
+    <slot />
+  </button>
+)}

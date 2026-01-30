@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         brand: "var(--color-brand)",
         "brand-gradient": "var(--color-brand-gradient)",
+        /* Palette (keep for legacy/raw usage) */
         "primary-900": "var(--color-primary-900)",
         "primary-700": "var(--color-primary-700)",
         "primary-500": "var(--color-primary-500)",
@@ -56,6 +57,100 @@ module.exports = {
         "secondary-red-500": "var(--color-secondary-red-500)",
         "secondary-red-300": "var(--color-secondary-red-300)",
         "secondary-red-100": "var(--color-secondary-red-100)",
+        /* Semantic surfaces */
+        surface: {
+          DEFAULT: "var(--surface-page)",
+          page: "var(--surface-page)",
+          card: "var(--surface-card)",
+          raised: "var(--surface-raised)",
+          muted: "var(--surface-muted)",
+          strong: "var(--surface-strong)",
+          contrast: "var(--surface-contrast)",
+        },
+        /* Semantic text */
+        ink: {
+          primary: "var(--text-primary)",
+          secondary: "var(--text-secondary)",
+          muted: "var(--text-muted)",
+          inverse: "var(--text-inverse)",
+          accent: "var(--text-accent)",
+          "on-strong": "var(--text-on-strong)",
+        },
+        /* Borders / dividers */
+        border: {
+          subtle: "var(--border-subtle)",
+          DEFAULT: "var(--border-default)",
+          strong: "var(--border-strong)",
+          contrast: "var(--border-contrast)",
+        },
+        divider: "var(--divider)",
+        /* Actions */
+        action: {
+          primary: "var(--action-primary)",
+          "primary-hover": "var(--action-primary-hover)",
+          "primary-active": "var(--action-primary-active)",
+          "primary-on": "var(--action-primary-on)",
+          secondary: "var(--action-secondary)",
+          "secondary-hover": "var(--action-secondary-hover)",
+          "secondary-active": "var(--action-secondary-active)",
+          "secondary-on": "var(--action-secondary-on)",
+          ghost: "var(--action-ghost)",
+          "ghost-hover": "var(--action-ghost-hover)",
+          "ghost-on": "var(--action-ghost-on)",
+          "link-default": "var(--action-link-default)",
+          "link-hover": "var(--action-link-hover)",
+          "link-disabled": "var(--action-link-disabled)",
+          link: "var(--action-link)",
+          "link-hover": "var(--action-link-hover)",
+          "link-visited": "var(--action-link-visited)",
+        },
+        /* Buttons */
+        button: {
+          "primary-bg": "var(--button-primary-bg)",
+          "primary-bg-hover": "var(--button-primary-bg-hover)",
+          "primary-bg-disabled": "var(--button-primary-bg-disabled)",
+          "primary-text": "var(--button-primary-text)",
+          "primary-text-disabled": "var(--button-primary-text-disabled)",
+          "secondary-bg": "var(--button-secondary-bg)",
+          "secondary-bg-hover": "var(--button-secondary-bg-hover)",
+          "secondary-bg-disabled": "var(--button-secondary-bg-disabled)",
+          "secondary-border": "var(--button-secondary-border)",
+          "secondary-border-disabled": "var(--button-secondary-border-disabled)",
+          "secondary-text": "var(--button-secondary-text)",
+          "secondary-text-hover": "var(--button-secondary-text-hover)",
+          "secondary-text-disabled": "var(--button-secondary-text-disabled)",
+        },
+        /* Fields */
+        field: {
+          bg: "var(--field-bg)",
+          border: "var(--field-border)",
+          "border-focus": "var(--field-border-focus)",
+          placeholder: "var(--field-placeholder)",
+        },
+        /* Status tokens */
+        status: {
+          info: "var(--status-info)",
+          "info-surface": "var(--status-info-surface)",
+          "info-on": "var(--status-info-on)",
+          success: "var(--status-success)",
+          "success-surface": "var(--status-success-surface)",
+          "success-on": "var(--status-success-on)",
+          warning: "var(--status-warning)",
+          "warning-surface": "var(--status-warning-surface)",
+          "warning-on": "var(--status-warning-on)",
+          danger: "var(--status-danger)",
+          "danger-surface": "var(--status-danger-surface)",
+          "danger-on": "var(--status-danger-on)",
+        },
+        /* Code */
+        code: {
+          bg: "var(--code-bg)",
+          border: "var(--code-border)",
+          text: "var(--code-text)",
+        },
+        overlay: {
+          scrim: "var(--overlay-scrim)",
+        },
       },
       boxShadow: {
         "brand-01": "var(--shadow-01)",

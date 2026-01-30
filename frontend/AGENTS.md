@@ -10,6 +10,7 @@ Instructions for coding agents (and other collaborators) working on this repo. A
 - Use the latest Astro; when unsure, read current docs: https://docs.astro.build/en/getting-started/.
 - React with TypeScript inside Astro is preferred.
 - Brand tokens: always consult the canonical `frontend/src/styles/brand.css` before making any UI change. Use the defined CSS variables for colors, gradients, shadows, and typography; do not invent new ones without human approval. Keep `brand.css` in sync with human-provided brand updates.
+- IMPORTANT: Do not modify `frontend/src/styles/brand.css` unless the human explicitly requests a brand token change in this session.
 - Components first: before creating anything new, reuse existing Astro/React components (typography, SectionBlock/SectionHeader, CTA, etc.). Extending is allowed only when reuse is impossible; document why.
 
 ## Frontend Architecture Guidelines (CRITICAL)
@@ -34,6 +35,7 @@ Instructions for coding agents (and other collaborators) working on this repo. A
 - Follow DRY: before adding code, look for existing utilities/components to reuse or adapt.
 - Default to static-first, cache-friendly, minimal-JS approaches.
 - Keep dependencies lean and protect Core Web Vitals.
+- For React components, write integration tests using React Testing Library (RTL) to verify expected user behaviors. Tests should be placed alongside components (e.g., Component.test.tsx) and follow RTL best practices such as querying by role, using userEvent for interactions, and focusing on behavior over implementation details.
 
 ## Working With Humans
 - Assume non-technical users. When human input is required (copy, images, metadata, running tests, starting scripts), ask clarifying questions and give step-by-step, plain-language instructions.
@@ -71,3 +73,11 @@ Instructions for coding agents (and other collaborators) working on this repo. A
 ## Workflow Expectations
 - When introducing new patterns, document them briefly in `README.md` or relevant docs.
 - Prefer small, incremental changes with clear commit messages. Run available lint/tests if present; if commands are missing, suggest or add minimal scripts as needed.
+
+## Current Frontend Priorities (Jan 2026)
+- Respect the brand system: do not edit `frontend/src/styles/brand.css` unless the human explicitly requests a token change in this session.
+- Navigation a11y: add full keyboard support (focus/blur open/close, Escape to close, arrow-key navigation, proper `aria-*`, focus management) before shipping nav/UI changes.
+- Semantic theming: rely on semantic tokens/classes (surface/ink/action/status). Remove ad-hoc inline color fallbacks once Tailwind/token plumbing is confirmed; keep theming single-sourced.
+- Primitives first: introduce or reuse Button, Link, Input/Textarea, Alert/Badge primitives wired to semantic tokens; prefer composing sections from these over ad-hoc styles.
+- SEO/GEO hygiene: ensure pages carry meta description, OG/Twitter tags, and structured data; set `site` in `astro.config.*` and include sitemap generation.
+- Testing: cover ThemeToggle (persists/uses system) and nav keyboard flows with RTL; add regression checks for SectionBlock/CTA variants in light/dark.

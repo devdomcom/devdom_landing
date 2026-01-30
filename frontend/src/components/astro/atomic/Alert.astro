@@ -1,0 +1,40 @@
+---
+const {
+  tone = "info", // "info" | "success" | "warning" | "danger" | "neutral"
+  title,
+  class: className = "",
+  ...rest
+} = Astro.props;
+
+const tones = {
+  info: {
+    container: "bg-status-info-surface border border-status-info",
+    text: "text-status-info-on",
+  },
+  success: {
+    container: "bg-status-success-surface border border-status-success",
+    text: "text-status-success-on",
+  },
+  warning: {
+    container: "bg-status-warning-surface border border-status-warning",
+    text: "text-status-warning-on",
+  },
+  danger: {
+    container: "bg-status-danger-surface border border-status-danger",
+    text: "text-status-danger-on",
+  },
+  neutral: {
+    container: "bg-surface-muted border border-border-subtle",
+    text: "text-ink-primary",
+  },
+};
+
+const toneCfg = tones[tone] ?? tones.info;
+---
+
+<div class={`rounded-xl p-4 ${toneCfg.container} ${className}`} role="status" {...rest}>
+  {title && <p class={`text-sm font-semibold ${toneCfg.text}`}>{title}</p>}
+  <p class={`text-sm mt-1 ${toneCfg.text}`}>
+    <slot />
+  </p>
+</div>

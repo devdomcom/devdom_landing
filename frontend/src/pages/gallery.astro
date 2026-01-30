@@ -1,0 +1,406 @@
+---
+import "../styles/global.css";
+import Image from '../components/astro/atomic/Image.astro';
+import Logo from '../components/react/Logo.tsx';
+import Link from '../components/astro/atomic/Link.astro';
+import Button from '../components/astro/atomic/Button.astro';
+import Card from '../components/astro/atomic/Card.astro';
+import SectionTwoColumn from '../components/astro/sections/SectionTwoColumn.astro';
+import SectionHighlight from '../components/astro/sections/SectionHighlight.astro';
+import SectionCentered from '../components/astro/sections/SectionCentered.astro';
+import SectionFeatures from '../components/astro/sections/SectionFeatures.astro';
+import Nav from '../components/react/nav/Nav.tsx';
+import ComplexContent from '../components/react/nav/ComplexContent.tsx';
+import ThemeToggle from '../components/react/ThemeToggle';
+import HeroTitle from "../components/astro/typography/HeroTitle.astro";
+import HeroSubtitle from "../components/astro/typography/HeroSubtitle.astro";
+import SectionPreTitle from "../components/astro/typography/SectionPreTitle.astro";
+import SectionTitle from "../components/astro/typography/SectionTitle.astro";
+import SectionSubtitle from "../components/astro/typography/SectionSubtitle.astro";
+import SectionParagraph from "../components/astro/typography/SectionParagraph.astro";
+import SectionBlock from "../components/astro/sections/SectionBlock.astro";
+import SectionHeader from "../components/astro/sections/SectionHeader.astro";
+import placeholder from '../assets/images/placeholder.svg';
+import landscape from '../assets/images/landscape.svg';
+import portrait from '../assets/images/portrait.svg';
+
+const arrowIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>`;
+const homeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/><path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/></svg>`;
+
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  {
+    label: 'Services',
+    submenu: [
+      { label: 'Web Design', href: '/services/web-design' },
+      {
+        label: 'SEO',
+        submenu: [
+          { label: 'On-page SEO', href: '/services/seo/on-page' },
+          { label: 'Off-page SEO', href: '/services/seo/off-page' },
+        ],
+      },
+      { label: 'Marketing', href: '/services/marketing' },
+    ],
+  },
+  {
+    label: 'Complex',
+    complexContent: 'complex',
+  },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Component Gallery | Devdom Landing Starter</title>
+    <meta name="description" content="Preview Devdom's semantic design tokens, navigation, typography, and image components in both light and dark modes." />
+    <meta property="og:title" content="Component Gallery | Devdom" />
+    <meta property="og:description" content="See the Devdom component library powered by Astro, React islands, and semantic tokens." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://devdom.example.com/gallery" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body class="bg-surface-page min-h-screen text-ink-primary">
+    <div class="fixed top-4 right-4 z-50">
+      <ThemeToggle client:load />
+    </div>
+    <div class="max-w-6xl mx-auto px-6 py-16">
+      <h1 class="text-3xl font-bold mb-8">Component Gallery</h1>
+      <nav class="mb-8">
+        <ul class="flex space-x-4">
+          <li><a href="#typography" class="px-4 py-2 rounded border border-border-subtle bg-surface-card text-ink-secondary shadow-brand-01 transition-colors">Typography</a></li>
+          <li><a href="#components" class="px-4 py-2 rounded border border-border-subtle bg-surface-card text-ink-secondary shadow-brand-01 transition-colors">Components</a></li>
+          <li><a href="#sections" class="px-4 py-2 rounded border border-border-subtle bg-surface-card text-ink-secondary shadow-brand-01 transition-colors">Sections</a></li>
+          <li><a href="#images" class="px-4 py-2 rounded border border-border-subtle bg-surface-card text-ink-secondary shadow-brand-01 transition-colors">Images</a></li>
+        </ul>
+      </nav>
+
+      <div data-section="typography" class="section-content" style="display: none;">
+        <SectionBlock>
+          <SectionHeader preTitle="Typography" />
+          <div class="space-y-8">
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Headings on Light Background</h3>
+                <div class="space-y-3 bg-surface-card p-6 rounded shadow">
+                  <HeroTitle>HeroTitle (H1) / gray-900</HeroTitle>
+                  <HeroSubtitle>HeroSubtitle uses body font and default gray text. Ideal for hero supporting copy.</HeroSubtitle>
+                  <SectionTitle>SectionTitle (H2) / gray-900</SectionTitle>
+                  <SectionSubtitle>SectionSubtitle (H3) / gray-900</SectionSubtitle>
+                  <SectionParagraph>SectionParagraph defaults to body-md and gray-600 on light backgrounds. Use it for standard paragraph copy.</SectionParagraph>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Headings on Dark Background</h3>
+                <div class="space-y-3 bg-surface-strong p-6 rounded shadow-brand-03 text-ink-on-strong">
+                  <HeroTitle>HeroTitle (H1) / white</HeroTitle>
+                  <HeroSubtitle>HeroSubtitle with tone="light" for dark backgrounds.</HeroSubtitle>
+                  <SectionTitle>SectionTitle (H2) / white</SectionTitle>
+                  <SectionSubtitle>SectionSubtitle (H3) / white</SectionSubtitle>
+                  <SectionParagraph>SectionParagraph tone="dark" switches to white text for dark backgrounds.</SectionParagraph>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Tokens Preview</h3>
+                <div class="grid gap-4 sm:grid-cols-3 bg-surface-muted p-6 rounded shadow">
+                  <div class="rounded-xl border border-border-subtle p-4 bg-surface-card">
+                    <p class="text-sm text-ink-secondary mb-2">Primary palette</p>
+                    <div class="flex gap-2">
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-900)"></span>
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-700)"></span>
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-500)"></span>
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-primary-300)"></span>
+                    </div>
+                  </div>
+                  <div class="rounded-xl border border-border-subtle p-4 bg-surface-card">
+                    <p class="text-sm text-ink-secondary mb-2">Secondary palette</p>
+                    <div class="flex gap-2">
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-pink-500)"></span>
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-orange-500)"></span>
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-blue-500)"></span>
+                      <span class="h-10 w-10 rounded-lg" style="background: var(--color-secondary-yellow-500)"></span>
+                    </div>
+                  </div>
+                  <div class="rounded-xl border border-border-subtle p-4 bg-surface-card">
+                    <p class="text-sm text-ink-secondary mb-2">Shadows</p>
+                    <div class="flex gap-3">
+                      <span class="h-10 w-10 rounded-lg bg-surface-card shadow-brand-02"></span>
+                      <span class="h-10 w-10 rounded-lg bg-surface-card shadow-brand-04"></span>
+                      <span class="h-10 w-10 rounded-lg bg-surface-card shadow-brand-06"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SectionBlock>
+        </div>
+
+      <div data-section="components" class="section-content" style="display: none;">
+        <SectionBlock>
+          <SectionHeader preTitle="Components" />
+          <div class="space-y-8">
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Logo Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02 inline-block">
+                  <Logo alt="Devdom - Digital Wisdom" client:load />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Link Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02 space-y-4">
+                  <div>
+                    <p class="mb-2">Sizes:</p>
+                    <div class="space-y-2">
+                      <div><Link href="#" size="xsmall">XSmall Link (14px)</Link></div>
+                      <div><Link href="#" size="small">Small Link (16px)</Link></div>
+                      <div><Link href="#" size="medium">Medium Link (18px)</Link></div>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="mb-2">States:</p>
+                    <div class="space-y-2">
+                      <div><Link href="#">Default Link (hover for underline)</Link></div>
+                      <div><Link href="#" disabled>Disabled Link</Link></div>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="mb-2">With icons:</p>
+                    <div class="space-x-4">
+                      <Link href="/home" prefixIcon={homeIcon}>Home</Link>
+                      <Link href="/contact" suffixIcon={arrowIcon}>Contact</Link>
+                      <Link href="/services" prefixIcon={homeIcon} suffixIcon={arrowIcon}>Services</Link>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="mb-2">External link (opens in new tab):</p>
+                    <div>
+                      <Link href="https://example.com" suffixIcon={arrowIcon}>External Link</Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Button Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02 space-y-4">
+                  <div>
+                    <p class="mb-2">Primary Buttons:</p>
+                    <div class="space-x-4">
+                      <Button variant="primary" size="small">Small</Button>
+                      <Button variant="primary" size="medium">Medium</Button>
+                      <Button variant="primary" size="large">Large</Button>
+                      <Button variant="primary" disabled>Disabled</Button>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="mb-2">Secondary Buttons:</p>
+                    <div class="space-x-4">
+                      <Button variant="secondary" size="small">Small</Button>
+                      <Button variant="secondary" size="medium">Medium</Button>
+                      <Button variant="secondary" size="large">Large</Button>
+                      <Button variant="secondary" disabled>Disabled</Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Card Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02 space-y-4">
+                  <div class="flex flex-col gap-4">
+                    <Card
+                      variant="icon"
+                      icon={homeIcon}
+                      title="Icon Card"
+                      description="This is a description for icon card with icon on top."
+                    />
+                    <Card
+                      variant="text"
+                      title="Text Card"
+                      description="This is a description for text card without icon."
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Nav Component</h3>
+                <Nav items={navItems} client:load />
+              </div>
+            </div>
+          </SectionBlock>
+        </div>
+      </div>
+
+      <div data-section="sections" class="section-content" style="display: none;">
+        <div class="max-w-7xl mx-auto">
+          <SectionBlock>
+            <SectionHeader preTitle="Sections" />
+          <div class="space-y-8">
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Two Column Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
+                  <SectionTwoColumn
+                    variant="text-left"
+                    heading="Section with Text Left"
+                    bodyText="This is the body text for the section with text on the left side."
+                    imageSrc={landscape}
+                    imageAlt="Landscape image"
+                  />
+                  <SectionTwoColumn
+                    variant="text-right"
+                    heading="Section with Text Right"
+                    bodyText="This is the body text for the section with text on the right side."
+                    imageSrc={portrait}
+                    imageAlt="Portrait image"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Highlight Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
+                  <SectionHighlight
+                    title="Highlight Section Title"
+                    subtitle="Subtitle for the highlight section"
+                    featureItems={[
+                      { icon: homeIcon, label: "Feature 1" },
+                      { icon: arrowIcon, label: "Feature 2" },
+                      { icon: homeIcon, label: "Feature 3" },
+                      { icon: arrowIcon, label: "Feature 4" }
+                    ]}
+                    footerLink={{ href: "#", text: "Learn More" }}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Centered Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
+                  <SectionCentered
+                    headline="Centered Section Headline"
+                    description="Description for the centered section"
+                    linkHref="#"
+                    linkText="Click Here"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Features Component</h3>
+                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
+                  <SectionFeatures
+                    headline="Features Section Headline"
+                    description="Description for the features section with a call to action."
+                    ctaHref="#"
+                    ctaText="Get Started"
+                    features={[
+                      { icon: homeIcon, title: "Feature 1", description: "Description of feature 1" },
+                      { icon: arrowIcon, title: "Feature 2", description: "Description of feature 2" },
+                      { icon: homeIcon, title: "Feature 3", description: "Description of feature 3" },
+                      { icon: arrowIcon, title: "Feature 4", description: "Description of feature 4" }
+                    ]}
+                  />
+                </div>
+              </div>
+            </div>
+          </SectionBlock>
+        </div>
+      </div>
+
+      <div data-section="images" class="section-content" style="display: none;">
+        <div class="max-w-7xl mx-auto">
+          <SectionBlock>
+            <SectionHeader preTitle="Images" />
+        <SectionBlock>
+          <SectionHeader preTitle="Images" />
+          <div class="space-y-8">
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Responsive Layout (Default)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-01">
+                    <Image src={placeholder} alt="Placeholder image" width={400} height={300} />
+                  </div>
+                  <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-01">
+                    <Image src={landscape} alt="Landscape image" width={800} height={400} />
+                  </div>
+                  <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-01">
+                    <Image src={portrait} alt="Portrait image" width={400} height={600} />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Fixed Layout</h3>
+                <div class="flex flex-wrap gap-4">
+                  <Image src={placeholder} alt="Fixed placeholder" width={200} height={150} layout="fixed" />
+                  <Image src={landscape} alt="Fixed landscape" width={300} height={150} layout="fixed" />
+                  <Image src={portrait} alt="Fixed portrait" width={150} height={200} layout="fixed" />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Full-Width Layout</h3>
+                <div class="w-full bg-surface-card p-4 rounded border border-border-subtle shadow-brand-01">
+                  <Image src={landscape} alt="Full-width landscape" width={800} height={400} layout="full-width" />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">With Custom Classes</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-01">
+                    <Image src={placeholder} alt="Rounded image" width={400} height={300} class="rounded-lg" />
+                  </div>
+                  <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-01">
+                    <Image src={portrait} alt="Bordered image" width={400} height={600} class="border-2 border-border-subtle" />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">In Different Container Sizes</h3>
+                <div class="space-y-4">
+                  <div class="w-1/2 bg-surface-card p-2 rounded border border-border-subtle shadow-brand-01">
+                    <Image src={landscape} alt="Half width" width={800} height={400} />
+                  </div>
+                  <div class="w-1/4 bg-surface-card p-2 rounded border border-border-subtle shadow-brand-01">
+                    <Image src={portrait} alt="Quarter width" width={400} height={600} />
+                  </div>
+                  <div class="w-full bg-surface-card p-2 rounded border border-border-subtle shadow-brand-01">
+                    <Image src={placeholder} alt="Full width" width={400} height={300} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SectionBlock>
+        </div>
+      </div>
+    </div>
+    <script>
+      function showSection(section) {
+        const sections = document.querySelectorAll('.section-content');
+        sections.forEach(s => {
+          s.style.display = s.dataset.section === section ? 'block' : 'none';
+        });
+        const links = document.querySelectorAll('nav a');
+        links.forEach(link => {
+          if (link.getAttribute('href') === '#' + section) {
+            link.classList.add('bg-action-primary', 'text-action-primary-on');
+            link.classList.remove('bg-surface-card', 'text-ink-secondary');
+          } else {
+            link.classList.remove('bg-action-primary', 'text-action-primary-on');
+            link.classList.add('bg-surface-card', 'text-ink-secondary');
+          }
+        });
+      }
+
+      document.addEventListener('click', e => {
+        if (e.target.matches('nav a[href^="#"]')) {
+          e.preventDefault();
+          const section = e.target.getAttribute('href').slice(1);
+          window.location.hash = section;
+          showSection(section);
+        }
+      });
+
+      // Initial load
+      const initialSection = window.location.hash.slice(1) || 'images';
+      showSection(initialSection);
+    </script>
+  </body>
+</html>
