@@ -5,6 +5,7 @@ Instructions for coding agents (and other collaborators) working on this repo. A
 ## Repository Scope
 - Devdom marketing/landing website. Priorities: blazingly fast loads, SEO- and GEO-friendly rendering, strong accessibility.
 - Keep marketing focus: concise storytelling, fast UX, clean handoff to forms/CTAs.
+- Component names provided by the UX/UI designer are indicative only; choose a clear, English, best-practice name that matches the spec and visual intent.
 
 ## Tech Stack
 - Use the latest Astro; when unsure, read current docs: https://docs.astro.build/en/getting-started/.
