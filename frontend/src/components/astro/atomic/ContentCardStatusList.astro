@@ -10,7 +10,7 @@ const innerBgClass = isDark
 
 <div class="w-full rounded-[15px] bg-[linear-gradient(135deg,var(--color-primary-100),var(--color-primary-900))] p-[1.5px]">
   <div class={`rounded-[14px] p-10 ${innerBgClass} ${textClass}`}>
-    <div class="flex items-stretch gap-6">
+    <div class="status-row">
       <div class="status-rail">
         <span class="status-rail__icon text-primary-700" aria-hidden="true">
           {headerIcon && <span class="block" set:html={headerIcon}></span>}
@@ -39,6 +39,13 @@ const innerBgClass = isDark
 </div>
 
 <style>
+  .status-row {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
   .status-rail {
     display: flex;
     flex-direction: column;
@@ -46,7 +53,7 @@ const innerBgClass = isDark
     justify-content: flex-start;
     flex: 0 0 64px;
     position: relative;
-    align-self: stretch;
+    height: 100%;
   }
 
   .status-rail__icon {
@@ -71,10 +78,10 @@ const innerBgClass = isDark
   }
 
   .status-rail__line--dark {
-    background: linear-gradient(180deg, var(--color-gray-800) 0%, rgba(69, 49, 77, 0) 100%);
+    background: linear-gradient(180deg, var(--color-gray-800) 0%, rgba(69, 49, 77, 0.12) 75%, rgba(69, 49, 77, 0.02) 92%, rgba(69, 49, 77, 0) 100%);
   }
 
   .status-rail__line--color {
-    background: linear-gradient(180deg, var(--color-primary-900) 0%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(180deg, var(--color-primary-900) 0%, rgba(84, 13, 141, 0.14) 75%, rgba(84, 13, 141, 0.03) 92%, rgba(84, 13, 141, 0) 100%);
   }
 </style>
