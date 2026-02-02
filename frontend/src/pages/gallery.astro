@@ -12,6 +12,7 @@ import SectionHighlight from '../components/astro/sections/SectionHighlight.astr
 import SectionCentered from '../components/astro/sections/SectionCentered.astro';
 import SectionFeatures from '../components/astro/sections/SectionFeatures.astro';
 import HeroSplitImage from '../components/astro/sections/HeroSplitImage.astro';
+import HeroCenteredBrand from '../components/astro/sections/HeroCenteredBrand.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
 import ThemeToggle from '../components/react/ThemeToggle';
@@ -358,6 +359,19 @@ const navItems = [
                     ctaHref="#"
                     imageSrc={portrait}
                     imageAlt="Developer with UI cards and charts floating nearby"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Hero Centered Brand</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <HeroCenteredBrand
+                    imageSrc={placeholder}
+                    imageAlt="DevCover brand mark"
+                    headline="Hire with confidence, move without risk"
+                    description="DevCover is our industry-leading safety layer that gives you confidence to hire fast, without second guessing the fit."
+                    ctaLabel="Hire today"
+                    ctaHref="#"
                   />
                 </div>
               </div>

@@ -1,0 +1,41 @@
+---
+import Image from "../atomic/Image.astro";
+import Button from "../atomic/Button.astro";
+
+const { imageSrc, imageAlt, headline, description, ctaLabel, ctaHref } = Astro.props;
+---
+
+<section class="w-full bg-[color:var(--color-gray-900)] py-20">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="flex min-h-[360px] flex-col items-center justify-center text-center">
+      {imageSrc && (
+        <div class="mb-6">
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={200}
+            height={80}
+            class="mx-auto h-auto w-auto max-w-[200px]"
+          />
+        </div>
+      )}
+      {headline && (
+        <h1 class="text-h1 font-heading text-[color:var(--color-white-soft)] max-w-3xl">
+          {headline}
+        </h1>
+      )}
+      {description && (
+        <p class="mt-6 text-h4 font-heading text-[color:var(--color-white-soft)] max-w-2xl">
+          {description}
+        </p>
+      )}
+      {ctaLabel && ctaHref && (
+        <div class="mt-8">
+          <Button variant="secondary" size="medium" href={ctaHref}>
+            {ctaLabel}
+          </Button>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
