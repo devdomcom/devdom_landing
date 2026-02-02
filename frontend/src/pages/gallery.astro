@@ -17,6 +17,7 @@ import HeroLayeredVisual from '../components/astro/sections/HeroLayeredVisual.as
 import SectionIconHighlights from '../components/astro/sections/SectionIconHighlights.astro';
 import SectionFeatureGridCta from '../components/astro/sections/SectionFeatureGridCta.astro';
 import SectionHighlightGrid from '../components/astro/sections/SectionHighlightGrid.astro';
+import SectionTextCardSplit from '../components/astro/sections/SectionTextCardSplit.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
 import ThemeToggle from '../components/react/ThemeToggle';
@@ -314,22 +315,73 @@ const navItems = [
                     imageSrc={portrait}
                     imageAlt="Portrait image"
                   />
+                  <SectionTextCardSplit
+                    variant="text-left"
+                    heading="From hiring plan to talent pipeline"
+                    body="Most teams only start hiring once it’s already urgent. DevSight flips the script."
+                    cardHeading="By combining:"
+                    cardItems={[
+                      { icon: usersIcon, label: "Continuous 1:1 check-ins with your team" },
+                      { icon: chartIcon, label: "Insights from DevRep’s talent graph" },
+                      { icon: stackIcon, label: "Real context on your roadmap, stack, and org structure" }
+                    ]}
+                  />
                 </div>
               </div>
               <div>
-                <h3 class="text-lg font-semibold mb-4">Section Highlight Component</h3>
-                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
-                  <SectionHighlight
-                    title="Highlight Section Title"
-                    subtitle="Subtitle for the highlight section"
-                    featureItems={[
-                      { icon: homeIcon, label: "Feature 1" },
-                      { icon: arrowIcon, label: "Feature 2" },
-                      { icon: homeIcon, label: "Feature 3" },
-                      { icon: arrowIcon, label: "Feature 4" }
-                    ]}
-                    footerLink={{ href: "#", text: "Learn More" }}
-                  />
+                <h3 class="text-lg font-semibold mb-4">Section Highlight Components</h3>
+                <div class="space-y-6">
+                  <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
+                    <SectionHighlight
+                      title="Highlight Section Title"
+                      subtitle="Subtitle for the highlight section"
+                      featureItems={[
+                        { icon: homeIcon, label: "Feature 1" },
+                        { icon: arrowIcon, label: "Feature 2" },
+                        { icon: homeIcon, label: "Feature 3" },
+                        { icon: arrowIcon, label: "Feature 4" }
+                      ]}
+                      footerLink={{ href: "#", text: "Learn More" }}
+                    />
+                  </div>
+                  <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                    <SectionHighlightGrid
+                      title="Multi-signal analysis"
+                      subtitle="Each candidate is scored using multiple vectors:"
+                      items={[
+                        {
+                          icon: codeIcon,
+                          label: "Code quality",
+                          description: "Complexity, maintainability, contribution frequency"
+                        },
+                        {
+                          icon: nodesIcon,
+                          label: "Domain relevance",
+                          description: "Stack fit, project context, technical scope"
+                        },
+                        {
+                          icon: peopleIcon,
+                          label: "Collaboration signal",
+                          description: "PRs, reviews, issues, responsiveness"
+                        },
+                        {
+                          icon: nodesIcon,
+                          label: "Network graph",
+                          description: "Developer relationships, co-contributors, ecosystem positioning"
+                        },
+                        {
+                          icon: starIcon,
+                          label: "Reputation & trust",
+                          description: "Endorsements, maintainership, peer reviews"
+                        },
+                        {
+                          icon: gaugeIcon,
+                          label: "Velocity & consistency",
+                          description: "Longitudinal activity over time, project depth"
+                        }
+                      ]}
+                    />
+                  </div>
                 </div>
               </div>
               <div>
@@ -458,42 +510,17 @@ const navItems = [
                 </div>
               </div>
               <div>
-                <h3 class="text-lg font-semibold mb-4">Section Highlight Grid</h3>
+                <h3 class="text-lg font-semibold mb-4">Section Text Card Split</h3>
                 <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
-                  <SectionHighlightGrid
-                    title="Multi-signal analysis"
-                    subtitle="Each candidate is scored using multiple vectors:"
-                    items={[
-                      {
-                        icon: codeIcon,
-                        label: "Code quality",
-                        description: "Complexity, maintainability, contribution frequency"
-                      },
-                      {
-                        icon: nodesIcon,
-                        label: "Domain relevance",
-                        description: "Stack fit, project context, technical scope"
-                      },
-                      {
-                        icon: peopleIcon,
-                        label: "Collaboration signal",
-                        description: "PRs, reviews, issues, responsiveness"
-                      },
-                      {
-                        icon: nodesIcon,
-                        label: "Network graph",
-                        description: "Developer relationships, co-contributors, ecosystem positioning"
-                      },
-                      {
-                        icon: starIcon,
-                        label: "Reputation & trust",
-                        description: "Endorsements, maintainership, peer reviews"
-                      },
-                      {
-                        icon: gaugeIcon,
-                        label: "Velocity & consistency",
-                        description: "Longitudinal activity over time, project depth"
-                      }
+                  <SectionTextCardSplit
+                    variant="text-left"
+                    heading="From hiring plan to talent pipeline"
+                    body="Most teams only start hiring once it’s already urgent. DevSight flips the script."
+                    cardHeading="By combining:"
+                    cardItems={[
+                      { icon: usersIcon, label: "Continuous 1:1 check-ins with your team" },
+                      { icon: chartIcon, label: "Insights from DevRep’s talent graph" },
+                      { icon: stackIcon, label: "Real context on your roadmap, stack, and org structure" }
                     ]}
                   />
                 </div>
