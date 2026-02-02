@@ -15,6 +15,8 @@ import HeroSplitImage from '../components/astro/sections/HeroSplitImage.astro';
 import HeroCenteredBrand from '../components/astro/sections/HeroCenteredBrand.astro';
 import HeroLayeredVisual from '../components/astro/sections/HeroLayeredVisual.astro';
 import SectionIconHighlights from '../components/astro/sections/SectionIconHighlights.astro';
+import SectionFeatureGridCta from '../components/astro/sections/SectionFeatureGridCta.astro';
+import SectionHighlightGrid from '../components/astro/sections/SectionHighlightGrid.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
 import ThemeToggle from '../components/react/ThemeToggle';
@@ -39,6 +41,12 @@ const statusIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="2
 const shieldIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v6c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7l8-4z"/><path d="M12 7v6"/><path d="M12 17h.01"/></svg>`;
 const swapIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 7 3-3 3 3"/><path d="M6 4v14"/><path d="m21 17-3 3-3-3"/><path d="M18 20V6"/></svg>`;
 const userCheckIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 11a4 4 0 1 0-8 0"/><path d="M2 20a6 6 0 0 1 12 0"/><path d="m16 19 2 2 4-4"/></svg>`;
+const sparkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.8 4.8L19 10l-5.2 2.2L12 17l-1.8-4.8L5 10l5.2-2.2L12 3z"/></svg>`;
+const codeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l4-4-4-4"/><path d="M8 6l-4 4 4 4"/><path d="M14 4l-4 16"/></svg>`;
+const nodesIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M7 6l4 10"/><path d="M17 6l-4 10"/></svg>`;
+const peopleIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 11a4 4 0 1 0-8 0"/><path d="M2 20a6 6 0 0 1 12 0"/><path d="M17 20a5 5 0 0 1 5 0"/><path d="M18 9a3 3 0 1 0-6 0"/></svg>`;
+const starIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.6 5.7L21 8.8l-4.5 4.3L17.2 21 12 17.9 6.8 21l1.7-7.9L4 8.8l6.4-1.1L12 2z"/></svg>`;
+const gaugeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 12l3-3"/><path d="M7.5 16.5a6 6 0 1 1 9 0"/></svg>`;
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -412,6 +420,79 @@ const navItems = [
                         icon: swapIcon,
                         title: "Need a swap?",
                         description: "We replace talent within 5 business days and support up to two consecutive swaps."
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Feature Grid CTA</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <SectionFeatureGridCta
+                    title="Proof in the details"
+                    features={[
+                      {
+                        icon: sparkIcon,
+                        title: "Signal over noise",
+                        description: "We surface engineers with demonstrable impact using public code and contribution trails."
+                      },
+                      {
+                        icon: userCheckIcon,
+                        title: "Vetted for your stack",
+                        description: "Each candidate is matched to your roadmap, stack, and team priorities."
+                      },
+                      {
+                        icon: shieldIcon,
+                        title: "Quality safeguards",
+                        description: "Structured check-ins and delivery milestones keep momentum high."
+                      },
+                      {
+                        icon: swapIcon,
+                        title: "Swap-ready coverage",
+                        description: "Need a replacement? We provide fast, pre-vetted alternatives."
+                      }
+                    ]}
+                    ctaLabel="See how it works"
+                    ctaHref="#"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Highlight Grid</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <SectionHighlightGrid
+                    title="Multi-signal analysis"
+                    subtitle="Each candidate is scored using multiple vectors:"
+                    items={[
+                      {
+                        icon: codeIcon,
+                        label: "Code quality",
+                        description: "Complexity, maintainability, contribution frequency"
+                      },
+                      {
+                        icon: nodesIcon,
+                        label: "Domain relevance",
+                        description: "Stack fit, project context, technical scope"
+                      },
+                      {
+                        icon: peopleIcon,
+                        label: "Collaboration signal",
+                        description: "PRs, reviews, issues, responsiveness"
+                      },
+                      {
+                        icon: nodesIcon,
+                        label: "Network graph",
+                        description: "Developer relationships, co-contributors, ecosystem positioning"
+                      },
+                      {
+                        icon: starIcon,
+                        label: "Reputation & trust",
+                        description: "Endorsements, maintainership, peer reviews"
+                      },
+                      {
+                        icon: gaugeIcon,
+                        label: "Velocity & consistency",
+                        description: "Longitudinal activity over time, project depth"
                       }
                     ]}
                   />
