@@ -18,6 +18,8 @@ import SectionIconHighlights from '../components/astro/sections/SectionIconHighl
 import SectionFeatureGridCta from '../components/astro/sections/SectionFeatureGridCta.astro';
 import SectionHighlightGrid from '../components/astro/sections/SectionHighlightGrid.astro';
 import SectionTextCardSplit from '../components/astro/sections/SectionTextCardSplit.astro';
+import SectionLayeredCta from '../components/astro/sections/SectionLayeredCta.astro';
+import SectionCenteredHeadline from '../components/astro/sections/SectionCenteredHeadline.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
 import ThemeToggle from '../components/react/ThemeToggle';
@@ -505,6 +507,24 @@ const navItems = [
                       }
                     ]}
                     ctaLabel="See how it works"
+                    ctaHref="#"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Centered Headline</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <SectionCenteredHeadline
+                    headline="DevSight builds a predictive talent model tailored to your team, so when it’s time to scale, we’ve already lined up engineers who are a fit."
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Layered CTA</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <SectionLayeredCta
+                    headline="Get started with no upfront commitment."
+                    ctaLabel="Talk to us"
                     ctaHref="#"
                   />
                 </div>

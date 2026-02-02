@@ -1,0 +1,61 @@
+---
+import Button from "../atomic/Button.astro";
+
+const { headline, ctaLabel, ctaHref } = Astro.props;
+---
+
+<section class="layered-cta">
+  <div class="layered-cta__overlay" aria-hidden="true"></div>
+  <div class="layered-cta__content">
+    {headline && (
+      <h2 class="text-h2 font-heading text-headings text-center max-w-3xl mx-auto">
+        {headline}
+      </h2>
+    )}
+    {ctaLabel && ctaHref && (
+      <div class="mt-8 flex justify-center">
+        <Button variant="primary" size="medium" href={ctaHref}>
+          {ctaLabel}
+        </Button>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .layered-cta {
+    position: relative;
+    width: 100%;
+    background: var(--color-primary-100);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .layered-cta__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(520px circle at 20% 20%, rgba(167, 41, 245, 0.18), rgba(0, 0, 0, 0) 60%),
+      radial-gradient(520px circle at 80% 60%, rgba(229, 47, 109, 0.14), rgba(0, 0, 0, 0) 62%),
+      radial-gradient(520px circle at 60% 85%, rgba(255, 139, 76, 0.12), rgba(0, 0, 0, 0) 60%),
+      linear-gradient(120deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 55%, rgba(167, 41, 245, 0.08) 100%);
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  .layered-cta__content {
+    position: relative;
+    z-index: 1;
+    max-width: 72rem;
+    width: 100%;
+    padding: 72px 24px;
+  }
+
+  @media (max-width: 768px) {
+    .layered-cta__content {
+      padding: 64px 24px;
+    }
+  }
+</style>
