@@ -22,6 +22,7 @@ import SectionLayeredCta from '../components/astro/sections/SectionLayeredCta.as
 import SectionCenteredHeadline from '../components/astro/sections/SectionCenteredHeadline.astro';
 import SectionPricingOverview from '../components/astro/sections/SectionPricingOverview.astro';
 import SectionTestimonial from '../components/astro/sections/SectionTestimonial.astro';
+import SectionFaqAccordion from '../components/astro/sections/SectionFaqAccordion.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
 import ThemeToggle from '../components/react/ThemeToggle';
@@ -568,6 +569,27 @@ const navItems = [
                         label: "Engagement Model",
                         tooltip: "Available delivery engagement options.",
                         values: ["Dedicated or Flexible", "Dedicated", "Dedicated"]
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section FAQ Accordion</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden bg-white">
+                  <SectionFaqAccordion
+                    items={[
+                      {
+                        question: "What is the Predictive Talent Pool?",
+                        answer: "Our team collaborates with you to understand your current team structure, roadmap, and upcoming hiring needs. This input powers DevSight, our predictive algorithm that continuously sources and curates matching talent before you even need it."
+                      },
+                      {
+                        question: "What does a Dedicated Talent Manager do?",
+                        answer: "They manage sourcing, outreach, and candidate pipelines while keeping you updated on progress and fit."
+                      },
+                      {
+                        question: "How quickly can we start interviews?",
+                        answer: "Most teams can begin interviews within 10–15 business days depending on role complexity and availability."
                       }
                     ]}
                   />
