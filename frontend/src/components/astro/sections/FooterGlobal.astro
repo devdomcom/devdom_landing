@@ -1,0 +1,198 @@
+---
+import Image from "../atomic/Image.astro";
+import Button from "../atomic/Button.astro";
+
+const {
+  ctaLogoSrc,
+  ctaLogoAlt,
+  ctaMessage,
+  ctaLabel,
+  ctaHref,
+  columns = [],
+  contactItems = [],
+  copyrightText,
+} = Astro.props;
+---
+
+<footer class="footer-global">
+  <div class="footer-global__inner">
+    <div class="footer-cta">
+      <div class="footer-cta__logo">
+        {ctaLogoSrc && (
+          <Image
+            src={ctaLogoSrc}
+            alt={ctaLogoAlt}
+            width={140}
+            height={40}
+            layout="fixed"
+            class="h-auto w-auto max-w-[140px] object-contain"
+          />
+        )}
+      </div>
+      {ctaMessage && (
+        <p class="footer-cta__message">{ctaMessage}</p>
+      )}
+      {ctaLabel && ctaHref && (
+        <Button variant="primary" size="medium" href={ctaHref}>
+          {ctaLabel}
+        </Button>
+      )}
+    </div>
+
+    <div class="footer-grid">
+      {columns.map((col) => (
+        <div class="footer-col">
+          {col.title && <h3 class="footer-col__title">{col.title}</h3>}
+          {col.links && (
+            <ul class="footer-col__list">
+              {col.links.map((link) => (
+                <li>
+                  <a class="footer-col__link" href={link.href}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ))}
+      <div class="footer-col">
+        <h3 class="footer-col__title">Get in touch with us</h3>
+        <ul class="footer-col__list">
+          {contactItems.map((item) => (
+            <li>
+              <a class="footer-contact" href={item.href} target={item.external ? "_blank" : undefined} rel={item.external ? "noopener noreferrer" : undefined}>
+                <span class="footer-contact__icon" aria-hidden="true">
+                  <span set:html={item.icon}></span>
+                </span>
+                <span>{item.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-legal">
+    <p>{copyrightText}</p>
+  </div>
+</footer>
+
+<style>
+  .footer-global {
+    background: var(--color-gray-900);
+    color: var(--color-white-soft);
+    padding: 72px 24px 28px;
+  }
+
+  .footer-global__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-cta {
+    background: var(--surface-card);
+    border-radius: 18px;
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .footer-cta__message {
+    font-size: var(--font-h4-size);
+    font-family: var(--font-family-heading);
+    color: var(--color-headings);
+    flex: 1;
+    text-align: center;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  .footer-col__title {
+    font-size: var(--font-h5-size);
+    font-family: var(--font-family-heading);
+    color: var(--color-white-soft);
+    margin-bottom: 16px;
+  }
+
+  .footer-col__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .footer-col__link {
+    font-size: var(--font-body-sm-size);
+    font-family: var(--font-family-body);
+    color: var(--color-white-soft);
+    text-decoration: none;
+  }
+
+  .footer-col__link:hover {
+    text-decoration: underline;
+  }
+
+  .footer-contact {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: var(--font-body-sm-size);
+    font-family: var(--font-family-body);
+    color: var(--color-white-soft);
+    text-decoration: none;
+  }
+
+  .footer-contact__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .footer-legal {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    font-size: var(--font-body-xs-size);
+    font-family: var(--font-family-body);
+    color: var(--color-white-soft);
+  }
+
+  @media (max-width: 900px) {
+    .footer-cta {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-cta__message {
+      text-align: center;
+    }
+
+    .footer-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-legal {
+      text-align: center;
+    }
+  }
+</style>
