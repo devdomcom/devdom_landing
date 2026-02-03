@@ -21,6 +21,7 @@ import SectionTextCardSplit from '../components/astro/sections/SectionTextCardSp
 import SectionLayeredCta from '../components/astro/sections/SectionLayeredCta.astro';
 import SectionCenteredHeadline from '../components/astro/sections/SectionCenteredHeadline.astro';
 import SectionPricingOverview from '../components/astro/sections/SectionPricingOverview.astro';
+import SectionTestimonial from '../components/astro/sections/SectionTestimonial.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
 import ThemeToggle from '../components/react/ThemeToggle';
@@ -570,6 +571,34 @@ const navItems = [
                       }
                     ]}
                   />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Testimonial</h3>
+                <div class="space-y-6">
+                  <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                    <SectionTestimonial
+                      variant="dark"
+                      headline="Built on trust"
+                      supporting="DevCover exists because we trust our vetting, and we stand by our engineers."
+                      quote="Hiring with the peace of mind that things keep moving forward, even when hires go sideways, is hard to quantify. DevCover let us move fast without gambling on quality."
+                      avatarSrc={portrait}
+                      avatarAlt="Team member portrait"
+                      attribution="VP of Engineering, Series B SaaS company"
+                    />
+                  </div>
+                  <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden bg-white">
+                    <SectionTestimonial
+                      variant="light"
+                      headline="Hire the true builders."
+                      highlightWord="true"
+                      supporting="DevRep identifies the developers who've contributed to the actual libraries you are using in your stack, not just consumed them."
+                      quote="The best hires we made were already solving problems like ours — before they joined."
+                      avatarSrc={portrait}
+                      avatarAlt="Team member portrait"
+                      attribution="VP Engineering, ML startup"
+                    />
+                  </div>
                 </div>
               </div>
               <div>
