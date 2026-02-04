@@ -111,12 +111,13 @@ const {
     gap: 24px;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
   }
 
   .footer-cta__bg {
     position: absolute;
     inset: 0;
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
   }
 
@@ -129,13 +130,12 @@ const {
     height: 150%;
     object-fit: cover;
     opacity: 1;
+    z-index: 0;
   }
 
-  .footer-cta__logo,
-  .footer-cta__message,
-  .footer-cta button {
+  .footer-cta > *:not(.footer-cta__bg) {
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
   .footer-cta__message {
@@ -218,6 +218,16 @@ const {
 
     .footer-cta__message {
       text-align: center;
+    }
+
+    .footer-cta__bg-image {
+      left: 50%;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      transform: translateX(-50%);
+      object-fit: cover;
+      z-index: 0;
     }
 
     .footer-grid {
