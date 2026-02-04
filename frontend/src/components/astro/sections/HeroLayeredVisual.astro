@@ -1,50 +1,75 @@
 ---
 import Image from "../atomic/Image.astro";
 
-const { imageSrc, imageAlt, headline, description, secondaryCtaText, secondaryCtaHref } = Astro.props;
+const {
+  imageSrc,
+  imageAlt,
+  overlaySrc,
+  overlayAlt,
+  headline,
+  description,
+  secondaryCtaText,
+  secondaryCtaHref,
+} = Astro.props;
 ---
 
 <section class="hero-layered">
   <div class="hero-layered__overlay" aria-hidden="true"></div>
+  {overlaySrc && (
+    <div class="hero-layered__art" aria-hidden="true">
+      <Image
+        src={overlaySrc}
+        alt={overlayAlt || ""}
+        width={2414}
+        height={1260}
+        class="hero-layered__art-image"
+      />
+    </div>
+  )}
   <div class="hero-layered__content">
-    {imageSrc && (
-      <div class="mb-6">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          width={200}
-          height={80}
-          class="h-auto w-auto max-w-[200px]"
-        />
+    <div class="hero-layered__grid">
+      <div class="hero-layered__spacer" aria-hidden="true"></div>
+      <div class="hero-layered__text">
+        {imageSrc && (
+          <div class="mb-6">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              width={200}
+              height={80}
+              class="h-auto w-auto max-w-[200px]"
+            />
+          </div>
+        )}
+        {headline && (
+          <h1 class="text-h1 font-heading text-[color:var(--color-white-soft)] max-w-3xl">
+            {headline}
+          </h1>
+        )}
+        {description && (
+          <p class="mt-6 text-h4 font-heading text-[color:var(--color-white-soft)] max-w-2xl">
+            {description}
+          </p>
+        )}
+        {secondaryCtaText && secondaryCtaHref && (
+          <div class="mt-8">
+            <a
+              href={secondaryCtaHref}
+              class="text-[color:var(--color-white-soft)] underline-offset-4 hover:underline"
+            >
+              {secondaryCtaText}
+            </a>
+          </div>
+        )}
       </div>
-    )}
-    {headline && (
-      <h1 class="text-h1 font-heading text-[color:var(--color-white-soft)] max-w-3xl">
-        {headline}
-      </h1>
-    )}
-    {description && (
-      <p class="mt-6 text-h4 font-heading text-[color:var(--color-white-soft)] max-w-2xl">
-        {description}
-      </p>
-    )}
-    {secondaryCtaText && secondaryCtaHref && (
-      <div class="mt-8">
-        <a
-          href={secondaryCtaHref}
-          class="text-[color:var(--color-white-soft)] underline-offset-4 hover:underline"
-        >
-          {secondaryCtaText}
-        </a>
-      </div>
-    )}
+    </div>
   </div>
 </section>
 
 <style>
   .hero-layered {
     position: relative;
-    width: 100%;
+    width: 110%;
     min-height: 520px;
     background: var(--color-gray-900);
     overflow: hidden;
@@ -64,12 +89,44 @@ const { imageSrc, imageAlt, headline, description, secondaryCtaText, secondaryCt
     pointer-events: none;
   }
 
+  .hero-layered__art {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .hero-layered__art-image {
+    position: absolute;
+    top: 90%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 0.85;
+    object-position: left center;
+    transform-origin: left center;
+    scale: 1.8;
+  }
+
   .hero-layered__content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     max-width: 72rem;
     margin: 0 auto;
     padding: 80px 24px;
+  }
+
+  .hero-layered__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .hero-layered__text {
+    text-align: left;
   }
 
   @media (max-width: 768px) {
@@ -78,6 +135,20 @@ const { imageSrc, imageAlt, headline, description, secondaryCtaText, secondaryCt
     }
     .hero-layered__content {
       padding: 72px 24px;
+    }
+    .hero-layered__grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-layered__spacer {
+      display: none;
+    }
+    .hero-layered__text {
+      text-align: center;
+    }
+    .hero-layered__art-image {
+      width: 140%;
+      height: auto;
+      object-position: center;
     }
   }
 </style>
