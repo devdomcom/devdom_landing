@@ -5,6 +5,7 @@ import Button from "../atomic/Button.astro";
 const {
   ctaLogoSrc,
   ctaLogoAlt,
+  ctaBgSrc,
   ctaMessage,
   ctaLabel,
   ctaHref,
@@ -17,6 +18,17 @@ const {
 <footer class="footer-global">
   <div class="footer-global__inner">
     <div class="footer-cta">
+      {ctaBgSrc && (
+        <div class="footer-cta__bg" aria-hidden="true">
+          <Image
+            src={ctaBgSrc}
+            alt=""
+            width={1200}
+            height={240}
+            class="footer-cta__bg-image"
+          />
+        </div>
+      )}
       <div class="footer-cta__logo">
         {ctaLogoSrc && (
           <Image
@@ -97,6 +109,33 @@ const {
     align-items: center;
     justify-content: space-between;
     gap: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-cta__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .footer-cta__bg-image {
+    position: absolute;
+    top: 50%;
+    left: 225px;
+    transform: translateY(-50%);
+    width: auto;
+    height: 150%;
+    object-fit: cover;
+    opacity: 1;
+  }
+
+  .footer-cta__logo,
+  .footer-cta__message,
+  .footer-cta button {
+    position: relative;
+    z-index: 1;
   }
 
   .footer-cta__message {
