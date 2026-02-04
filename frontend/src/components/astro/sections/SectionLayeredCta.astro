@@ -1,11 +1,15 @@
 ---
 import Button from "../atomic/Button.astro";
+import ctaBox from "../../../assets/images/decorations/cta-box.png";
 
 const { headline, ctaLabel, ctaHref } = Astro.props;
 ---
 
 <section class="layered-cta">
   <div class="layered-cta__overlay" aria-hidden="true"></div>
+  <div class="layered-cta__art" aria-hidden="true">
+    <img src={ctaBox.src} alt="" class="layered-cta__art-image" />
+  </div>
   <div class="layered-cta__content">
     {headline && (
       <h2 class="text-h2 font-heading text-headings text-center max-w-3xl mx-auto">
@@ -43,6 +47,24 @@ const { headline, ctaLabel, ctaHref } = Astro.props;
       linear-gradient(120deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 55%, rgba(167, 41, 245, 0.08) 100%);
     opacity: 0.8;
     pointer-events: none;
+  }
+
+  .layered-cta__art {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .layered-cta__art-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
   }
 
   .layered-cta__content {
