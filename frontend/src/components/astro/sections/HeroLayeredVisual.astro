@@ -14,7 +14,7 @@ const {
 ---
 
 <section class="hero-layered">
-  <div class="hero-layered__overlay" aria-hidden="true"></div>
+  <!-- overlay removed per design request -->
   {overlaySrc && (
     <div class="hero-layered__art" aria-hidden="true">
       <Image
@@ -32,13 +32,11 @@ const {
       <div class="hero-layered__text">
         {imageSrc && (
           <div class="mb-6">
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              width={200}
-              height={80}
-              class="h-auto w-auto max-w-[200px]"
-            />
+          <img
+            src={imageSrc.src}
+            alt={imageAlt}
+            class="h-auto w-auto max-w-[240px]"
+          />
           </div>
         )}
         {headline && (
@@ -77,17 +75,6 @@ const {
     align-items: center;
   }
 
-  .hero-layered__overlay {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(600px circle at 20% 20%, rgba(167, 41, 245, 0.22), rgba(0, 0, 0, 0) 60%),
-      radial-gradient(520px circle at 75% 60%, rgba(229, 47, 109, 0.18), rgba(0, 0, 0, 0) 62%),
-      radial-gradient(520px circle at 60% 10%, rgba(255, 139, 76, 0.12), rgba(0, 0, 0, 0) 60%),
-      linear-gradient(115deg, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0) 45%, rgba(167, 41, 245, 0.06) 100%);
-    opacity: 0.85;
-    pointer-events: none;
-  }
 
   .hero-layered__art {
     position: absolute;
@@ -99,8 +86,8 @@ const {
 
   .hero-layered__art-image {
     position: absolute;
-    top: 90%;
-    left: 20%;
+    top: 85%;
+    left: 35%;
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
@@ -108,7 +95,7 @@ const {
     opacity: 0.85;
     object-position: left center;
     transform-origin: left center;
-    scale: 1.8;
+    scale: 1.7;
   }
 
   .hero-layered__content {

@@ -10,12 +10,10 @@ const { imageSrc, imageAlt, headline, description, ctaLabel, ctaHref } = Astro.p
     <div class="flex min-h-[360px] flex-col items-center justify-center text-center">
       {imageSrc && (
         <div class="mb-6">
-          <Image
-            src={imageSrc}
+          <img
+            src={imageSrc.src}
             alt={imageAlt}
-            width={200}
-            height={80}
-            class="mx-auto h-auto w-auto max-w-[200px]"
+            class="mx-auto h-auto w-auto max-w-[240px]"
           />
         </div>
       )}
