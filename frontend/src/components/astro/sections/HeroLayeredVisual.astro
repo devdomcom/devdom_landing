@@ -103,7 +103,7 @@ const {
     z-index: 2;
     max-width: 72rem;
     margin: 0 auto;
-    padding: 80px 24px;
+    padding: 80px 80px;
   }
 
   .hero-layered__grid {
@@ -121,7 +121,7 @@ const {
       min-height: 460px;
     }
     .hero-layered__content {
-      padding: 72px 24px;
+      padding: 72px 80px;
     }
     .hero-layered__grid {
       grid-template-columns: 1fr;
@@ -132,10 +132,15 @@ const {
     .hero-layered__text {
       text-align: center;
     }
+    .hero-layered__text .mb-6 {
+      display: flex;
+      justify-content: center;
+    }
     .hero-layered__art-image {
-      width: 140%;
-      height: auto;
-      object-position: center;
+      width: 130% !important;
+      height: 130% !important;
+      object-fit: contain;
+      object-position: left center;
     }
   }
 </style>
