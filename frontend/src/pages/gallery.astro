@@ -25,6 +25,7 @@ import SectionTestimonial from '../components/astro/sections/SectionTestimonial.
 import SectionFaqAccordion from '../components/astro/sections/SectionFaqAccordion.astro';
 import FooterGlobal from '../components/astro/sections/FooterGlobal.astro';
 import SectionCapabilityGrid from '../components/astro/sections/SectionCapabilityGrid.astro';
+import SectionProcessFlow from '../components/astro/sections/SectionProcessFlow.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
 import ThemeToggle from '../components/react/ThemeToggle';
@@ -625,6 +626,29 @@ const navItems = [
                         icon: compassIcon,
                         title: "Technical Advisory",
                         description: "Support for high-impact technical decisions."
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Process Flow</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden bg-white">
+                  <SectionProcessFlow
+                    title="Our process"
+                    subtitle="From alignment to long-term operation."
+                    steps={[
+                      {
+                        title: "Define",
+                        description: "Align goals, constraints, risks, and definition of done. Decisions are documented and validated early."
+                      },
+                      {
+                        title: "Build",
+                        description: "Execute in short cycles with quality, traceability, and review. Security and governance are part of the delivery."
+                      },
+                      {
+                        title: "Operate",
+                        description: "Stabilize, observe, and support long-term system operation. Clear handover and continuous improvement."
                       }
                     ]}
                   />
