@@ -1,5 +1,6 @@
 ---
 import processFlow from "../../../assets/images/decorations/process-flow.svg";
+import processMobileCurve from "../../../assets/images/decorations/process-mobile-curve.svg";
 
 const { title, subtitle, steps = [] } = Astro.props;
 ---
@@ -43,14 +44,26 @@ const { title, subtitle, steps = [] } = Astro.props;
       </div>
 
       <div class="process-flow__mobile">
+        <div class="process-flow__mobile-decoration" aria-hidden="true">
+          <img
+            class="process-flow__mobile-decoration-image"
+            src={processMobileCurve.src}
+            alt=""
+          />
+          <img
+            class="process-flow__mobile-decoration-image process-flow__mobile-decoration-image--second"
+            src={processMobileCurve.src}
+            alt=""
+          />
+        </div>
         {steps.map((step, index) => (
-          <div class="process-flow__mobile-step">
-            <div class="process-flow__mobile-number" aria-hidden="true">{index + 1}</div>
-            <div>
-              <h3 class="text-h4 font-heading text-headings">{step.title}</h3>
-              <p class="mt-2 text-body-sm font-body text-gray-900">{step.description}</p>
+          <>
+            <div class={`process-flow__mobile-step ${index === steps.length - 1 ? "process-flow__mobile-step--last" : ""}`}>
+              <div class="process-flow__mobile-number" aria-hidden="true">{index + 1}</div>
+              <h3 class="process-flow__mobile-title text-h4 font-heading text-headings">{step.title}</h3>
+              <p class="process-flow__mobile-description text-body-sm font-body text-gray-900">{step.description}</p>
             </div>
-          </div>
+          </>
         ))}
       </div>
     </div>
@@ -159,13 +172,8 @@ const { title, subtitle, steps = [] } = Astro.props;
   .process-flow__mobile {
     display: none;
     flex-direction: column;
-    gap: 24px;
-  }
-
-  .process-flow__mobile-step {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
+    gap: 40px;
+    position: relative;
   }
 
   .process-flow__mobile-number {
@@ -178,6 +186,67 @@ const { title, subtitle, steps = [] } = Astro.props;
     align-items: center;
     justify-content: center;
     font-weight: 600;
+  }
+
+  .process-flow__mobile-step {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    column-gap: 16px;
+    row-gap: 8px;
+    align-items: start;
+  }
+
+  .process-flow__mobile-title {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .process-flow__mobile-description {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .process-flow__mobile-decoration {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .process-flow__mobile-decoration-image {
+    position: absolute;
+    left: 0;
+    top: 15%;
+    width: 36px;
+    height: 25%;
+    object-fit: cover;
+  }
+
+  .process-flow__mobile-decoration-image--second {
+    top: 50%;
+  }
+
+.process-flow__mobile-step {
+  position: relative;
+  z-index: 1;
+}
+
+  .process-flow__mobile {
+    --step-1-offset: clamp(-8px, -1vw, -2px);
+    --step-2-offset: clamp(-16px, -4vw, -40px);
+    --step-3-offset: clamp(-24px, -6vw, -80px);
+  }
+
+  .process-flow__mobile-content-item:nth-child(1) {
+    transform: translateY(var(--step-1-offset));
+  }
+
+  .process-flow__mobile-content-item:nth-child(2) {
+    transform: translateY(var(--step-2-offset));
+  }
+
+  .process-flow__mobile-content-item:nth-child(3) {
+    transform: translateY(var(--step-3-offset));
   }
 
   @media (max-width: 900px) {
