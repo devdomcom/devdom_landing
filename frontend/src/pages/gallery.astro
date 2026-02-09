@@ -26,6 +26,7 @@ import SectionFaqAccordion from '../components/astro/sections/SectionFaqAccordio
 import FooterGlobal from '../components/astro/sections/FooterGlobal.astro';
 import SectionCapabilityGrid from '../components/astro/sections/SectionCapabilityGrid.astro';
 import SectionProcessFlow from '../components/astro/sections/SectionProcessFlow.astro';
+import SectionContactQualified from '../components/astro/sections/SectionContactQualified.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
 import ThemeToggle from '../components/react/ThemeToggle';
@@ -65,6 +66,7 @@ const cubeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28"
 const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4 10-10"/></svg>`;
 const xIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>`;
 const mailIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>`;
+const phoneIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.86.32 1.7.59 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.16a2 2 0 0 1 2.11-.45c.8.27 1.64.47 2.5.59A2 2 0 0 1 22 16.92z"/></svg>`;
 const linkedinIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-2-2h-2v8h-4V8h6z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>`;
 const chartUpIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>`;
 const aiIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3"/><path d="M15 1v3"/><path d="M9 20v3"/><path d="M15 20v3"/><path d="M1 9h3"/><path d="M1 15h3"/><path d="M20 9h3"/><path d="M20 15h3"/></svg>`;
@@ -672,6 +674,21 @@ const navItems = [
                         answer: "Most teams can begin interviews within 10–15 business days depending on role complexity and availability."
                       }
                     ]}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Contact Qualified</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <SectionContactQualified
+                    title="Get in touch"
+                    description="For project discussions and technical inquiries."
+                    contactItems={[
+                      { icon: mailIcon, label: "hello@devdom.com", href: "mailto:hello@devdom.com" },
+                      { icon: phoneIcon, label: "+39 3403560457 / +359 87 622 4804", href: "tel:+393403560457" },
+                      { icon: linkedinIcon, label: "@devdom", href: "https://linkedin.com", external: true }
+                    ]}
+                    submitLabel="Send message"
                   />
                 </div>
               </div>
