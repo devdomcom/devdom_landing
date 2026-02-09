@@ -67,7 +67,7 @@ const {
 <style>
   .hero-layered {
     position: relative;
-    width: 110%;
+    width: 100%;
     min-height: 520px;
     background: var(--color-gray-900);
     overflow: hidden;
@@ -91,6 +91,10 @@ const {
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
+    min-width: 1200px;
+    min-height: 620px;
+    max-width: none;
+    max-height: none;
     object-fit: contain;
     opacity: 0.85;
     object-position: left center;
@@ -103,7 +107,7 @@ const {
     z-index: 2;
     max-width: 72rem;
     margin: 0 auto;
-    padding: 80px 80px;
+    padding: 40px;
   }
 
   .hero-layered__grid {
@@ -116,13 +120,7 @@ const {
     text-align: left;
   }
 
-  @media (max-width: 768px) {
-    .hero-layered {
-      min-height: 460px;
-    }
-    .hero-layered__content {
-      padding: 72px 80px;
-    }
+  @media (max-width: 1199px) {
     .hero-layered__grid {
       grid-template-columns: 1fr;
     }
@@ -131,16 +129,21 @@ const {
     }
     .hero-layered__text {
       text-align: center;
+      margin: 0 auto;
+      max-width: 42rem;
     }
     .hero-layered__text .mb-6 {
       display: flex;
       justify-content: center;
     }
-    .hero-layered__art-image {
-      width: 130% !important;
-      height: 130% !important;
-      object-fit: contain;
-      object-position: left center;
+  }
+
+  @media (max-width: 768px) {
+    .hero-layered {
+      min-height: 460px;
+    }
+    .hero-layered__content {
+      padding: 40px;
     }
   }
 </style>
