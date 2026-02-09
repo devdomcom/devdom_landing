@@ -123,6 +123,8 @@ const {
     top: calc(50% - 80px);
     width: 100%;
     height: auto;
+    min-width: 1200px;
+    max-width: none;
     transform: translate(-50%, -50%) scale(1.2);
     transform-origin: center;
   }
@@ -218,6 +220,13 @@ const {
 
     .contact-section__fields {
       grid-template-columns: 1fr;
+    }
+
+    .contact-section__decoration img {
+      top: calc(50% - 160px);
+      min-width: 1200px;
+      max-width: none;
+      transform: translate(-50%, -50%) scale(1.4);
     }
   }
 </style>
