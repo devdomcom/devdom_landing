@@ -1,0 +1,341 @@
+---
+import Button from "../atomic/Button.astro";
+
+const {
+  eyebrow,
+  title,
+  supportingText,
+  tiers = [],
+  features = [],
+} = Astro.props;
+---
+
+<section class="pricing-overview">
+  <div class="pricing-overview__inner">
+    <header class="pricing-overview__header">
+      {eyebrow && (
+        <p class="pricing-overview__eyebrow">{eyebrow}</p>
+      )}
+      {title && (
+        <h2 class="text-h1 font-heading text-headings">{title}</h2>
+      )}
+      {supportingText && (
+        <p class="pricing-overview__supporting">{supportingText}</p>
+      )}
+    </header>
+
+    <div class="pricing-overview__table">
+      <div class="pricing-overview__grid">
+        <div class="pricing-overview__cell pricing-overview__label pricing-overview__label--header"></div>
+        {tiers.map((tier) => (
+          <div
+            class={`pricing-overview__cell pricing-overview__tier ${tier.highlight ? "pricing-overview__tier--highlight" : ""}`}
+          >
+            {tier.icon && (
+              <span class="pricing-overview__tier-icon" aria-hidden="true">
+                <span set:html={tier.icon}></span>
+              </span>
+            )}
+            {tier.name && (
+              <h3 class="pricing-overview__tier-name">{tier.name}</h3>
+            )}
+            {tier.ctaLabel && tier.ctaHref && (
+              <Button variant="primary" size="small" href={tier.ctaHref}>
+                {tier.ctaLabel}
+              </Button>
+            )}
+          </div>
+        ))}
+
+        {features.map((feature, rowIndex) => (
+          <Fragment>
+            <div class="pricing-overview__cell pricing-overview__label">
+              <div class="pricing-overview__label-row">
+                <span>{feature.label}</span>
+                {feature.tooltip && (
+                  <span class="pricing-overview__info" tabIndex="0" aria-label={feature.tooltip}>
+                    i
+                    <span class="pricing-overview__tooltip" role="tooltip">{feature.tooltip}</span>
+                  </span>
+                )}
+              </div>
+            </div>
+            {tiers.map((tier, colIndex) => {
+              const value = feature.values?.[colIndex];
+              const isIcon = typeof value === "string" && value.trim().startsWith("<svg");
+              return (
+              <div
+                class={`pricing-overview__cell pricing-overview__value ${tiers[colIndex]?.highlight ? "pricing-overview__tier--highlight" : ""}`}
+                data-row={rowIndex}
+              >
+                {value ? (isIcon ? <span set:html={value}></span> : value) : "-"}
+              </div>
+              );
+            })}
+          </Fragment>
+        ))}
+      </div>
+      <div class="pricing-overview__mobile">
+        {tiers.map((tier, colIndex) => (
+          <div class="pricing-overview__mobile-tier">
+            <div class="pricing-overview__mobile-header">
+              {tier.icon && (
+                <span class="pricing-overview__tier-icon" aria-hidden="true">
+                  <span set:html={tier.icon}></span>
+                </span>
+              )}
+              {tier.name && (
+                <h3 class="pricing-overview__tier-name">{tier.name}</h3>
+              )}
+              {tier.ctaLabel && tier.ctaHref && (
+                <Button variant="primary" size="small" href={tier.ctaHref}>
+                  {tier.ctaLabel}
+                </Button>
+              )}
+            </div>
+            <div class="pricing-overview__mobile-features">
+              {features.map((feature) => {
+                const value = feature.values?.[colIndex];
+                const isIcon = typeof value === "string" && value.trim().startsWith("<svg");
+                return (
+                  <div class="pricing-overview__mobile-row">
+                    <p class="pricing-overview__mobile-label">{feature.label}</p>
+                    <div class="pricing-overview__mobile-value">
+                      {value ? (isIcon ? <span set:html={value}></span> : value) : "-"}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing-overview {
+    background: linear-gradient(180deg, var(--color-primary-100) 0%, var(--color-white) 100%);
+    width: 100%;
+  }
+
+  .pricing-overview__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .pricing-overview__header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+
+  .pricing-overview__eyebrow {
+    font-size: var(--font-body-md-size);
+    font-family: var(--font-family-body);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-headings);
+    margin-bottom: 12px;
+  }
+
+  .pricing-overview__supporting {
+    margin-top: 16px;
+    font-size: var(--font-body-md-size);
+    font-family: var(--font-family-body);
+    color: var(--color-text);
+  }
+
+  .pricing-overview__table {
+    overflow-x: auto;
+  }
+
+  .pricing-overview__grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 2fr) repeat(3, minmax(180px, 1fr));
+  }
+
+  .pricing-overview__cell {
+    padding: 18px 16px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .pricing-overview__label {
+    justify-content: flex-start;
+    text-align: left;
+    font-family: var(--font-family-body);
+    color: var(--color-text);
+  }
+
+  .pricing-overview__label--header {
+    border-bottom: none;
+  }
+
+  .pricing-overview__label-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--font-body-md-size);
+  }
+
+  .pricing-overview__info {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    border: 1px solid var(--color-headings);
+    font-size: 12px;
+    color: var(--color-headings);
+    position: relative;
+    cursor: default;
+  }
+
+  .pricing-overview__info:focus .pricing-overview__tooltip,
+  .pricing-overview__info:hover .pricing-overview__tooltip {
+    opacity: 1;
+    transform: translate(0, -50%);
+    pointer-events: auto;
+  }
+
+  .pricing-overview__tooltip {
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translate(0, -50%);
+    background: var(--color-white);
+    color: var(--color-text);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 12px;
+    line-height: 1.4;
+    width: 180px;
+    box-shadow: var(--shadow-01);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 150ms ease, transform 150ms ease;
+    z-index: 2;
+  }
+
+  .pricing-overview__tier {
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: none;
+    padding-top: 8px;
+    padding-bottom: 24px;
+  }
+
+  .pricing-overview__tier-icon {
+    color: var(--color-primary-700);
+  }
+
+  .pricing-overview__tier-name {
+    font-size: var(--font-h3-size);
+    font-family: var(--font-family-heading);
+    color: var(--color-headings);
+  }
+
+  .pricing-overview__value {
+    font-size: var(--font-body-md-size);
+    font-family: var(--font-family-body);
+    color: var(--color-headings);
+  }
+
+  .pricing-overview__value svg {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .pricing-overview__tier--highlight {
+    background: var(--color-primary-100);
+  }
+
+
+  .pricing-overview__mobile {
+    display: none;
+  }
+
+  .pricing-overview__mobile-tier {
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 24px 0;
+  }
+
+  .pricing-overview__mobile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .pricing-overview__mobile-features {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-overview__mobile-row {
+    text-align: center;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .pricing-overview__mobile-row:last-child {
+    border-bottom: none;
+  }
+
+  .pricing-overview__mobile-label {
+    font-size: var(--font-body-md-size);
+    font-family: var(--font-family-body);
+    color: var(--color-text);
+    margin-bottom: 6px;
+  }
+
+  .pricing-overview__mobile-value {
+    font-size: var(--font-body-md-size);
+    font-family: var(--font-family-body);
+    color: var(--color-headings);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .pricing-overview__mobile-value svg {
+    display: block;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 900px) {
+    .pricing-overview__grid {
+      min-width: 720px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pricing-overview__inner {
+      padding: 64px 20px;
+    }
+
+    .pricing-overview__grid {
+      display: none;
+    }
+
+    .pricing-overview__table {
+      overflow: visible;
+    }
+
+    .pricing-overview__mobile {
+      display: block;
+    }
+  }
+</style>

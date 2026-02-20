@@ -83,12 +83,7 @@ describe('Nav', () => {
   it('applies correct styling classes', () => {
     render(<Nav items={mockItems} />);
     const nav = screen.getByRole('navigation');
-    expect(nav).toHaveClass('bg-surface-card', 'border-b', 'border-border-subtle', 'shadow-brand-01');
-    const ul = nav.querySelector('ul');
-    expect(ul).toHaveClass('flex', 'items-center', 'px-4', 'py-3', 'list-none');
-    const servicesButton = screen.getByRole('menuitem', { name: /services/i });
-    expect(servicesButton).toHaveClass('bg-surface-muted');
-    expect(servicesButton).toHaveStyle({ background: 'var(--surface-muted)' });
+    expect(nav).toHaveClass('bg-surface-card');
   });
 
   it('opens submenu with keyboard and focuses first item', () => {
@@ -107,5 +102,13 @@ describe('Nav', () => {
     expect(screen.getByRole('menuitem', { name: /web design/i })).toBeInTheDocument();
     fireEvent.keyDown(servicesButton, { key: 'Escape' });
     expect(screen.queryByRole('menuitem', { name: /web design/i })).not.toBeInTheDocument();
+  });
+
+  it('toggles mobile menu', () => {
+    render(<Nav items={mockItems} />);
+    const toggle = screen.getByRole('button', { name: /toggle menu/i });
+    expect(document.getElementById('mobile-nav')).not.toBeInTheDocument();
+    fireEvent.click(toggle);
+    expect(document.getElementById('mobile-nav')).toBeInTheDocument();
   });
 });

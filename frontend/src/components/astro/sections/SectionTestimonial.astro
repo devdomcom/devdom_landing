@@ -1,0 +1,161 @@
+---
+import Image from "../atomic/Image.astro";
+import underline from "../../../assets/images/decorations/underline.svg";
+
+const {
+  variant = "light", // "light" | "dark"
+  headline,
+  highlightWord,
+  supporting,
+  quote,
+  avatarSrc,
+  avatarAlt,
+  attribution,
+} = Astro.props;
+
+const isDark = variant === "dark";
+---
+
+<section class={`testimonial ${isDark ? "testimonial--dark" : "testimonial--light"}`}>
+  <div class="testimonial__inner">
+    {headline && (
+      <h2 class={`${isDark ? "text-h3" : "text-h2"} font-heading ${isDark ? "text-primary-50" : "text-headings"} text-center`}>
+        {highlightWord && headline.includes(highlightWord) ? (
+          <>
+            {headline.split(highlightWord)[0]}
+            <span class="testimonial__highlight" style={`--underline-url: url(${underline.src});`}>{highlightWord}</span>
+            {headline.split(highlightWord).slice(1).join(highlightWord)}
+          </>
+        ) : (
+          headline
+        )}
+      </h2>
+    )}
+    {supporting && (
+      <p class={`${isDark ? "text-h5 text-primary-50" : "text-h5 text-headings"} font-heading text-center max-w-2xl`}>
+        {supporting}
+      </p>
+    )}
+    {quote && (
+      <blockquote class={`${isDark ? "text-h4 text-primary-50" : "text-h3 text-primary-900"} font-heading text-center max-w-3xl`}>
+        {isDark ? (
+          <span class="testimonial__quote">“{quote}”</span>
+        ) : (
+          <span class="testimonial__quote testimonial__quote--highlight">“{quote}”</span>
+        )}
+      </blockquote>
+    )}
+    {(avatarSrc || attribution) && (
+      <div class="testimonial__attr">
+        {avatarSrc && (
+          <div class={`testimonial__avatar ${isDark ? "testimonial__avatar--lg" : "testimonial__avatar--sm"}`}>
+            <Image src={avatarSrc} alt={avatarAlt} width={isDark ? 56 : 44} height={isDark ? 56 : 44} />
+          </div>
+        )}
+        <span class={`testimonial__attr-divider ${isDark ? "testimonial__attr-divider--dark" : "testimonial__attr-divider--light"}`} aria-hidden="true"></span>
+        {attribution && (
+          <p class={`text-body-xs font-body ${isDark ? "text-primary-50" : "text-gray-500"}`}>
+            {attribution}
+          </p>
+        )}
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .testimonial {
+    width: 100%;
+  }
+
+  .testimonial--dark {
+    background: var(--color-gray-900);
+    padding: 96px 24px;
+  }
+
+  .testimonial--light {
+    padding: 80px 24px;
+  }
+
+  .testimonial__inner {
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .testimonial__attr {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+  }
+
+  .testimonial__attr-divider {
+    width: 28px;
+    height: 1px;
+    opacity: 0.6;
+  }
+
+  .testimonial__attr-divider--dark {
+    background: var(--color-primary-50);
+  }
+
+  .testimonial__attr-divider--light {
+    background: var(--color-gray-500);
+  }
+
+  .testimonial__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  .testimonial__avatar--sm {
+    width: 44px;
+    height: 44px;
+  }
+
+  .testimonial__avatar--lg {
+    width: 56px;
+    height: 56px;
+  }
+
+  .testimonial__highlight {
+    position: relative;
+    display: inline-block;
+    margin-left: 6px;
+    padding-bottom: 0;
+    line-height: 1;
+  }
+
+  .testimonial__highlight::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 12px;
+    transform: translateY(4px);
+    background-image: var(--underline-url);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    pointer-events: none;
+  }
+
+  .testimonial__quote {
+    line-height: 1.55;
+  }
+
+  .testimonial__quote--highlight {
+    background: var(--color-primary-50);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    padding: 4px 0;
+  }
+</style>
