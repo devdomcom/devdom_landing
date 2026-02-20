@@ -44,10 +44,7 @@ const Nav: React.FC<NavProps> = ({
         <div className="ml-auto hidden md:flex">
           <a
             href={ctaHref}
-            className="inline-flex items-center justify-center h-12 px-5 py-4 rounded-[12px] border border-[color:var(--color-primary-900)] bg-white font-body text-body-xs hover:bg-[color:var(--color-primary-900)] hover:text-white transition-colors"
-            style={{ color: 'var(--color-primary-900)', transition: 'color 150ms ease' }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-white)')}
-            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-primary-900)')}
+            className="inline-flex items-center justify-center h-12 px-5 py-4 rounded-[12px] border border-[color:var(--button-secondary-border)] bg-[color:var(--button-secondary-bg)] text-[color:var(--button-secondary-text)] font-body text-body-xs hover:bg-[color:var(--button-secondary-bg-hover)] hover:border-[color:var(--button-secondary-border-hover)] hover:text-[color:var(--button-secondary-text-hover)] transition-colors"
           >
             {ctaLabel}
           </a>
@@ -79,10 +76,7 @@ const Nav: React.FC<NavProps> = ({
           <div className="px-6 pb-5">
             <a
               href={ctaHref}
-              className="inline-flex items-center justify-center h-12 px-5 py-4 rounded-[12px] border border-[color:var(--color-primary-900)] bg-white font-body text-body-xs hover:bg-[color:var(--color-primary-900)] hover:text-white transition-colors w-full"
-              style={{ color: 'var(--color-primary-900)', transition: 'color 150ms ease' }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-white)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--color-primary-900)')}
+              className="inline-flex items-center justify-center h-12 px-5 py-4 rounded-[12px] border border-[color:var(--button-secondary-border)] bg-[color:var(--button-secondary-bg)] text-[color:var(--button-secondary-text)] font-body text-body-xs hover:bg-[color:var(--button-secondary-bg-hover)] hover:border-[color:var(--button-secondary-border-hover)] hover:text-[color:var(--button-secondary-text-hover)] transition-colors w-full"
             >
               {ctaLabel}
             </a>

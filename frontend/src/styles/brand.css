@@ -178,10 +178,39 @@
   --button-secondary-bg-hover: var(--color-primary-900);
   --button-secondary-bg-disabled: var(--color-white);
   --button-secondary-border: var(--color-primary-900);
+  --button-secondary-border-hover: var(--color-primary-900);
   --button-secondary-border-disabled: var(--color-gray-500);
   --button-secondary-text: var(--color-primary-900);
   --button-secondary-text-hover: var(--color-white);
   --button-secondary-text-disabled: var(--color-gray-500);
+
+  /* Cards */
+  --card-icon-bg: var(--surface-muted);
+  --card-icon-border: var(--color-primary-100);
+  --card-icon-icon: var(--text-primary);
+  --card-icon-title: var(--color-headings);
+  --card-icon-description: var(--text-muted);
+  --card-text-bg: var(--surface-muted);
+  --card-text-border: var(--color-primary-100);
+  --card-text-title: var(--color-headings);
+  --card-text-description: var(--color-gray-600);
+  --card-type4-bg: var(--surface-muted);
+  --card-type4-border: var(--color-primary-100);
+  --card-type4-heading: var(--color-headings);
+  --card-type4-icon: var(--color-primary-700);
+  --card-type4-text: var(--color-headings);
+  --card-status-bg-a: var(--color-gray-800);
+  --card-status-bg-b: linear-gradient(135deg, var(--color-primary-300), var(--color-primary-100));
+  --card-status-border-a: linear-gradient(135deg, var(--color-primary-100), var(--color-primary-900));
+  --card-status-border-b: linear-gradient(135deg, var(--color-primary-100), var(--color-primary-900));
+  --card-status-title-a: var(--color-white);
+  --card-status-title-b: var(--color-headings);
+  --card-status-text-a: var(--color-white);
+  --card-status-text-b: var(--color-headings);
+  --card-status-icon-bg: var(--color-white);
+  --card-status-line-shadow: 0 -2px 8px var(--color-white);
+  --card-status-line-dark-bg: linear-gradient(180deg, var(--color-gray-800) 0%, rgba(69, 49, 77, 0.12) 75%, rgba(69, 49, 77, 0.02) 92%, rgba(69, 49, 77, 0) 100%);
+  --card-status-line-color-bg: linear-gradient(180deg, var(--color-primary-900) 0%, rgba(84, 13, 141, 0.14) 75%, rgba(84, 13, 141, 0.03) 92%, rgba(84, 13, 141, 0) 100%);
 
   /* Fields */
   --field-bg: var(--color-white);
@@ -325,31 +354,62 @@
   --action-ghost-hover: rgba(255, 255, 255, 0.06);
   --action-ghost-on: var(--color-headings);
 
-  --action-link-default: var(--color-primary-900);
-  --action-link-hover: var(--color-primary-900);
-  --action-link-disabled: var(--color-gray-500);
+  --action-link-default: var(--color-primary-300);
+  --action-link-hover: var(--color-primary-500);
+  --action-link-disabled: #6e6e6e;
 
-  --action-link: var(--color-secondary-blue-500);
-  --action-link-hover: var(--color-primary-100);
+  --action-link: var(--color-primary-300);
+  --action-link-hover: var(--color-primary-500);
   --action-link-visited: var(--color-primary-300);
 
   --focus-ring-color: rgba(185, 138, 240, 0.72);
 
   /* Buttons */
-  --button-primary-bg: var(--color-primary-900);
+  --button-primary-bg: var(--color-primary-500);
   --button-primary-bg-hover: var(--color-primary-700);
-  --button-primary-bg-disabled: var(--color-gray-200);
-  --button-primary-text: var(--color-headings);
-  --button-primary-text-disabled: var(--color-gray-500);
+  --button-primary-bg-disabled: #45314d;
+  --button-primary-text: #fdfbff;
+  --button-primary-text-disabled: #8a8a8a;
 
-  --button-secondary-bg: var(--color-gray-200);
+  --button-secondary-bg: transparent;
   --button-secondary-bg-hover: var(--color-primary-900);
-  --button-secondary-bg-disabled: var(--color-gray-200);
-  --button-secondary-border: var(--color-primary-900);
-  --button-secondary-border-disabled: var(--color-gray-500);
-  --button-secondary-text: var(--color-primary-900);
-  --button-secondary-text-hover: var(--color-headings);
-  --button-secondary-text-disabled: var(--color-text);
+  --button-secondary-bg-disabled: transparent;
+  --button-secondary-border: #6e6e6e;
+  --button-secondary-border-hover: var(--color-primary-500);
+  --button-secondary-border-disabled: #494949;
+  --button-secondary-text: #f5f5f5;
+  --button-secondary-text-hover: #f5f5f5;
+  --button-secondary-text-disabled: #6e6e6e;
+
+  /* Cards */
+  --card-icon-bg: #45314d;
+  --card-icon-border: #494949;
+  --card-icon-icon: #c879f8;
+  --card-icon-title: #f5f5f5;
+  --card-icon-description: #b1b1b1;
+  --card-text-bg: #301934;
+  --card-text-border: #45314d;
+  --card-text-title: #f5f5f5;
+  --card-text-description: #b1b1b1;
+  --card-type4-bg: #301934;
+  --card-type4-border: #45314d;
+  --card-type4-heading: #f5f5f5;
+  --card-type4-icon: #c879f8;
+  --card-type4-text: #d1d1d1;
+  --card-status-bg-a: #45314d;
+  --card-status-bg-b: linear-gradient(135deg, rgba(200, 121, 248, 0.08) 0%, rgba(200, 121, 248, 0) 100%), #45314d;
+  --card-status-border-a: #494949;
+  --card-status-border-b: #a729f5;
+  --card-status-title-a: #f5f5f5;
+  --card-status-title-b: #f5f5f5;
+  --card-status-text-a: #b1b1b1;
+  --card-status-text-b: #b1b1b1;
+  --card-status-icon-bg: #f5f5f5;
+  --card-status-line-shadow: none;
+  --card-status-line-dark-bg: linear-gradient(180deg, #474547 0%, #474547 58%, rgba(71, 69, 71, 0.24) 84%, rgba(71, 69, 71, 0) 100%);
+  --card-status-line-dark-shadow: 0 0 12px rgba(245, 245, 245, 0.26);
+  --card-status-line-color-bg: linear-gradient(180deg, rgba(167, 41, 245, 0.95) 0%, rgba(167, 41, 245, 0.72) 22%, rgba(167, 41, 245, 0.24) 80%, rgba(167, 41, 245, 0) 100%);
+  --card-status-line-color-shadow: 0 0 12px rgba(167, 41, 245, 0.45), 0 0 22px rgba(245, 245, 245, 0.22);
 
   --field-bg: var(--color-gray-200);
   --field-border: var(--color-gray-400);

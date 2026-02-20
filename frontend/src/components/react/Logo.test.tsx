@@ -16,3 +16,11 @@ test('renders logo with custom width and height', () => {
   const logo = screen.getByRole('img', { name: /test logo/i });
   expect(logo).toHaveStyle({ width: '300px', height: '75px' });
 });
+
+test('uses dark logo when theme is dark', () => {
+  document.documentElement.setAttribute('data-theme', 'dark');
+  render(<Logo alt="Dark Logo" />);
+
+  const logo = screen.getByRole('img', { name: /dark logo/i });
+  expect(logo).toHaveStyle({ backgroundImage: expect.stringContaining('devdom-logo-on-dark-mode') });
+});
