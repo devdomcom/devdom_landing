@@ -184,6 +184,11 @@
   --button-secondary-text-hover: var(--color-white);
   --button-secondary-text-disabled: var(--color-gray-500);
 
+  /* Navigation */
+  --nav-link-default: var(--text-secondary);
+  --nav-link-hover: var(--text-primary);
+  --nav-toggle-color: var(--color-primary-900);
+
   /* Cards */
   --card-icon-bg: var(--surface-muted);
   --card-icon-border: var(--color-primary-100);
@@ -380,6 +385,11 @@
   --button-secondary-text: #f5f5f5;
   --button-secondary-text-hover: #f5f5f5;
   --button-secondary-text-disabled: #6e6e6e;
+
+  /* Navigation */
+  --nav-link-default: var(--action-link-default);
+  --nav-link-hover: var(--action-link-hover);
+  --nav-toggle-color: var(--color-gray-100);
 
   /* Cards */
   --card-icon-bg: #45314d;

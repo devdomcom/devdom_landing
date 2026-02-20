@@ -45,13 +45,16 @@ const Nav: React.FC<NavProps> = ({
           <a
             href={ctaHref}
             className="inline-flex items-center justify-center h-12 px-5 py-4 rounded-[12px] border border-[color:var(--button-secondary-border)] bg-[color:var(--button-secondary-bg)] text-[color:var(--button-secondary-text)] font-body text-body-xs hover:bg-[color:var(--button-secondary-bg-hover)] hover:border-[color:var(--button-secondary-border-hover)] hover:text-[color:var(--button-secondary-text-hover)] transition-colors"
+            style={{ color: 'var(--button-secondary-text)', transition: 'color 150ms ease' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--button-secondary-text-hover)')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--button-secondary-text)')}
           >
             {ctaLabel}
           </a>
         </div>
         <button
           type="button"
-          className="ml-auto md:hidden inline-flex items-center justify-center w-10 h-10 text-[color:var(--color-primary-900)]"
+          className="ml-auto md:hidden inline-flex items-center justify-center w-10 h-10 text-[color:var(--nav-toggle-color)]"
           aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMobileOpen}
           aria-controls="mobile-nav"
@@ -77,6 +80,9 @@ const Nav: React.FC<NavProps> = ({
             <a
               href={ctaHref}
               className="inline-flex items-center justify-center h-12 px-5 py-4 rounded-[12px] border border-[color:var(--button-secondary-border)] bg-[color:var(--button-secondary-bg)] text-[color:var(--button-secondary-text)] font-body text-body-xs hover:bg-[color:var(--button-secondary-bg-hover)] hover:border-[color:var(--button-secondary-border-hover)] hover:text-[color:var(--button-secondary-text-hover)] transition-colors w-full"
+              style={{ color: 'var(--button-secondary-text)', transition: 'color 150ms ease' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--button-secondary-text-hover)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--button-secondary-text)')}
             >
               {ctaLabel}
             </a>
