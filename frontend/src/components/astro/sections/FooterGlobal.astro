@@ -4,6 +4,7 @@ import Button from "../atomic/Button.astro";
 
 const {
   ctaLogoSrc,
+  ctaLogoDarkSrc,
   ctaLogoAlt,
   ctaBgSrc,
   ctaMessage,
@@ -36,8 +37,16 @@ const {
             alt={ctaLogoAlt}
             width={140}
             height={40}
-            layout="fixed"
-            class="h-auto w-auto max-w-[140px] object-contain"
+            class="footer-cta__logo-image footer-cta__logo-image--light h-auto w-auto max-w-[100px] object-contain"
+          />
+        )}
+        {ctaLogoDarkSrc && (
+          <Image
+            src={ctaLogoDarkSrc}
+            alt={ctaLogoAlt}
+            width={1534}
+            height={333}
+            class="footer-cta__logo-image footer-cta__logo-image--dark h-auto w-auto max-w-[100px] object-contain"
           />
         )}
       </div>
@@ -45,7 +54,7 @@ const {
         <p class="footer-cta__message">{ctaMessage}</p>
       )}
       {ctaLabel && ctaHref && (
-        <Button variant="primary" size="medium" href={ctaHref}>
+        <Button variant="primary" size="medium" href={ctaHref} class="footer-cta__button">
           {ctaLabel}
         </Button>
       )}
@@ -91,7 +100,7 @@ const {
 
 <style>
   .footer-global {
-    background: var(--color-gray-900);
+    background: var(--footer-bg);
     color: var(--color-white-soft);
     padding: 72px 24px 28px;
   }
@@ -102,7 +111,7 @@ const {
   }
 
   .footer-cta {
-    background: var(--surface-card);
+    background: var(--footer-cta-bg);
     border-radius: 18px;
     padding: 40px 60px;
     display: flex;
@@ -138,12 +147,28 @@ const {
     z-index: 2;
   }
 
+  .footer-cta__logo-image--dark {
+    display: none;
+  }
+
+  :global([data-theme="dark"]) .footer-cta__logo-image--light {
+    display: none;
+  }
+
+  :global([data-theme="dark"]) .footer-cta__logo-image--dark {
+    display: block;
+  }
+
   .footer-cta__message {
     font-size: var(--font-h4-size);
     font-family: var(--font-family-heading);
     color: var(--color-headings);
     flex: 1;
     text-align: center;
+  }
+
+  :global([data-theme="dark"]) .footer-cta__message {
+    color: var(--color-gray-100);
   }
 
   .footer-grid {
@@ -156,7 +181,7 @@ const {
   .footer-col__title {
     font-size: var(--font-h5-size);
     font-family: var(--font-family-heading);
-    color: var(--color-white-soft);
+    color: var(--footer-title);
     margin-bottom: 16px;
   }
 
@@ -169,32 +194,64 @@ const {
     gap: 12px;
   }
 
-  .footer-col__link {
+  a.footer-col__link {
     font-size: var(--font-body-sm-size);
     font-family: var(--font-family-body);
-    color: var(--color-white-soft);
+    color: var(--footer-link);
     text-decoration: none;
   }
 
-  .footer-col__link:hover {
+  a.footer-col__link:visited,
+  a.footer-col__link:focus-visible {
+    color: var(--footer-link);
+  }
+
+  a.footer-col__link:hover {
+    color: var(--footer-link);
     text-decoration: underline;
   }
 
-  .footer-contact {
+  a.footer-contact {
     display: inline-flex;
     align-items: center;
     gap: 12px;
     font-size: var(--font-body-sm-size);
     font-family: var(--font-family-body);
-    color: var(--color-white-soft);
+    color: var(--footer-link);
     text-decoration: none;
+  }
+
+  a.footer-contact:visited,
+  a.footer-contact:hover,
+  a.footer-contact:focus-visible {
+    color: var(--footer-link);
+  }
+
+  :global([data-theme="dark"]) a.footer-col__link,
+  :global([data-theme="dark"]) a.footer-col__link:visited,
+  :global([data-theme="dark"]) a.footer-col__link:hover,
+  :global([data-theme="dark"]) a.footer-col__link:focus-visible,
+  :global([data-theme="dark"]) a.footer-contact,
+  :global([data-theme="dark"]) a.footer-contact:visited,
+  :global([data-theme="dark"]) a.footer-contact:hover,
+  :global([data-theme="dark"]) a.footer-contact:focus-visible {
+    color: var(--footer-link) !important;
+  }
+
+  :global([data-theme="dark"]) .footer-cta :is(a.footer-cta__button, button.footer-cta__button),
+  :global([data-theme="dark"]) .footer-cta :is(a.footer-cta__button, button.footer-cta__button):hover,
+  :global([data-theme="dark"]) .footer-cta :is(a.footer-cta__button, button.footer-cta__button):visited,
+  :global([data-theme="dark"]) .footer-cta :is(a.footer-cta__button, button.footer-cta__button):focus-visible {
+    color: var(--button-primary-text) !important;
   }
 
   .footer-contact__icon {
     width: 36px;
     height: 36px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.08);
+    border-radius: 5px;
+    border: 1px solid var(--footer-icon-border);
+    background: var(--footer-icon-bg);
+    color: var(--footer-icon-color);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -203,11 +260,11 @@ const {
   .footer-legal {
     margin-top: 40px;
     padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: 1px solid var(--footer-legal-border);
     text-align: center;
     font-size: var(--font-body-xs-size);
     font-family: var(--font-family-body);
-    color: var(--color-white-soft);
+    color: var(--footer-legal-text);
   }
 
   @media (max-width: 900px) {
