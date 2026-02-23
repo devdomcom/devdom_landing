@@ -341,6 +341,9 @@ const navItems = [
                     imageSrc={portrait}
                     imageAlt="Portrait image"
                   />
+                  <div class="mt-4 mb-2 px-3 py-2 text-xs font-semibold tracking-wide rounded bg-[color:var(--color-primary-900)] text-[color:var(--color-white-soft)]">
+                    Component: Section Text Card Split
+                  </div>
                   <SectionTextCardSplit
                     variant="text-left"
                     heading="From hiring plan to talent pipeline"
@@ -789,6 +792,9 @@ const navItems = [
               <div>
                 <h3 class="text-lg font-semibold mb-4">Section Text Card Split</h3>
                 <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <div class="px-3 py-2 text-xs font-semibold tracking-wide bg-[color:var(--color-primary-900)] text-[color:var(--color-white-soft)]">
+                    Component: Section Text Card Split
+                  </div>
                   <SectionTextCardSplit
                     variant="text-left"
                     heading="From hiring plan to talent pipeline"
@@ -902,6 +908,7 @@ const navItems = [
       // Initial load
       const initialSection = window.location.hash.slice(1) || 'images';
       showSection(initialSection);
+
     </script>
   </body>
 </html>
