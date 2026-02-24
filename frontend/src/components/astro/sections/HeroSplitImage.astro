@@ -18,21 +18,21 @@ const subtitleLeading = subtitleMatch?.[1];
 const subtitleLastWord = subtitleMatch?.[2];
 ---
 
-<section class="w-full bg-surface-muted py-20">
+<section class="hero-split-image w-full bg-surface-muted py-20">
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-12">
       <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
         {title && (
-          <h1 class="text-h1 font-heading text-headings max-w-xl">{title}</h1>
+          <h1 class="hero-split-image__title text-h1 font-heading text-headings max-w-xl">{title}</h1>
         )}
         {subtitle && (
-          <p class="mt-6 text-h4 font-heading text-headings max-w-xl">
+          <p class="hero-split-image__subtitle mt-6 text-h4 font-heading text-headings max-w-xl">
             {subtitleLeading && subtitleLastWord && linkHref ? (
               <>
                 <span>{subtitleLeading}</span>
                 <a
                   href={linkHref}
-                  class="text-[color:var(--color-primary-700)] no-underline hover:underline"
+                  class="hero-split-image__subtitle-link text-[color:var(--color-primary-700)] no-underline hover:underline"
                 >
                   {subtitleLastWord}
                 </a>
@@ -64,3 +64,14 @@ const subtitleLastWord = subtitleMatch?.[2];
     </div>
   </div>
 </section>
+
+<style>
+  :global([data-theme="dark"]) .hero-split-image__title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .hero-split-image__subtitle,
+  :global([data-theme="dark"]) .hero-split-image__subtitle-link {
+    color: var(--color-gray-400);
+  }
+</style>

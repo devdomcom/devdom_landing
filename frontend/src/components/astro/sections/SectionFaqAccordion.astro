@@ -2,16 +2,16 @@
 const { items = [] } = Astro.props;
 ---
 
-<section class="w-full">
+<section class="section-faq-accordion w-full">
   <div class="max-w-5xl mx-auto px-6">
     <div class="faq-accordion">
       {items.map((item) => (
         <details class="faq-item">
           <summary class="faq-summary">
-            <span class="text-h4 font-heading text-headings">{item.question}</span>
+            <span class="faq-question text-h4 font-heading text-headings">{item.question}</span>
             <span class="faq-icon" aria-hidden="true"></span>
           </summary>
-          <div class="faq-content text-body-md font-body text-text">
+          <div class="faq-content faq-answer text-body-md font-body text-text">
             {item.answer}
           </div>
         </details>
@@ -78,5 +78,26 @@ const { items = [] } = Astro.props;
 
   .faq-item[open] .faq-icon::after {
     transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  :global([data-theme="dark"]) .section-faq-accordion {
+    background: var(--color-gray-1000);
+  }
+
+  :global([data-theme="dark"]) .faq-question {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .faq-answer {
+    color: var(--color-gray-400);
+  }
+
+  :global([data-theme="dark"]) .faq-item {
+    border-bottom-color: var(--color-gray-400);
+  }
+
+  :global([data-theme="dark"]) .faq-icon::before,
+  :global([data-theme="dark"]) .faq-icon::after {
+    background: var(--color-primary-300);
   }
 </style>

@@ -40,12 +40,12 @@ const {
           </div>
         )}
         {headline && (
-          <h1 class="text-h1 font-heading text-[color:var(--color-white-soft)] max-w-3xl">
+          <h1 class="hero-layered__title text-h1 font-heading text-[color:var(--color-white-soft)] max-w-3xl">
             {headline}
           </h1>
         )}
         {description && (
-          <p class="mt-6 text-h4 font-heading text-[color:var(--color-white-soft)] max-w-2xl">
+          <p class="hero-layered__subtitle mt-6 text-h4 font-heading text-[color:var(--color-white-soft)] max-w-2xl">
             {description}
           </p>
         )}
@@ -118,6 +118,18 @@ const {
 
   .hero-layered__text {
     text-align: left;
+  }
+
+  :global([data-theme="dark"]) .hero-layered {
+    background: var(--color-gray-900);
+  }
+
+  :global([data-theme="dark"]) .hero-layered__title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .hero-layered__subtitle {
+    color: var(--color-gray-300);
   }
 
   @media (max-width: 1199px) {

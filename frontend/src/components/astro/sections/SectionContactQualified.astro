@@ -229,4 +229,48 @@ const {
       transform: translate(-50%, -50%) scale(1.4);
     }
   }
+
+  :global([data-theme="dark"]) .contact-section::before {
+    background: var(--color-gray-800);
+  }
+
+  :global([data-theme="dark"]) .contact-section__decoration img {
+    opacity: 0.4;
+  }
+
+  :global([data-theme="dark"]) .contact-section__title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .contact-section__description {
+    color: var(--color-gray-300);
+  }
+
+  :global([data-theme="dark"]) a.contact-section__contact,
+  :global([data-theme="dark"]) a.contact-section__contact:visited,
+  :global([data-theme="dark"]) a.contact-section__contact:hover,
+  :global([data-theme="dark"]) a.contact-section__contact:focus-visible {
+    color: var(--color-gray-400) !important;
+  }
+
+  :global([data-theme="dark"]) .contact-section__form-card {
+    background: var(--color-gray-900);
+    box-shadow: inset 0 0 0 1px var(--color-gray-700);
+  }
+
+  :global([data-theme="dark"]) .contact-section__form :global(label) {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .contact-section__form :global(input),
+  :global([data-theme="dark"]) .contact-section__form :global(textarea) {
+    background: linear-gradient(135deg, rgba(200, 121, 248, 0.08) 0%, rgba(200, 121, 248, 0) 100%), var(--color-gray-900);
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1px var(--color-gray-800);
+  }
+
+  :global([data-theme="dark"]) .contact-section__form :global(input::placeholder),
+  :global([data-theme="dark"]) .contact-section__form :global(textarea::placeholder) {
+    color: var(--color-gray-500);
+  }
 </style>

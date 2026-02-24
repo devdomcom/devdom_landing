@@ -4,18 +4,18 @@ import Link from '../atomic/Link.astro';
 const { title, subtitle, featureItems, footerLink, class: className = '' } = Astro.props;
 ---
 
-<section class={`bg-gray-900 rounded-[15px] px-10 py-15 text-center ${className}`}>
+<section class={`section-highlight bg-gray-900 rounded-[15px] px-10 py-15 text-center ${className}`}>
   <div class="flex flex-col items-center space-y-8">
     <div class="space-y-4 max-w-2xl">
-      {title && <h2 class="text-h2 font-heading text-white-soft">{title}</h2>}
-      {subtitle && <h4 class="text-h4 font-heading text-white-soft">{subtitle}</h4>}
+      {title && <h2 class="section-highlight__title text-h2 font-heading text-white-soft">{title}</h2>}
+      {subtitle && <h4 class="section-highlight__subtitle text-h4 font-heading text-white-soft">{subtitle}</h4>}
     </div>
     {featureItems && (
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
         {featureItems.map((item, index) => (
-          <div class={`flex flex-col items-center space-y-2 ${index % 2 === 0 && index < featureItems.length - 1 ? 'sm:border-r sm:border-white-soft' : ''} ${index % 4 !== 3 ? 'lg:border-r lg:border-white-soft' : ''}`}>
-            {item.icon && <span set:html={item.icon} class="text-2xl text-white-soft"></span>}
-            {item.label && <p class="text-body-lg font-body text-white-soft">{item.label}</p>}
+          <div class={`section-highlight__item flex flex-col items-center space-y-2 ${index % 2 === 0 && index < featureItems.length - 1 ? 'sm:border-r sm:border-white-soft' : ''} ${index % 4 !== 3 ? 'lg:border-r lg:border-white-soft' : ''}`}>
+            {item.icon && <span set:html={item.icon} class="section-highlight__icon text-2xl text-white-soft"></span>}
+            {item.label && <p class="section-highlight__label text-body-lg font-body text-white-soft">{item.label}</p>}
           </div>
         ))}
       </div>
@@ -27,3 +27,26 @@ const { title, subtitle, featureItems, footerLink, class: className = '' } = Ast
     )}
   </div>
 </section>
+
+<style>
+  :global([data-theme="dark"]) .section-highlight {
+    background: var(--color-gray-900);
+  }
+
+  :global([data-theme="dark"]) .section-highlight__title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .section-highlight__subtitle {
+    color: var(--color-gray-400);
+  }
+
+  :global([data-theme="dark"]) .section-highlight__icon,
+  :global([data-theme="dark"]) .section-highlight__label {
+    color: var(--color-gray-300);
+  }
+
+  :global([data-theme="dark"]) .section-highlight__item {
+    border-color: var(--color-gray-800);
+  }
+</style>

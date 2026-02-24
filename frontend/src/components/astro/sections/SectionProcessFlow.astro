@@ -5,7 +5,7 @@ import processMobileCurve from "../../../assets/images/decorations/process-mobil
 const { title, subtitle, steps = [] } = Astro.props;
 ---
 
-<section class="w-full">
+<section class="section-process-flow w-full">
   <div class="max-w-7xl mx-auto px-6">
     <div class="process-flow">
       <div class="process-flow__intro">
@@ -334,5 +334,46 @@ const { title, subtitle, steps = [] } = Astro.props;
     .process-flow__mobile {
       display: flex;
     }
+  }
+
+  :global([data-theme="dark"]) .section-process-flow {
+    background: var(--color-gray-1000);
+  }
+
+  :global([data-theme="dark"]) .process-flow__intro h2 {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .process-flow__intro p {
+    color: var(--color-gray-400);
+  }
+
+  :global([data-theme="dark"]) .process-flow__path,
+  :global([data-theme="dark"]) .process-flow__mobile-decoration-image {
+    opacity: 0.5;
+  }
+
+  :global([data-theme="dark"]) .process-flow__number,
+  :global([data-theme="dark"]) .process-flow__mobile-number {
+    color: var(--color-gray-700);
+  }
+
+  :global([data-theme="dark"]) .process-flow__step h3,
+  :global([data-theme="dark"]) .process-flow__mobile-title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .process-flow__step p,
+  :global([data-theme="dark"]) .process-flow__mobile-description {
+    color: var(--color-gray-400);
+  }
+
+  :global([data-theme="dark"]) .process-flow__node {
+    background: rgba(48, 25, 52, 0.9);
+    border: 1px solid var(--color-gray-800);
+  }
+
+  :global([data-theme="dark"]) .process-flow__node-inner {
+    background: var(--color-gray-400);
   }
 </style>
