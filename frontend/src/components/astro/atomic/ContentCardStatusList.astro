@@ -16,8 +16,8 @@ const outerStyle = isDark
   : "background: var(--card-status-border-b);";
 ---
 
-<div class="w-full rounded-[15px] p-[1.5px]" style={outerStyle}>
-  <div class="rounded-[14px] p-10" style={innerStyle}>
+<div class="status-card w-full rounded-[15px] p-[1.5px]" style={outerStyle}>
+  <div class="status-card__inner rounded-[14px] p-10" style={innerStyle}>
     <div class="status-row">
       <div class="status-rail">
         <span class="status-rail__icon text-primary-700" aria-hidden="true">
@@ -25,19 +25,19 @@ const outerStyle = isDark
         </span>
         <span class={`status-rail__line ${isDark ? "status-rail__line--dark" : "status-rail__line--color"}`} aria-hidden="true"></span>
       </div>
-      <div class="flex-1">
+      <div class="status-content flex-1">
         <div class="flex items-center gap-3">
           {title && (
-            <h3 class={`text-h4 font-heading ${titleClass}`}>{title}</h3>
+            <h3 class={`status-title text-h4 font-heading ${titleClass}`}>{title}</h3>
           )}
         </div>
-        <ul class="mt-6 flex flex-col gap-4">
+        <ul class="status-list mt-6 flex flex-col gap-4">
           {items.map((item) => (
-            <li class="flex items-center gap-3">
-              <span class={textClass} aria-hidden="true">
+            <li class="status-list__item flex items-center gap-3">
+              <span class={`status-list__icon ${textClass}`} aria-hidden="true">
                 {item.icon && <span class="block" set:html={item.icon}></span>}
               </span>
-              <span class={`text-body-md font-body ${textClass}`}>{item.label}</span>
+              <span class={`status-list__text text-body-md font-body ${textClass}`}>{item.label}</span>
             </li>
           ))}
         </ul>
@@ -93,5 +93,73 @@ const outerStyle = isDark
   .status-rail__line--color {
     background: var(--card-status-line-color-bg);
     box-shadow: var(--card-status-line-color-shadow, var(--card-status-line-shadow));
+  }
+
+  .status-content {
+    min-width: 0;
+  }
+
+  .status-list__text {
+    min-width: 0;
+  }
+
+  .status-list__item {
+    align-items: flex-start;
+  }
+
+  .status-list__icon {
+    margin-top: 2px;
+  }
+
+  @media (max-width: 380px) {
+    .status-card__inner {
+      padding: 24px 20px;
+    }
+
+    .status-row {
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+    }
+
+    .status-rail {
+      flex: 0 0 44px;
+    }
+
+    .status-rail__icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .status-rail__line {
+      width: 2px;
+      top: 36px;
+    }
+
+    .status-title {
+      font-size: var(--font-body-lg-size);
+      line-height: 1.4;
+    }
+
+    .status-list {
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .status-list__item {
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .status-list__icon {
+      width: 16px;
+      min-width: 16px;
+      margin-top: 2px;
+    }
+
+    .status-list__text {
+      font-size: var(--font-body-sm-size);
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
   }
 </style>

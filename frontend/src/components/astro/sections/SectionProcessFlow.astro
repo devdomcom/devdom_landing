@@ -46,24 +46,20 @@ const { title, subtitle, steps = [] } = Astro.props;
       </div>
 
       <div class="process-flow__mobile">
-        <div class="process-flow__mobile-decoration" aria-hidden="true">
-          <img
-            class="process-flow__mobile-decoration-image"
-            src={processMobileCurve.src}
-            alt=""
-          />
-          <img
-            class="process-flow__mobile-decoration-image process-flow__mobile-decoration-image--second"
-            src={processMobileCurve.src}
-            alt=""
-          />
-        </div>
         {steps.map((step, index) => (
           <>
             <div class={`process-flow__mobile-step ${index === steps.length - 1 ? "process-flow__mobile-step--last" : ""}`}>
               <div class="process-flow__mobile-number" aria-hidden="true">{index + 1}</div>
               <h3 class="process-flow__mobile-title text-h4 font-heading text-headings">{step.title}</h3>
               <p class="process-flow__mobile-description text-body-sm font-body text-gray-900">{step.description}</p>
+              {index < steps.length - 1 && (
+                <img
+                  class="process-flow__mobile-connector"
+                  src={processMobileCurve.src}
+                  alt=""
+                  aria-hidden="true"
+                />
+              )}
             </div>
           </>
         ))}
@@ -219,31 +215,22 @@ const { title, subtitle, steps = [] } = Astro.props;
     grid-row: 2;
   }
 
-  .process-flow__mobile-decoration {
+  .process-flow__mobile-step {
+    position: relative;
+    z-index: 1;
+  }
+
+  .process-flow__mobile-connector {
     position: absolute;
-    inset: 0;
+    left: 18px;
+    top: 38px;
+    width: 36px;
+    height: calc(100% - 4px);
+    transform: translateX(-50%);
+    object-fit: fill;
     pointer-events: none;
     z-index: 0;
-    overflow: visible;
   }
-
-  .process-flow__mobile-decoration-image {
-    position: absolute;
-    left: 0;
-    top: 15%;
-    width: 36px;
-    height: 25%;
-    object-fit: cover;
-  }
-
-  .process-flow__mobile-decoration-image--second {
-    top: 50%;
-  }
-
-.process-flow__mobile-step {
-  position: relative;
-  z-index: 1;
-}
 
   .process-flow__mobile {
     --step-1-offset: clamp(-8px, -1vw, -2px);
@@ -349,7 +336,7 @@ const { title, subtitle, steps = [] } = Astro.props;
   }
 
   :global([data-theme="dark"]) .process-flow__path,
-  :global([data-theme="dark"]) .process-flow__mobile-decoration-image {
+  :global([data-theme="dark"]) .process-flow__mobile-connector {
     opacity: 0.5;
   }
 

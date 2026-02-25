@@ -4,20 +4,20 @@ const { items = [] } = Astro.props;
 
 <section class="w-full section-icon-highlights">
   <div class="w-full">
-    <div class="bg-surface-muted rounded-[15px] px-4 md:px-[60px] lg:px-6 py-20">
+    <div class="section-icon-highlights__card bg-surface-muted rounded-[15px] px-4 md:px-[60px] lg:px-6 py-20">
       <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-10 text-center place-items-center">
         {items.map((item) => (
           <div class="flex flex-col items-center">
             {item.icon && (
-              <span class="text-primary-700" aria-hidden="true">
+              <span class="section-icon-highlights__icon text-primary-700" aria-hidden="true">
                 <span class="block" set:html={item.icon}></span>
               </span>
             )}
             {item.title && (
-              <h3 class="mt-4 text-h4 font-heading text-headings">{item.title}</h3>
+              <h3 class="section-icon-highlights__title mt-4 text-h4 font-heading text-headings">{item.title}</h3>
             )}
             {item.description && (
-              <p class="mt-3 text-body-md font-body text-text max-w-xs md:max-w-none">
+              <p class="section-icon-highlights__description mt-3 text-body-md font-body text-text max-w-xs md:max-w-none">
                 {item.description}
               </p>
             )}
@@ -29,6 +29,19 @@ const { items = [] } = Astro.props;
 </section>
 
 <style>
+  :global([data-theme="dark"]) .section-icon-highlights__card {
+    background: var(--color-gray-800);
+    box-shadow: inset 0 0 0 1px var(--color-gray-700);
+  }
+
+  :global([data-theme="dark"]) .section-icon-highlights__title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .section-icon-highlights__description {
+    color: var(--color-gray-400);
+  }
+
   @media (max-width: 1199px) {
     .section-icon-highlights h3 {
       font-size: 24px;
