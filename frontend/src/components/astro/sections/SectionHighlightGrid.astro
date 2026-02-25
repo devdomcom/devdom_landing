@@ -1,0 +1,69 @@
+---
+const { title, subtitle, items = [] } = Astro.props;
+---
+
+<section class="w-full">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="section-highlight-grid bg-[color:var(--color-gray-900)] rounded-[15px] px-10 py-[60px] text-center">
+      {title && (
+        <h2 class="section-highlight-grid__title text-h2 font-heading text-[color:var(--color-white-soft)]">{title}</h2>
+      )}
+      {subtitle && (
+        <p class="section-highlight-grid__subtitle mt-4 text-h4 font-heading text-[color:var(--color-white-soft)] max-w-3xl mx-auto">
+          {subtitle}
+        </p>
+      )}
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12">
+        {items.map((item, index) => (
+          <div
+            class={`section-highlight-grid__item px-6 ${index % 2 === 1 ? "md:border-l md:border-[color:var(--color-white-soft)]" : ""} ${index % 3 === 1 ? "lg:border-x lg:border-[color:var(--color-white-soft)]" : "lg:border-l-0 lg:border-r-0"} ${index % 3 === 2 ? "lg:border-l-0" : ""}`}
+          >
+            {item.icon && (
+              <span class="section-highlight-grid__icon text-[color:var(--color-white-soft)] flex justify-center" aria-hidden="true">
+                <span class="block mx-auto" set:html={item.icon}></span>
+              </span>
+            )}
+            {item.label && (
+              <h3 class="section-highlight-grid__item-title mt-4 text-body-lg font-body text-[color:var(--color-white-soft)]">
+                {item.label}
+              </h3>
+            )}
+            {item.description && (
+              <p class="section-highlight-grid__item-subtitle mt-3 text-body-md font-body text-[color:var(--color-white-soft)]">
+                {item.description}
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  :global([data-theme="dark"]) .section-highlight-grid {
+    background: var(--color-gray-800);
+    box-shadow: inset 0 0 0 1px var(--color-gray-900);
+  }
+
+  :global([data-theme="dark"]) .section-highlight-grid__title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .section-highlight-grid__subtitle {
+    color: var(--color-gray-400);
+  }
+
+  :global([data-theme="dark"]) .section-highlight-grid__icon,
+  :global([data-theme="dark"]) .section-highlight-grid__item-title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .section-highlight-grid__item-subtitle {
+    color: var(--color-gray-300);
+  }
+
+  :global([data-theme="dark"]) .section-highlight-grid__item {
+    border-color: var(--color-gray-600);
+  }
+</style>

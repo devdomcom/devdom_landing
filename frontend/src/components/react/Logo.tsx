@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import logoSrcLight from '../../assets/images/devdom-logo.svg?url';
-import logoSrcDark from '../../assets/images/devdom-logo-dark.svg?url';
+import React, { useEffect, useState } from 'react';
+import logoSrc from '../../assets/images/devdom-logo.png?url';
+import logoDarkSrc from '../../assets/images/devdom-logo-on-dark-mode.png?url';
 
 interface LogoProps {
   alt: string;
@@ -9,33 +9,31 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ alt, width = 200, height = 50 }) => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const updateTheme = () => {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      setTheme(isDark ? 'dark' : 'light');
-    };
+    const root = document.documentElement;
+    const syncTheme = () => setIsDark(root.getAttribute('data-theme') === 'dark');
 
-    updateTheme();
-
-    const observer = new MutationObserver(updateTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    syncTheme();
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(root, { attributes: true, attributeFilter: ['data-theme'] });
 
     return () => observer.disconnect();
   }, []);
 
-  const logoSrc = theme === 'dark' ? logoSrcDark : logoSrcLight;
-
   return (
     <div
       style={{
-        backgroundImage: `url(${logoSrc})`,
+        backgroundImage: `url(${isDark ? logoDarkSrc : logoSrc})`,
+        backgroundColor: isDark ? 'var(--color-gray-1000)' : 'transparent',
         backgroundSize: 'contain',
+        backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         width: `${width}px`,
         height: `${height}px`,
         maxWidth: '8rem', // max-w-32
+        display: 'block',
       }}
       role="img"
       aria-label={alt}

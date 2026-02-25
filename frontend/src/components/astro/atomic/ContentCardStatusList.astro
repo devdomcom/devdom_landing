@@ -2,34 +2,42 @@
 const { variant = "dark", title, headerIcon, items = [] } = Astro.props;
 
 const isDark = variant === "dark";
-const textClass = isDark ? "text-white" : "text-headings";
-const innerBgClass = isDark
-  ? "bg-[color:var(--color-gray-800)]"
-  : "bg-[linear-gradient(135deg,var(--color-primary-300),var(--color-primary-100))]";
+const titleClass = isDark
+  ? "text-[color:var(--card-status-title-a)]"
+  : "text-[color:var(--card-status-title-b)]";
+const textClass = isDark
+  ? "text-[color:var(--card-status-text-a)]"
+  : "text-[color:var(--card-status-text-b)]";
+const innerStyle = isDark
+  ? "background: var(--card-status-bg-a);"
+  : "background: var(--card-status-bg-b);";
+const outerStyle = isDark
+  ? "background: var(--card-status-border-a);"
+  : "background: var(--card-status-border-b);";
 ---
 
-<div class="w-full rounded-[15px] bg-[linear-gradient(135deg,var(--color-primary-100),var(--color-primary-900))] p-[1.5px]">
-  <div class={`rounded-[14px] p-10 ${innerBgClass} ${textClass}`}>
-    <div class="flex items-stretch gap-6">
+<div class="status-card w-full rounded-[15px] p-[1.5px]" style={outerStyle}>
+  <div class="status-card__inner rounded-[14px] p-10" style={innerStyle}>
+    <div class="status-row">
       <div class="status-rail">
         <span class="status-rail__icon text-primary-700" aria-hidden="true">
           {headerIcon && <span class="block" set:html={headerIcon}></span>}
         </span>
         <span class={`status-rail__line ${isDark ? "status-rail__line--dark" : "status-rail__line--color"}`} aria-hidden="true"></span>
       </div>
-      <div class="flex-1">
+      <div class="status-content flex-1">
         <div class="flex items-center gap-3">
           {title && (
-            <h3 class={`text-h4 font-heading ${textClass}`}>{title}</h3>
+            <h3 class={`status-title text-h4 font-heading ${titleClass}`}>{title}</h3>
           )}
         </div>
-        <ul class="mt-6 flex flex-col gap-4">
+        <ul class="status-list mt-6 flex flex-col gap-4">
           {items.map((item) => (
-            <li class="flex items-center gap-3">
-              <span class={`${textClass}`} aria-hidden="true">
+            <li class="status-list__item flex items-center gap-3">
+              <span class={`status-list__icon ${textClass}`} aria-hidden="true">
                 {item.icon && <span class="block" set:html={item.icon}></span>}
               </span>
-              <span class={`text-body-md font-body ${textClass}`}>{item.label}</span>
+              <span class={`status-list__text text-body-md font-body ${textClass}`}>{item.label}</span>
             </li>
           ))}
         </ul>
@@ -39,6 +47,13 @@ const innerBgClass = isDark
 </div>
 
 <style>
+  .status-row {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
   .status-rail {
     display: flex;
     flex-direction: column;
@@ -46,7 +61,7 @@ const innerBgClass = isDark
     justify-content: flex-start;
     flex: 0 0 64px;
     position: relative;
-    align-self: stretch;
+    height: 100%;
   }
 
   .status-rail__icon {
@@ -54,7 +69,7 @@ const innerBgClass = isDark
     height: 56px;
     aspect-ratio: 1 / 1;
     border-radius: 9999px;
-    background: var(--color-white);
+    background: var(--card-status-icon-bg);
     display: grid;
     place-items: center;
   }
@@ -67,14 +82,84 @@ const innerBgClass = isDark
     left: 50%;
     transform: translateX(-50%);
     border-radius: 9999px;
-    box-shadow: 0 -2px 8px var(--color-white);
+    box-shadow: var(--card-status-line-shadow);
   }
 
   .status-rail__line--dark {
-    background: linear-gradient(180deg, var(--color-gray-800) 0%, rgba(69, 49, 77, 0) 100%);
+    background: var(--card-status-line-dark-bg);
+    box-shadow: var(--card-status-line-dark-shadow, var(--card-status-line-shadow));
   }
 
   .status-rail__line--color {
-    background: linear-gradient(180deg, var(--color-primary-900) 0%, rgba(0, 0, 0, 0) 100%);
+    background: var(--card-status-line-color-bg);
+    box-shadow: var(--card-status-line-color-shadow, var(--card-status-line-shadow));
+  }
+
+  .status-content {
+    min-width: 0;
+  }
+
+  .status-list__text {
+    min-width: 0;
+  }
+
+  .status-list__item {
+    align-items: flex-start;
+  }
+
+  .status-list__icon {
+    margin-top: 2px;
+  }
+
+  @media (max-width: 380px) {
+    .status-card__inner {
+      padding: 24px 20px;
+    }
+
+    .status-row {
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+    }
+
+    .status-rail {
+      flex: 0 0 44px;
+    }
+
+    .status-rail__icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .status-rail__line {
+      width: 2px;
+      top: 36px;
+    }
+
+    .status-title {
+      font-size: var(--font-body-lg-size);
+      line-height: 1.4;
+    }
+
+    .status-list {
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .status-list__item {
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .status-list__icon {
+      width: 16px;
+      min-width: 16px;
+      margin-top: 2px;
+    }
+
+    .status-list__text {
+      font-size: var(--font-body-sm-size);
+      line-height: 1.45;
+      overflow-wrap: anywhere;
+    }
   }
 </style>

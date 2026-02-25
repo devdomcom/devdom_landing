@@ -1,0 +1,276 @@
+---
+import Button from "../atomic/Button.astro";
+import Input from "../atomic/Input.astro";
+import Textarea from "../atomic/Textarea.astro";
+import formBg from "../../../assets/images/decorations/form-bg.png";
+
+const {
+  title = "Get in touch",
+  description = "For project discussions and technical inquiries.",
+  contactItems = [],
+  formAction = "#",
+  formMethod = "post",
+  submitLabel = "Send message",
+} = Astro.props;
+---
+
+<section class="contact-section">
+  <div class="contact-section__decoration" aria-hidden="true">
+    <img src={formBg.src} alt="" />
+  </div>
+  <div class="contact-section__inner">
+    <div class="contact-section__grid">
+      <div class="contact-section__context">
+        <h2 class="contact-section__title">{title}</h2>
+        <p class="contact-section__description">{description}</p>
+        <ul class="contact-section__contacts">
+          {contactItems.map((item) => (
+            <li>
+              <a
+                class="contact-section__contact"
+                href={item.href}
+                target={item.external ? "_blank" : undefined}
+                rel={item.external ? "noopener noreferrer" : undefined}
+              >
+                <span class="contact-section__contact-icon" aria-hidden="true">
+                  <span set:html={item.icon}></span>
+                </span>
+                <span>{item.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="contact-section__form-card">
+        <form class="contact-section__form" action={formAction} method={formMethod}>
+          <div class="contact-section__fields">
+            <Input
+              label="Full name"
+              name="fullName"
+              placeholder="John Carter"
+              class="contact-section__field"
+            />
+            <Input
+              label="Email address"
+              type="email"
+              name="email"
+              placeholder="example@youremail.com"
+              class="contact-section__field"
+            />
+            <Input
+              label="Phone number"
+              type="tel"
+              name="phone"
+              placeholder="(123) 456 – 7890"
+              class="contact-section__field"
+            />
+            <Input
+              label="Company"
+              name="company"
+              placeholder="Exp. Company"
+              class="contact-section__field"
+            />
+            <Textarea
+              label="Message"
+              name="message"
+              placeholder="Write your message here..."
+              rows={3}
+              class="contact-section__field contact-section__field--full"
+            />
+          </div>
+          <Button variant="secondary" size="medium" type="submit">
+            {submitLabel}
+          </Button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    --contact-bg-cut: 200px;
+    position: relative;
+    padding: 80px 24px;
+  }
+
+  .contact-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    height: calc(100% - var(--contact-bg-cut));
+    background: var(--color-gray-900);
+    z-index: 0;
+  }
+
+  .contact-section__inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-section__decoration {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .contact-section__decoration img {
+    position: absolute;
+    left: calc(50% + 80px);
+    top: calc(50% - 80px);
+    width: 100%;
+    height: auto;
+    min-width: 1200px;
+    max-width: none;
+    transform: translate(-50%, -50%) scale(1.2);
+    transform-origin: center;
+  }
+
+  .contact-section__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px;
+    align-items: flex-start;
+  }
+
+  .contact-section__context {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: var(--color-white-soft);
+  }
+
+  .contact-section__title {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: var(--font-h2-size);
+    font-weight: 700;
+    color: var(--color-white-soft);
+  }
+
+  .contact-section__description {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: var(--font-h4-size);
+    color: var(--color-white-soft);
+  }
+
+  .contact-section__contacts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+    margin: 12px 0 0;
+  }
+
+  .contact-section__contact {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-white-soft);
+    text-decoration: none;
+    font-family: "DM Sans", sans-serif;
+    font-size: var(--font-body-md-size);
+  }
+
+  .contact-section__contact-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white-soft);
+    color: var(--color-gray-900);
+  }
+
+  .contact-section__form-card {
+    background: var(--color-white);
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: var(--shadow-03);
+  }
+
+  .contact-section__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .contact-section__fields {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .contact-section__field {
+    width: 100%;
+  }
+
+  .contact-section__field--full {
+    grid-column: 1 / -1;
+  }
+
+  @media (max-width: 900px) {
+    .contact-section__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-section__fields {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-section__decoration img {
+      top: calc(50% - 160px);
+      min-width: 1200px;
+      max-width: none;
+      transform: translate(-50%, -50%) scale(1.4);
+    }
+  }
+
+  :global([data-theme="dark"]) .contact-section::before {
+    background: var(--color-gray-800);
+  }
+
+  :global([data-theme="dark"]) .contact-section__decoration img {
+    opacity: 0.4;
+  }
+
+  :global([data-theme="dark"]) .contact-section__title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .contact-section__description {
+    color: var(--color-gray-300);
+  }
+
+  :global([data-theme="dark"]) a.contact-section__contact,
+  :global([data-theme="dark"]) a.contact-section__contact:visited,
+  :global([data-theme="dark"]) a.contact-section__contact:hover,
+  :global([data-theme="dark"]) a.contact-section__contact:focus-visible {
+    color: var(--color-gray-400) !important;
+  }
+
+  :global([data-theme="dark"]) .contact-section__form-card {
+    background: var(--color-gray-900);
+    box-shadow: inset 0 0 0 1px var(--color-gray-700);
+  }
+
+  :global([data-theme="dark"]) .contact-section__form :global(label) {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .contact-section__form :global(input),
+  :global([data-theme="dark"]) .contact-section__form :global(textarea) {
+    background: linear-gradient(135deg, rgba(200, 121, 248, 0.08) 0%, rgba(200, 121, 248, 0) 100%), var(--color-gray-900);
+    border-color: transparent;
+    box-shadow: inset 0 0 0 1px var(--color-gray-800);
+  }
+
+  :global([data-theme="dark"]) .contact-section__form :global(input::placeholder),
+  :global([data-theme="dark"]) .contact-section__form :global(textarea::placeholder) {
+    color: var(--color-gray-500);
+  }
+</style>

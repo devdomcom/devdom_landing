@@ -13,18 +13,28 @@ const {
 const isTextLeft = variant === 'text-left';
 ---
 
-<section class={`py-16 ${className}`}>
+<section class={`section-two-column py-16 ${className}`}>
   <div class="max-w-7xl mx-auto px-6">
-    <div class={`grid grid-cols-1 lg:grid-cols-2 gap-8 items-center ${isTextLeft ? '' : 'lg:flex-row-reverse'}`}>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
       <!-- Text Block -->
-      <div class={`space-y-6 ${isTextLeft ? 'lg:pr-8' : 'lg:pl-8'}`}>
-        {heading && <h2 class="text-h3 font-heading text-headings">{heading}</h2>}
-        {bodyText && <p class="text-body-md font-body text-text">{bodyText}</p>}
+      <div class={`${isTextLeft ? 'lg:order-1 lg:pr-8' : 'lg:order-2 lg:pl-8'} space-y-6`}>
+        {heading && <h2 class="section-two-column__heading text-h3 font-heading text-headings">{heading}</h2>}
+        {bodyText && <p class="section-two-column__body text-body-md font-body text-text">{bodyText}</p>}
       </div>
       <!-- Visual Block -->
-      <div class={`${isTextLeft ? 'lg:pl-8' : 'lg:pr-8'}`}>
+      <div class={`${isTextLeft ? 'lg:order-2 lg:pl-8' : 'lg:order-1 lg:pr-8'}`}>
         {imageSrc && <Image src={imageSrc} alt={imageAlt} width={600} height={400} class="w-full h-auto rounded-lg" />}
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  :global([data-theme="dark"]) .section-two-column .section-two-column__heading {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .section-two-column .section-two-column__body {
+    color: var(--color-gray-400);
+  }
+</style>

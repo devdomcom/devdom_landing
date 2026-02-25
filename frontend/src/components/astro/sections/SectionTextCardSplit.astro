@@ -1,0 +1,37 @@
+---
+import CardType4 from "../atomic/CardType4.astro";
+
+const {
+  variant = "text-left",
+  heading,
+  body,
+  cardHeading,
+  cardItems = [],
+} = Astro.props;
+
+const isTextLeft = variant === "text-left";
+---
+
+<section class="w-full">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class={`grid grid-cols-1 lg:grid-cols-2 gap-10 items-center ${isTextLeft ? "" : "lg:flex-row-reverse"}`}>
+      <div class={`space-y-6 ${isTextLeft ? "lg:pr-8" : "lg:pl-8"}`}>
+        {heading && <h2 class="section-text-card-split__heading text-h3 font-heading text-headings">{heading}</h2>}
+        {body && <p class="section-text-card-split__body text-body-md font-body text-text">{body}</p>}
+      </div>
+      <div class={`${isTextLeft ? "lg:pl-8" : "lg:pr-8"}`}>
+        <CardType4 heading={cardHeading} items={cardItems} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  :global([data-theme="dark"]) .section-text-card-split__heading {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .section-text-card-split__body {
+    color: var(--color-gray-400);
+  }
+</style>

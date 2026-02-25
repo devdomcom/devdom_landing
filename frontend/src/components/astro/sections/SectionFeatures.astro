@@ -4,13 +4,13 @@ import Button from '../atomic/Button.astro';
 const { headline, description, ctaHref, ctaText, features, class: className = '' } = Astro.props;
 ---
 
-<section class={`py-16 ${className}`}>
+<section class={`section-features py-16 ${className}`}>
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <!-- Left Column: Text Block + CTA -->
       <div class="space-y-6">
-        {headline && <h2 class="text-h2 font-heading text-headings">{headline}</h2>}
-        {description && <p class="text-h4 font-heading text-text leading-relaxed max-w-lg">{description}</p>}
+        {headline && <h2 class="section-features__headline text-h2 font-heading text-headings">{headline}</h2>}
+        {description && <p class="section-features__description text-h4 font-heading text-text leading-relaxed max-w-lg">{description}</p>}
         {(ctaHref && ctaText) && <Button variant="primary" size="medium" href={ctaHref}>{ctaText}</Button>}
       </div>
       <!-- Right Column: Feature Grid -->
@@ -19,9 +19,9 @@ const { headline, description, ctaHref, ctaText, features, class: className = ''
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {features.map((feature) => (
               <div class="space-y-4">
-                {feature.icon && <div class="flex justify-center"><span set:html={feature.icon} class="text-2xl"></span></div>}
-                {feature.title && <h3 class="text-h4 font-heading text-headings text-center">{feature.title}</h3>}
-                {feature.description && <p class="text-body-md font-body text-text text-center">{feature.description}</p>}
+                {feature.icon && <div class="section-features__icon-wrap flex justify-start"><span set:html={feature.icon} class="section-features__icon text-2xl"></span></div>}
+                {feature.title && <h3 class="section-features__feature-title text-h4 font-heading text-headings text-left">{feature.title}</h3>}
+                {feature.description && <p class="section-features__feature-description text-body-md font-body text-text text-left">{feature.description}</p>}
               </div>
             ))}
           </div>
@@ -30,3 +30,25 @@ const { headline, description, ctaHref, ctaText, features, class: className = ''
     </div>
   </div>
 </section>
+
+<style>
+  :global([data-theme="dark"]) .section-features__headline {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .section-features__description {
+    color: var(--color-gray-400);
+  }
+
+  :global([data-theme="dark"]) .section-features__icon {
+    color: var(--color-primary-300);
+  }
+
+  :global([data-theme="dark"]) .section-features__feature-title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .section-features__feature-description {
+    color: var(--color-gray-400);
+  }
+</style>

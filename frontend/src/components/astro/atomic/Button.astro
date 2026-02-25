@@ -11,7 +11,7 @@ const {
 } = Astro.props;
 
 const base =
-  "inline-flex items-center justify-center gap-2 font-body font-normal text-body-xs rounded-[12px] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--focus-ring-color)] disabled:cursor-not-allowed disabled:opacity-70";
+  "inline-flex items-center justify-center gap-2 font-body font-normal text-body-xs rounded-[12px] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--focus-ring-color)] disabled:cursor-not-allowed";
 
 const sizeMap: Record<string, "lg" | "md" | "sm" | "xs"> = {
   large: "lg",
@@ -34,9 +34,9 @@ const sizes = {
 
 const variants = {
   primary:
-    "bg-[color:var(--color-primary-900)] text-white hover:bg-[color:var(--color-primary-700)]",
+    "bg-[color:var(--button-primary-bg)] text-[color:var(--button-primary-text)] hover:bg-[color:var(--button-primary-bg-hover)]",
   secondary:
-    "bg-white text-[color:var(--color-primary-900)] border border-[color:var(--color-primary-900)] hover:bg-[color:var(--color-primary-900)] hover:text-white",
+    "bg-[color:var(--button-secondary-bg)] text-[color:var(--button-secondary-text)] border border-[color:var(--button-secondary-border)] hover:bg-[color:var(--button-secondary-bg-hover)] hover:border-[color:var(--button-secondary-border-hover)] hover:text-[color:var(--button-secondary-text-hover)]",
   ghost:
     "bg-action-ghost text-ink-primary border border-transparent hover:bg-action-ghost-hover active:bg-action-ghost-hover",
   link:
@@ -44,9 +44,10 @@ const variants = {
 };
 
 const disabledVariants = {
-  primary: "bg-[color:var(--color-gray-200)] text-[color:var(--color-gray-500)]",
+  primary:
+    "bg-[color:var(--button-primary-bg-disabled)] text-[color:var(--button-primary-text-disabled)]",
   secondary:
-    "bg-white text-[color:var(--color-gray-500)] border border-[color:var(--color-gray-500)]",
+    "bg-[color:var(--button-secondary-bg-disabled)] text-[color:var(--button-secondary-text-disabled)] border border-[color:var(--button-secondary-border-disabled)]",
   ghost: "bg-surface-muted text-ink-muted border border-border-subtle",
   link: "bg-transparent text-ink-muted border border-transparent no-underline",
 };

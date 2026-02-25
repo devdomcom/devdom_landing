@@ -12,6 +12,21 @@ import SectionHighlight from '../components/astro/sections/SectionHighlight.astr
 import SectionCentered from '../components/astro/sections/SectionCentered.astro';
 import SectionFeatures from '../components/astro/sections/SectionFeatures.astro';
 import HeroSplitImage from '../components/astro/sections/HeroSplitImage.astro';
+import HeroCenteredBrand from '../components/astro/sections/HeroCenteredBrand.astro';
+import HeroLayeredVisual from '../components/astro/sections/HeroLayeredVisual.astro';
+import SectionIconHighlights from '../components/astro/sections/SectionIconHighlights.astro';
+import SectionFeatureGridCta from '../components/astro/sections/SectionFeatureGridCta.astro';
+import SectionHighlightGrid from '../components/astro/sections/SectionHighlightGrid.astro';
+import SectionTextCardSplit from '../components/astro/sections/SectionTextCardSplit.astro';
+import SectionLayeredCta from '../components/astro/sections/SectionLayeredCta.astro';
+import SectionCenteredHeadline from '../components/astro/sections/SectionCenteredHeadline.astro';
+import SectionPricingOverview from '../components/astro/sections/SectionPricingOverview.astro';
+import SectionTestimonial from '../components/astro/sections/SectionTestimonial.astro';
+import SectionFaqAccordion from '../components/astro/sections/SectionFaqAccordion.astro';
+import FooterGlobal from '../components/astro/sections/FooterGlobal.astro';
+import SectionCapabilityGrid from '../components/astro/sections/SectionCapabilityGrid.astro';
+import SectionProcessFlow from '../components/astro/sections/SectionProcessFlow.astro';
+import SectionContactQualified from '../components/astro/sections/SectionContactQualified.astro';
 import Nav from '../components/react/nav/Nav.tsx';
 import ComplexContent from '../components/react/nav/ComplexContent.tsx';
 import ThemeToggle from '../components/react/ThemeToggle';
@@ -26,6 +41,12 @@ import SectionHeader from "../components/astro/sections/SectionHeader.astro";
 import placeholder from '../assets/images/placeholder.svg';
 import landscape from '../assets/images/landscape.svg';
 import portrait from '../assets/images/portrait.svg';
+import devdomLogoSlogan from '../assets/images/devdom-logo+slogan.png';
+import devdomLogoSloganLight from '../assets/images/devdom-logo-slogan-light.png';
+import footerBox from '../assets/images/decorations/footer-box.png';
+import heroV3 from '../assets/images/hero/hero-v3.png';
+import devcoverLogo from '../assets/images/hero/Devcover.png';
+import devrankLogo from '../assets/images/hero/Devrank.png';
 
 const arrowIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/></svg>`;
 const homeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/><path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/></svg>`;
@@ -33,6 +54,26 @@ const usersIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28
 const chartIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15v-4"/><path d="M11 15V7"/><path d="M15 15v-8"/></svg>`;
 const stackIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="4" rx="1"/><rect x="3" y="10" width="12" height="4" rx="1"/><rect x="3" y="16" width="8" height="4" rx="1"/></svg>`;
 const statusIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-4.5"/></svg>`;
+const shieldIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v6c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V7l8-4z"/><path d="M12 7v6"/><path d="M12 17h.01"/></svg>`;
+const swapIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 7 3-3 3 3"/><path d="M6 4v14"/><path d="m21 17-3 3-3-3"/><path d="M18 20V6"/></svg>`;
+const userCheckIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 11a4 4 0 1 0-8 0"/><path d="M2 20a6 6 0 0 1 12 0"/><path d="m16 19 2 2 4-4"/></svg>`;
+const sparkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l1.8 4.8L19 10l-5.2 2.2L12 17l-1.8-4.8L5 10l5.2-2.2L12 3z"/></svg>`;
+const codeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 18l4-4-4-4"/><path d="M8 6l-4 4 4 4"/><path d="M14 4l-4 16"/></svg>`;
+const nodesIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="12" cy="19" r="2"/><path d="M7 6l4 10"/><path d="M17 6l-4 10"/></svg>`;
+const peopleIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 11a4 4 0 1 0-8 0"/><path d="M2 20a6 6 0 0 1 12 0"/><path d="M17 20a5 5 0 0 1 5 0"/><path d="M18 9a3 3 0 1 0-6 0"/></svg>`;
+const starIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2.6 5.7L21 8.8l-4.5 4.3L17.2 21 12 17.9 6.8 21l1.7-7.9L4 8.8l6.4-1.1L12 2z"/></svg>`;
+const gaugeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 12l3-3"/><path d="M7.5 16.5a6 6 0 1 1 9 0"/></svg>`;
+const cubeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 4.5-9 4.5-9-4.5L12 2z"/><path d="M3 6.5v9L12 20l9-4.5v-9"/></svg>`;
+const checkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m5 12 4 4 10-10"/></svg>`;
+const xIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18"/><path d="M6 6l12 12"/></svg>`;
+const mailIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>`;
+const phoneIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.86.32 1.7.59 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.16a2 2 0 0 1 2.11-.45c.8.27 1.64.47 2.5.59A2 2 0 0 1 22 16.92z"/></svg>`;
+const linkedinIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-2-2h-2v8h-4V8h6z"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>`;
+const chartUpIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 5-6"/></svg>`;
+const aiIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3"/><path d="M15 1v3"/><path d="M9 20v3"/><path d="M15 20v3"/><path d="M1 9h3"/><path d="M1 15h3"/><path d="M20 9h3"/><path d="M20 15h3"/></svg>`;
+const refreshIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 15-6"/><path d="M21 12a9 9 0 0 1-15 6"/><path d="M3 3v6h6"/><path d="M21 21v-6h-6"/></svg>`;
+const platformIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/></svg>`;
+const compassIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M16 8l-3 7-5 1 3-7 5-1z"/></svg>`;
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -300,22 +341,76 @@ const navItems = [
                     imageSrc={portrait}
                     imageAlt="Portrait image"
                   />
+                  <div class="mt-4 mb-2 px-3 py-2 text-xs font-semibold tracking-wide rounded bg-[color:var(--color-primary-900)] text-[color:var(--color-white-soft)]">
+                    Component: Section Text Card Split
+                  </div>
+                  <SectionTextCardSplit
+                    variant="text-left"
+                    heading="From hiring plan to talent pipeline"
+                    body="Most teams only start hiring once it’s already urgent. DevSight flips the script."
+                    cardHeading="By combining:"
+                    cardItems={[
+                      { icon: usersIcon, label: "Continuous 1:1 check-ins with your team" },
+                      { icon: chartIcon, label: "Insights from DevRep’s talent graph" },
+                      { icon: stackIcon, label: "Real context on your roadmap, stack, and org structure" }
+                    ]}
+                  />
                 </div>
               </div>
               <div>
-                <h3 class="text-lg font-semibold mb-4">Section Highlight Component</h3>
-                <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
-                  <SectionHighlight
-                    title="Highlight Section Title"
-                    subtitle="Subtitle for the highlight section"
-                    featureItems={[
-                      { icon: homeIcon, label: "Feature 1" },
-                      { icon: arrowIcon, label: "Feature 2" },
-                      { icon: homeIcon, label: "Feature 3" },
-                      { icon: arrowIcon, label: "Feature 4" }
-                    ]}
-                    footerLink={{ href: "#", text: "Learn More" }}
-                  />
+                <h3 class="text-lg font-semibold mb-4">Section Highlight Components</h3>
+                <div class="space-y-6">
+                  <div class="bg-surface-card p-4 rounded border border-border-subtle shadow-brand-02">
+                    <SectionHighlight
+                      title="Highlight Section Title"
+                      subtitle="Subtitle for the highlight section"
+                      featureItems={[
+                        { icon: homeIcon, label: "Feature 1" },
+                        { icon: arrowIcon, label: "Feature 2" },
+                        { icon: homeIcon, label: "Feature 3" },
+                        { icon: arrowIcon, label: "Feature 4" }
+                      ]}
+                      footerLink={{ href: "#", text: "Learn More" }}
+                    />
+                  </div>
+                  <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                    <SectionHighlightGrid
+                      title="Multi-signal analysis"
+                      subtitle="Each candidate is scored using multiple vectors:"
+                      items={[
+                        {
+                          icon: codeIcon,
+                          label: "Code quality",
+                          description: "Complexity, maintainability, contribution frequency"
+                        },
+                        {
+                          icon: nodesIcon,
+                          label: "Domain relevance",
+                          description: "Stack fit, project context, technical scope"
+                        },
+                        {
+                          icon: peopleIcon,
+                          label: "Collaboration signal",
+                          description: "PRs, reviews, issues, responsiveness"
+                        },
+                        {
+                          icon: nodesIcon,
+                          label: "Network graph",
+                          description: "Developer relationships, co-contributors, ecosystem positioning"
+                        },
+                        {
+                          icon: starIcon,
+                          label: "Reputation & trust",
+                          description: "Endorsements, maintainership, peer reviews"
+                        },
+                        {
+                          icon: gaugeIcon,
+                          label: "Velocity & consistency",
+                          description: "Longitudinal activity over time, project depth"
+                        }
+                      ]}
+                    />
+                  </div>
                 </div>
               </div>
               <div>
@@ -358,6 +453,358 @@ const navItems = [
                     ctaHref="#"
                     imageSrc={portrait}
                     imageAlt="Developer with UI cards and charts floating nearby"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Hero Centered Brand</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <HeroCenteredBrand
+                    imageSrc={devcoverLogo}
+                    imageAlt="DevCover brand mark"
+                    headline="Hire with confidence, move without risk"
+                    description="DevCover is our industry-leading safety layer that gives you confidence to hire fast, without second guessing the fit."
+                    ctaLabel="Hire today"
+                    ctaHref="#"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Hero Layered Visual</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <HeroLayeredVisual
+                    imageSrc={devrankLogo}
+                    imageAlt="DevRank brand mark"
+                    overlaySrc={heroV3}
+                    overlayAlt="Abstract network visualization"
+                    headline="Builders of your stack. Proven in public."
+                    description="DevRep is a proprietary engine and ranking system that maps open-source ecosystems at scale to surface engineers with provable impact and relevance to your stack."
+                    secondaryCtaText="Learn more"
+                    secondaryCtaHref="#"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Icon Highlights</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <SectionIconHighlights
+                    items={[
+                      {
+                        icon: userCheckIcon,
+                        title: "Hire with no upfront risk",
+                        description: "Your Devdom engineer starts fast, already vetted, already matched."
+                      },
+                      {
+                        icon: shieldIcon,
+                        title: "Get ongoing coverage",
+                        description: "You're protected for the first 30 days: misfit or misfire? We cover it."
+                      },
+                      {
+                        icon: swapIcon,
+                        title: "Need a swap?",
+                        description: "We replace talent within 5 business days and support up to two consecutive swaps."
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Feature Grid CTA</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <SectionFeatureGridCta
+                    title="Proof in the details"
+                    features={[
+                      {
+                        icon: sparkIcon,
+                        title: "Signal over noise",
+                        description: "We surface engineers with demonstrable impact using public code and contribution trails."
+                      },
+                      {
+                        icon: userCheckIcon,
+                        title: "Vetted for your stack",
+                        description: "Each candidate is matched to your roadmap, stack, and team priorities."
+                      },
+                      {
+                        icon: shieldIcon,
+                        title: "Quality safeguards",
+                        description: "Structured check-ins and delivery milestones keep momentum high."
+                      },
+                      {
+                        icon: swapIcon,
+                        title: "Swap-ready coverage",
+                        description: "Need a replacement? We provide fast, pre-vetted alternatives."
+                      }
+                    ]}
+                    ctaLabel="See how it works"
+                    ctaHref="#"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Pricing Overview</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <SectionPricingOverview
+                    eyebrow="Pricing"
+                    title="Pricing plans"
+                    supportingText="Lorem ipsum dolor sit amet consectetur adipiscing elit tortor eu egestas morbi sem vulputate etiam facilisis pellentesque ut quis."
+                    tiers={[
+                      { icon: cubeIcon, name: "Starter Pack", ctaLabel: "Get started", ctaHref: "#" },
+                      { icon: cubeIcon, name: "Growth Pack", ctaLabel: "Get started", ctaHref: "#", highlight: true },
+                      { icon: cubeIcon, name: "Scale Pack", ctaLabel: "Get started", ctaHref: "#" }
+                    ]}
+                    features={[
+                      {
+                        label: "DevCover Protection",
+                        tooltip: "Coverage for early team fit and delivery risk.",
+                        values: [xIcon, "Yes", "Yes"]
+                      },
+                      {
+                        label: "Initial Delivery Setup",
+                        tooltip: "Time to full onboarding and delivery start.",
+                        values: ["15 business days", "10 business days", "5 business days"]
+                      },
+                      {
+                        label: "Commercial Continuity Guarantee",
+                        tooltip: "Backup plan for continuity needs.",
+                        values: [xIcon, "Yes", "Yes"]
+                      },
+                      {
+                        label: "Delivery Lifecycle Support",
+                        tooltip: "Coverage across delivery milestones.",
+                        values: ["Yes", "Yes", "Yes"]
+                      },
+                      {
+                        label: "Dedicated Delivery Lead",
+                        tooltip: "Named delivery lead assigned to your team.",
+                        values: [xIcon, xIcon, "Yes"]
+                      },
+                      {
+                        label: "DevSight",
+                        tooltip: "Access to talent intelligence insights.",
+                        values: [xIcon, xIcon, "Yes"]
+                      },
+                      {
+                        label: "Priority support",
+                        tooltip: "SLA for support requests.",
+                        values: ["48 hours SLA", "24 hours SLA", "4 hours SLA"]
+                      },
+                      {
+                        label: "Engagement Model",
+                        tooltip: "Available delivery engagement options.",
+                        values: ["Dedicated or Flexible", "Dedicated", "Dedicated"]
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Capability Grid</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <SectionCapabilityGrid
+                    title="What we do"
+                    items={[
+                      {
+                        icon: sparkIcon,
+                        title: "Software Architecture",
+                        description: "Scalable, secure platforms and services."
+                      },
+                      {
+                        icon: chartUpIcon,
+                        title: "Data & Analytics",
+                        description: "Pipelines, BI, and decision-making systems."
+                      },
+                      {
+                        icon: aiIcon,
+                        title: "AI Integration",
+                        description: "Applied AI within existing products and processes."
+                      },
+                      {
+                        icon: refreshIcon,
+                        title: "Legacy Modernization",
+                        description: "Refactoring and migrations without operational disruption."
+                      },
+                      {
+                        icon: platformIcon,
+                        title: "Platform Engineering",
+                        description: "Reliable foundations for long-term system evolution."
+                      },
+                      {
+                        icon: compassIcon,
+                        title: "Technical Advisory",
+                        description: "Support for high-impact technical decisions."
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Process Flow</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden bg-white">
+                  <SectionProcessFlow
+                    title="Our process"
+                    subtitle="From alignment to long-term operation."
+                    steps={[
+                      {
+                        title: "Define",
+                        description: "Align goals, constraints, risks, and definition of done. Decisions are documented and validated early."
+                      },
+                      {
+                        title: "Build",
+                        description: "Execute in short cycles with quality, traceability, and review. Security and governance are part of the delivery."
+                      },
+                      {
+                        title: "Operate",
+                        description: "Stabilize, observe, and support long-term system operation. Clear handover and continuous improvement."
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section FAQ Accordion</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden bg-white">
+                  <SectionFaqAccordion
+                    items={[
+                      {
+                        question: "What is the Predictive Talent Pool?",
+                        answer: "Our team collaborates with you to understand your current team structure, roadmap, and upcoming hiring needs. This input powers DevSight, our predictive algorithm that continuously sources and curates matching talent before you even need it."
+                      },
+                      {
+                        question: "What does a Dedicated Talent Manager do?",
+                        answer: "They manage sourcing, outreach, and candidate pipelines while keeping you updated on progress and fit."
+                      },
+                      {
+                        question: "How quickly can we start interviews?",
+                        answer: "Most teams can begin interviews within 10–15 business days depending on role complexity and availability."
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Contact Qualified</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <SectionContactQualified
+                    title="Get in touch"
+                    description="For project discussions and technical inquiries."
+                    contactItems={[
+                      { icon: mailIcon, label: "hello@devdom.com", href: "mailto:hello@devdom.com" },
+                      { icon: phoneIcon, label: "+39 3403560457 / +359 87 622 4804", href: "tel:+393403560457" },
+                      { icon: linkedinIcon, label: "@devdom", href: "https://linkedin.com", external: true }
+                    ]}
+                    submitLabel="Send message"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Footer Global</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <FooterGlobal
+                    ctaLogoSrc={devdomLogoSlogan}
+                    ctaLogoDarkSrc={devdomLogoSloganLight}
+                    ctaLogoAlt="Devdom logo and slogan"
+                    ctaBgSrc={footerBox}
+                    ctaMessage="Start building now. Skip the interview loop."
+                    ctaLabel="Let's build"
+                    ctaHref="#"
+                    columns={[
+                      {
+                        title: "Product",
+                        links: [
+                          { label: "DevCover", href: "#" },
+                          { label: "DevRep", href: "#" },
+                          { label: "DevSight", href: "#" },
+                          { label: "Engagement Tiers", href: "#" },
+                          { label: "AI builders", href: "#" }
+                        ]
+                      },
+                      {
+                        title: "Company",
+                        links: [
+                          { label: "About", href: "#" },
+                          { label: "Join our team", href: "#" },
+                          { label: "Contact us", href: "#" }
+                        ]
+                      },
+                      {
+                        title: "Legal",
+                        links: [
+                          { label: "Terms of use", href: "#" },
+                          { label: "Privacy policy", href: "#" },
+                          { label: "Cookie policy", href: "#" }
+                        ]
+                      }
+                    ]}
+                    contactItems={[
+                      { icon: mailIcon, label: "hello@devdom.com", href: "mailto:hello@devdom.com" },
+                      { icon: linkedinIcon, label: "@devdom", href: "https://linkedin.com", external: true }
+                    ]}
+                    copyrightText="© Copyright 2026. All Rights Reserved."
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Testimonial</h3>
+                <div class="space-y-6">
+                  <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                    <SectionTestimonial
+                      variant="dark"
+                      headline="Built on trust"
+                      supporting="DevCover exists because we trust our vetting, and we stand by our engineers."
+                      quote="Hiring with the peace of mind that things keep moving forward, even when hires go sideways, is hard to quantify. DevCover let us move fast without gambling on quality."
+                      avatarSrc={portrait}
+                      avatarAlt="Team member portrait"
+                      attribution="VP of Engineering, Series B SaaS company"
+                    />
+                  </div>
+                  <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden bg-white">
+                    <SectionTestimonial
+                      variant="light"
+                      headline="Hire the true builders."
+                      highlightWord="true"
+                      supporting="DevRep identifies the developers who've contributed to the actual libraries you are using in your stack, not just consumed them."
+                      quote="The best hires we made were already solving problems like ours — before they joined."
+                      avatarSrc={portrait}
+                      avatarAlt="Team member portrait"
+                      attribution="VP Engineering, ML startup"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Centered Headline</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <SectionCenteredHeadline
+                    headline="DevSight builds a predictive talent model tailored to your team, so when it’s time to scale, we’ve already lined up engineers who are a fit."
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Layered CTA</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <SectionLayeredCta
+                    headline="Get started with no upfront commitment."
+                    ctaLabel="Talk to us"
+                    ctaHref="#"
+                  />
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold mb-4">Section Text Card Split</h3>
+                <div class="rounded border border-border-subtle shadow-brand-02 overflow-hidden">
+                  <div class="px-3 py-2 text-xs font-semibold tracking-wide bg-[color:var(--color-primary-900)] text-[color:var(--color-white-soft)]">
+                    Component: Section Text Card Split
+                  </div>
+                  <SectionTextCardSplit
+                    variant="text-left"
+                    heading="From hiring plan to talent pipeline"
+                    body="Most teams only start hiring once it’s already urgent. DevSight flips the script."
+                    cardHeading="By combining:"
+                    cardItems={[
+                      { icon: usersIcon, label: "Continuous 1:1 check-ins with your team" },
+                      { icon: chartIcon, label: "Insights from DevRep’s talent graph" },
+                      { icon: stackIcon, label: "Real context on your roadmap, stack, and org structure" }
+                    ]}
                   />
                 </div>
               </div>
@@ -461,6 +908,7 @@ const navItems = [
       // Initial load
       const initialSection = window.location.hash.slice(1) || 'images';
       showSection(initialSection);
+
     </script>
   </body>
 </html>

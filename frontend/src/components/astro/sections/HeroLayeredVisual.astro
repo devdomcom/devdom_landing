@@ -1,0 +1,165 @@
+---
+import Image from "../atomic/Image.astro";
+
+const {
+  imageSrc,
+  imageAlt,
+  overlaySrc,
+  overlayAlt,
+  headline,
+  description,
+  secondaryCtaText,
+  secondaryCtaHref,
+} = Astro.props;
+---
+
+<section class="hero-layered">
+  <!-- overlay removed per design request -->
+  {overlaySrc && (
+    <div class="hero-layered__art" aria-hidden="true">
+      <Image
+        src={overlaySrc}
+        alt={overlayAlt || ""}
+        width={2414}
+        height={1260}
+        class="hero-layered__art-image"
+      />
+    </div>
+  )}
+  <div class="hero-layered__content">
+    <div class="hero-layered__grid">
+      <div class="hero-layered__spacer" aria-hidden="true"></div>
+      <div class="hero-layered__text">
+        {imageSrc && (
+          <div class="mb-6">
+          <img
+            src={imageSrc.src}
+            alt={imageAlt}
+            class="h-auto w-auto max-w-[240px]"
+          />
+          </div>
+        )}
+        {headline && (
+          <h1 class="hero-layered__title text-h1 font-heading text-[color:var(--color-white-soft)] max-w-3xl">
+            {headline}
+          </h1>
+        )}
+        {description && (
+          <p class="hero-layered__subtitle mt-6 text-h4 font-heading text-[color:var(--color-white-soft)] max-w-2xl">
+            {description}
+          </p>
+        )}
+        {secondaryCtaText && secondaryCtaHref && (
+          <div class="mt-8">
+            <a
+              href={secondaryCtaHref}
+              class="text-[color:var(--color-white-soft)] underline-offset-4 hover:underline"
+            >
+              {secondaryCtaText}
+            </a>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-layered {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    background: var(--color-gray-900);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+
+  .hero-layered__art {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .hero-layered__art-image {
+    position: absolute;
+    top: 85%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    min-width: 1200px;
+    min-height: 620px;
+    max-width: none;
+    max-height: none;
+    object-fit: contain;
+    opacity: 0.85;
+    object-position: left center;
+    transform-origin: left center;
+    scale: 1.7;
+  }
+
+  .hero-layered__content {
+    position: relative;
+    z-index: 2;
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 40px;
+  }
+
+  .hero-layered__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .hero-layered__text {
+    text-align: left;
+  }
+
+  :global([data-theme="dark"]) .hero-layered {
+    background: var(--color-gray-900);
+  }
+
+  :global([data-theme="dark"]) .hero-layered__title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .hero-layered__subtitle {
+    color: var(--color-gray-300);
+  }
+
+  @media (max-width: 1199px) {
+    .hero-layered__art-image {
+      opacity: 0.4 !important;
+    }
+
+    .hero-layered__grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-layered__spacer {
+      display: none;
+    }
+    .hero-layered__text {
+      text-align: center;
+      margin: 0 auto;
+      max-width: 42rem;
+    }
+    .hero-layered__text .mb-6 {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-layered {
+      min-height: 460px;
+    }
+    .hero-layered__content {
+      padding: 40px;
+    }
+  }
+</style>

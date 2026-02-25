@@ -1,0 +1,55 @@
+---
+import Button from "../atomic/Button.astro";
+
+const { title, features = [], ctaLabel, ctaHref } = Astro.props;
+---
+
+<section class="section-feature-grid-cta w-full">
+  <div class="max-w-7xl mx-auto px-6">
+    {title && (
+      <h2 class="section-feature-grid-cta__title text-h2 font-heading text-headings text-center">{title}</h2>
+    )}
+    <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+      {features.map((feature) => (
+        <div>
+          {feature.icon && (
+            <span class="section-feature-grid-cta__icon text-primary-700" aria-hidden="true">
+              <span class="block" set:html={feature.icon}></span>
+            </span>
+          )}
+          {feature.title && (
+            <h3 class="section-feature-grid-cta__feature-title mt-4 text-h4 font-heading text-headings">{feature.title}</h3>
+          )}
+          {feature.description && (
+            <p class="section-feature-grid-cta__feature-subtitle mt-3 text-body-md font-body text-text">{feature.description}</p>
+          )}
+        </div>
+      ))}
+    </div>
+    {ctaLabel && ctaHref && (
+      <div class="mt-10 flex justify-center">
+        <Button variant="primary" size="medium" href={ctaHref}>
+          {ctaLabel}
+        </Button>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  :global([data-theme="dark"]) .section-feature-grid-cta__title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .section-feature-grid-cta__icon {
+    color: var(--color-primary-300);
+  }
+
+  :global([data-theme="dark"]) .section-feature-grid-cta__feature-title {
+    color: var(--color-gray-100);
+  }
+
+  :global([data-theme="dark"]) .section-feature-grid-cta__feature-subtitle {
+    color: var(--color-gray-400);
+  }
+</style>
