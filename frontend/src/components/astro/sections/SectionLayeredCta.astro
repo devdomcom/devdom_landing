@@ -12,7 +12,7 @@ const { headline, ctaLabel, ctaHref } = Astro.props;
   </div>
   <div class="layered-cta__content">
     {headline && (
-      <h2 class="text-h2 font-heading text-headings text-center max-w-3xl mx-auto">
+      <h2 class="layered-cta__title text-h2 font-heading text-headings text-center max-w-3xl mx-auto">
         {headline}
       </h2>
     )}
@@ -79,5 +79,13 @@ const { headline, ctaLabel, ctaHref } = Astro.props;
     .layered-cta__content {
       padding: 64px 24px;
     }
+  }
+
+  :global([data-theme="dark"]) .layered-cta {
+    background: var(--color-gray-1000);
+  }
+
+  :global([data-theme="dark"]) .layered-cta__title {
+    color: var(--color-gray-100);
   }
 </style>

@@ -31,7 +31,7 @@ const Nav: React.FC<NavProps> = ({
   const toggleMobile = () => setIsMobileOpen((prev) => !prev);
 
   return (
-    <nav className="bg-surface-card overflow-visible text-ink-primary" aria-label="Primary">
+    <nav className="nav-component bg-surface-card overflow-visible text-ink-primary" aria-label="Primary">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center gap-4">
         <a href={logoHref} className="shrink-0" aria-label={logoAlt}>
           <Logo alt={logoAlt} />
@@ -44,7 +44,7 @@ const Nav: React.FC<NavProps> = ({
         <div className="ml-auto hidden md:flex">
           <a
             href={ctaHref}
-            className="inline-flex items-center justify-center h-12 px-5 py-4 rounded-[12px] border border-[color:var(--button-secondary-border)] bg-[color:var(--button-secondary-bg)] text-[color:var(--button-secondary-text)] font-body text-body-xs hover:bg-[color:var(--button-secondary-bg-hover)] hover:border-[color:var(--button-secondary-border-hover)] hover:text-[color:var(--button-secondary-text-hover)] transition-colors"
+            className="nav-component__cta inline-flex items-center justify-center h-12 px-5 py-4 rounded-[12px] border border-[color:var(--button-secondary-border)] bg-[color:var(--button-secondary-bg)] text-[color:var(--button-secondary-text)] font-body text-body-xs hover:bg-[color:var(--button-secondary-bg-hover)] hover:border-[color:var(--button-secondary-border-hover)] hover:text-[color:var(--button-secondary-text-hover)] transition-colors"
             style={{ color: 'var(--button-secondary-text)', transition: 'color 150ms ease' }}
             onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--button-secondary-text-hover)')}
             onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--button-secondary-text)')}
@@ -79,7 +79,7 @@ const Nav: React.FC<NavProps> = ({
           <div className="px-6 pb-5">
             <a
               href={ctaHref}
-              className="inline-flex items-center justify-center h-12 px-5 py-4 rounded-[12px] border border-[color:var(--button-secondary-border)] bg-[color:var(--button-secondary-bg)] text-[color:var(--button-secondary-text)] font-body text-body-xs hover:bg-[color:var(--button-secondary-bg-hover)] hover:border-[color:var(--button-secondary-border-hover)] hover:text-[color:var(--button-secondary-text-hover)] transition-colors w-full"
+              className="nav-component__cta inline-flex items-center justify-center h-12 px-5 py-4 rounded-[12px] border border-[color:var(--button-secondary-border)] bg-[color:var(--button-secondary-bg)] text-[color:var(--button-secondary-text)] font-body text-body-xs hover:bg-[color:var(--button-secondary-bg-hover)] hover:border-[color:var(--button-secondary-border-hover)] hover:text-[color:var(--button-secondary-text-hover)] transition-colors w-full"
               style={{ color: 'var(--button-secondary-text)', transition: 'color 150ms ease' }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--button-secondary-text-hover)')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--button-secondary-text)')}

@@ -26,6 +26,7 @@ const Logo: React.FC<LogoProps> = ({ alt, width = 200, height = 50 }) => {
     <div
       style={{
         backgroundImage: `url(${isDark ? logoDarkSrc : logoSrc})`,
+        backgroundColor: isDark ? 'var(--color-gray-1000)' : 'transparent',
         backgroundSize: 'contain',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

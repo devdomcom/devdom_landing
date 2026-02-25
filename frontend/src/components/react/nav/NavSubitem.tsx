@@ -48,7 +48,7 @@ const NavSubitem: React.FC<NavSubitemProps> = ({ href, label, submenu }) => {
           <button
             ref={buttonRef}
             onMouseEnter={handleMouseEnter}
-            className="block px-4 py-2 text-ink-secondary bg-surface-muted hover:bg-surface-card w-full text-left transition-colors duration-200 rounded-md whitespace-nowrap cursor-pointer border border-border-subtle"
+            className="nav-component__submenu-link block px-4 py-2 text-ink-secondary bg-surface-muted hover:bg-surface-card w-full text-left transition-colors duration-200 rounded-md whitespace-nowrap cursor-pointer border border-border-subtle"
             aria-expanded={isOpen}
             aria-haspopup="true"
             aria-controls={`submenu-${id}`}
@@ -86,7 +86,7 @@ const NavSubitem: React.FC<NavSubitemProps> = ({ href, label, submenu }) => {
     <li role="none">
       <a
         href={href}
-        className="block px-4 py-2 text-ink-secondary bg-surface-muted hover:bg-surface-card transition-colors duration-200 rounded-md whitespace-nowrap border border-border-subtle"
+        className="nav-component__submenu-link block px-4 py-2 text-ink-secondary bg-surface-muted hover:bg-surface-card transition-colors duration-200 rounded-md whitespace-nowrap border border-border-subtle"
         role="menuitem"
         onKeyDown={(e) => {
           if (e.key === 'ArrowDown') {

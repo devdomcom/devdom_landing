@@ -151,7 +151,7 @@ const NavItem: React.FC<NavItemProps> = ({ href, label, submenu, complexContent 
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           onKeyDown={handleKeyDown}
-          className="block font-body text-body-xs text-[color:var(--nav-link-default)] hover:text-[color:var(--nav-link-hover)] hover:underline transition-colors duration-200 whitespace-nowrap bg-transparent"
+          className="nav-component__link block font-body text-body-xs text-[color:var(--nav-link-default)] hover:text-[color:var(--nav-link-hover)] hover:underline transition-colors duration-200 whitespace-nowrap bg-transparent"
           aria-expanded={isOpen}
           aria-haspopup="true"
           aria-controls={submenuId}
@@ -203,7 +203,7 @@ const NavItem: React.FC<NavItemProps> = ({ href, label, submenu, complexContent 
     <li role="none">
       <a
         href={href}
-        className="block font-body text-body-xs text-[color:var(--nav-link-default)] hover:text-[color:var(--nav-link-hover)] hover:underline transition-colors duration-200 whitespace-nowrap bg-transparent"
+        className="nav-component__link block font-body text-body-xs text-[color:var(--nav-link-default)] hover:text-[color:var(--nav-link-hover)] hover:underline transition-colors duration-200 whitespace-nowrap bg-transparent"
         role="menuitem"
         onKeyDown={handleKeyDown}
       >

@@ -80,3 +80,31 @@
 :root[data-theme="dark"] a:not([role="button"]):visited {
   color: var(--action-link-visited);
 }
+
+:root[data-theme="dark"] .nav-component {
+  background-color: var(--color-gray-1000);
+}
+
+:root[data-theme="dark"] .nav-component .nav-component__link,
+:root[data-theme="dark"] .nav-component .nav-component__link:hover,
+:root[data-theme="dark"] .nav-component .nav-component__link:visited,
+:root[data-theme="dark"] .nav-component .nav-component__link:focus-visible {
+  color: var(--color-gray-100);
+}
+
+:root[data-theme="dark"] .nav-component .nav-component__cta,
+:root[data-theme="dark"] .nav-component .nav-component__cta:hover,
+:root[data-theme="dark"] .nav-component .nav-component__cta:visited,
+:root[data-theme="dark"] .nav-component .nav-component__cta:focus-visible {
+  background-color: var(--color-gray-1000) !important;
+}
+
+:root[data-theme="dark"] .nav-component__submenu-link,
+:root[data-theme="dark"] .nav-component__submenu-link:visited,
+:root[data-theme="dark"] .nav-component__submenu-link:focus-visible {
+  color: var(--action-link);
+}
+
+:root[data-theme="dark"] .nav-component__submenu-link:hover {
+  color: var(--action-link-hover);
+}
